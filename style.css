@@ -6,6 +6,18 @@ body {
     background: rgb(240, 239, 239);
 }
 
+.h3-orange {
+    font-size: 48px;
+    font-weight: 600;
+    line-height: 40px;
+    background: linear-gradient(135deg, #F99B27 0%, yellow 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-fill-color: transparent;
+    text-transform: uppercase;
+}
+
 .SearchBox:focus {
     background: transparent;
     outline: none;
@@ -36,14 +48,31 @@ body {
     height: 300px;
 }
 
-.h270{
-    height:270px;
+.h270 {
+    height: 270px;
 }
 
-/* for  */
+/* for  circles*/
+.halfCircleLeft {
+    width: 700px;
+    height: auto;
+    position: absolute;
+    top: -100px;
+    left: -10px;
+    z-index: -1;
+}
+
+.halfCircleRight {
+    position: absolute;
+    top: 10rem;
+    right: -10px;
+    /* width:400px; */
+    display: flex;
+    justify-content: flex-end;
+}
 
 @media only screen and (max-width: 800px) {
-    
+
     .picture-rotate {
         height: 0px;
         display: none;
@@ -54,9 +83,19 @@ body {
         background-image: none;
         border: 2px solid red;
     }
-    .h-fit-content{
+
+    .h-fit-content {
         height: fit-content;
-    justify-content: center;
-  
+        justify-content: center;
+
+    }
+
+    .halfCircleLeft {
+        width: 500px;
+        height: auto;
+        top: -100px;
+    }
+    .halfCircleRight {
+        display: none;
     }
 }
