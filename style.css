@@ -1,101 +1,200 @@
-body {
-    background: rgb(240, 239, 239);
-}
+  @import url('https://fonts.googleapis.com/css2?family=Work+Sans&display=swap');
+  body {
+      background: rgb(240, 239, 239);
+  }
 
-.SearchBox {
-    background: rgb(240, 239, 239);
-}
+  .SearchBox {
+      width: 300px;
+      border-radius: 8px;
+  }
+ 
+  .font-worksons {
+    font-family: 'Work Sans', sans-serif;
+      font-style: normal;
+      font-weight: 600;
+      line-height: 48px;
+      background:linear-gradient(109deg, #F99B27 0%, #fda73d9c 100%);
+       -webkit-background-clip: text;
+       -webkit-text-fill-color: transparent;
+       background-clip: text;
+       text-fill-color: transparent;
+      text-transform: uppercase;
+  }
 
-.h3-orange {
-    font-size: 48px;
-    font-weight: 600;
-    line-height: 40px;
-    background: linear-gradient(135deg, #F99B27 0%, yellow 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-fill-color: transparent;
-    text-transform: uppercase;
-}
-
-.SearchBox:focus {
-    background: transparent;
-    outline: none;
-    border: 0px;
-}
-
-.card-body {
-    height: 50px;
-
-}
-
-.color-brown {
-    color: #8F8F8F;
-    font-weight: 400;
-}
-
-.text-justify {
-    text-align: justify;
-    text-justify: distribute-all-lines;
-}
+  .h3-orange {
+    font-family: 'Work Sans', sans-serif;
+      font-weight: 600;
+      line-height: 40px;
+      background: linear-gradient(135deg, #F99B27 0%, yellow 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+      text-transform: uppercase;
+  }
 
 
-.picture-rotate {
-    background-color: transparent;
-    background-image: url('../pictures/Maskgroup1.png');
-    background-size: cover;
-    background-repeat: no-repeat;
-    height: 300px;
-}
 
-.h270 {
-    height: 270px;
-}
+  .card-body {
+      height: 50px;
 
-/* for  circles*/
-.halfCircleLeft {
-    width: 700px;
-    height: auto;
+  }
+
+  .color-brown {
+      color: #8F8F8F;
+      font-weight: 400;
+  }
+
+  .text-justify {
+      text-align: justify;
+      text-justify: distribute-all-lines;
+  }
+
+
+  .picture-rotate {
     position: absolute;
-    top: -100px;
-    left: -10px;
-    z-index: -1;
-}
+      background-image: url('../pictures/Maskgroup1.png');
+      background-color: transparent;
+      background-size: cover;
+      background-repeat: no-repeat;
+      height: 300px;
+      width: 100%;
+      right: -5px;
+      z-index: 1;
+  }
 
-.halfCircleRight {
+  .picture-rotate img {
+      width: 180px;
+      height: auto;
+      object-fit: cover;
+      position: absolute;
+      right: 0px;
+      z-index: 1;
+  }
+
+  .h270 {
+      height: 270px;
+  }
+
+  /* for  circles*/
+  .halfCircleLeft {
+      width: 700px;
+      height: auto;
+      position: absolute;
+      top: -100px;
+      left: -10px;
+      z-index: -1;
+  }
+
+  .halfCircleRight {
+      position: absolute;
+      top: 10rem;
+      right: -10px;
+      /* width:400px; */
+      display: flex;
+      justify-content: flex-end;
+  }
+
+  @media only screen and (max-width: 800px) {
+      .SearchBox {
+          width: 200px;
+      }
+
+      .picture-rotate {
+          /* height: 0px; */
+          /* display: none; */
+          background-image: none;
+          height: 150px;
+          display: flex;
+          justify-content: center;
+      }
+
+
+      .sm-hide {
+          width: 0px;
+          overflow: hidden;
+      }
+
+      .h-fit-content {
+          height: fit-content;
+          justify-content: center;
+
+      }
+
+      .halfCircleLeft {
+          width: 500px;
+          height: auto;
+          top: -100px;
+      }
+
+      .halfCircleRight {
+          display: none;
+      }
+  }
+
+  /* animation   */
+  .animationDiv{
     position: absolute;
-    top: 10rem;
-    right: -10px;
-    /* width:400px; */
+    
     display: flex;
-    justify-content: flex-end;
+    align-items: center;
+    justify-content: start;
+    background: black;
+    background-image: url('../../pictures/logo.png');
+    background-repeat: no-repeat;
+    background-position: center;
+    animation: Load 6s linear;
+    overflow: hidden;
 }
-
-@media only screen and (max-width: 800px) {
-
-    .picture-rotate {
+@keyframes Load {
+    0%{
+        top: 0px;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
+    width: 772px;
+    height: 531;
+    }
+    99%{
+        width: 772px;
+    height: 531;
+    }
+    100%{
+        /* width: 0px; */
         height: 0px;
-        display: none;
     }
-
-    .sm-hide {
-        display: none;
-        background-image: none;
-        border: 2px solid red;
+    
+}
+.animationDiv .scroll{
+    width:0px;
+    height: 0px;
+    animation: LoadAnimation 3s linear;
+    margin-top: 50px;
+}
+@keyframes LoadAnimation {
+    0%{
+        width:20px;
+    border: 2px solid gray;
+        height: 2px;
     }
-
-    .h-fit-content {
-        height: fit-content;
-        justify-content: center;
-
+    20%{
+        width:50px;
+    }30%{
+        width:80px;
+    }50%{
+        width:150px;
+    }70%{
+        width:220px;
+    }80%{
+        width:350px;
+    }99%{
+        width:100%;
+        border: 2px solid gray;
+        height: 2px;
     }
-
-    .halfCircleLeft {
-        width: 500px;
-        height: auto;
-        top: -100px;
-    }
-    .halfCircleRight {
-        display: none;
+    100%{
+        width:0px;
+        border: 0px;
+        height: 0px;
     }
 }

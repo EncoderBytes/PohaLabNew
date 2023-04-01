@@ -84,7 +84,7 @@ var div4 =document.getElementById("PhysicLoad4");
     data.map((d, i)=>{
         
         HtmlText+=`
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-4 mb-4 h-270-h-sm-fit mx-auto"
+        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 mb-4 h-270-h-sm-fit mx-auto"
                         style="">
                         <div class="card" style="border:1px solid #F99B27; height:100%; z-index:111;">
 
