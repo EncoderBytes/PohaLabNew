@@ -40,7 +40,7 @@
         }
         .ohms {
             display: flex;
-            justify-content: center;
+            justify-content: space-between;
             flex-direction: row;
             flex-wrap: wrap;
             gap: 10px;
@@ -64,8 +64,8 @@
                 List[i].style = "display:none";
             }
             if (target == "simulator") {
-                document.getElementById("Main").style = "background:#F9F9F9; padding-bottom:20px;";
-                document.getElementById(target).style = "display:flex; justify-content:space-between; height:600px; width:fit-content; ";
+                document.getElementById("Main").style = "background:#F9F9F9; padding-bottom:20px; height:fit-content;";
+                document.getElementById(target).style = "display:flex; justify-content:space-between; height:fit-content; width:fit-content; ";
             } else {
                 document.getElementById(target).style.display = "block";
                 document.getElementById("Main").style = "background:#F9F9F9; height:fit-content; padding-bottom:20px;";
@@ -556,22 +556,23 @@
                         height:60px; position:absolute; top:20px; right:0px;" alt="">
 
 
-                <div class="" style="width:100%; height:500px;
+                <div class="h-100  w-100 overflow-hidden" style="
                         z-index:111;">
-                    <div class="ohms">
-                        <div style="background-color:white; width:800px;
+                        <h1 style="background-color: #F99B27; margin: 0;
+                        padding: 19px;">
+                        <img src="../../src/images/Group2.png"
+                            alt="" style="float: left; width: 30px;
+                            padding-top:16px;">
+                        <span style="font-style: normal;
+                            font-weight:600;
+                            font-size: 25px; line-height: 39px;
+                            color:#FFFFFF; padding-left: 19px;">
+                            ParallelResistorCircuit</span>
+                    </h1>
+                    <div class="row gap-5">
+                        <div class="col-lg-7 col-md-8 col-sm-12" style="background-color:white; width:800px;
                                 overflow-x: scroll; position: relative;">
-                            <!-- <h1 style="background-color: #F99B27; margin: 0;
-                                    padding: 19px;">
-                                    <img src="../../src/images/Group2.png"
-                                        alt="" style="float: left; width: 30px;
-                                        padding-top:16px;">
-                                    <span style="font-style: normal;
-                                        font-weight:600;
-                                        font-size: 25px; line-height: 39px;
-                                        color:#FFFFFF; padding-left: 19px;">
-                                        ParallelResistorCircuit</span>
-                                </h1> -->
+                            
                             <iframe src="./ParallelResistorCircuit/" frameborder="0" width="772px" height="531"
                                 allowfullscreen="allowfullscreen"></iframe>
                                 
@@ -583,25 +584,27 @@
 
                           
                         </div>
-                        <div style=" width:200px;
-                                background-color: #F5F5F5;">
+                        <div class="col-md-3 col-sm-12" style="
+                                background-color: #F5F5F5;" class="">
+                           <div class="mx-auto">
                             <h2 style=" margin:0;background-color: #B0DD38;
-                                    font-style: normal;font-weight:
-                                    600;font-size: 24px;line-height:
-                                    29px;padding: 10px;color: #FFFFFF;">
-                                Instruction
-                            </h2>
-                            <ol style="padding: 10px 3px 0px 26px;;
-                                    font-size:
-                                    14px;">
-                                <li>Adjust Thread Length</li>
-                                <li>Click on the pendulum ball</li>
-                                <li>It will start swinging </li>
-                                <li>Timer will also be start</li>
-                                <li>Wait for it to stop</li>
-                                <li>Note the time on Your Timer for final
-                                    Result</li>
-                            </ol>
+                            font-style: normal;font-weight:
+                            600;font-size: 24px;line-height:
+                            29px;padding: 10px;color: #FFFFFF;">
+                        Instruction
+                    </h2>
+                    <ol style="padding: 10px 3px 0px 26px;;
+                            font-size:
+                            14px;">
+                        <li>Adjust Thread Length</li>
+                        <li>Click on the pendulum ball</li>
+                        <li>It will start swinging </li>
+                        <li>Timer will also be start</li>
+                        <li>Wait for it to stop</li>
+                        <li>Note the time on Your Timer for final
+                            Result</li>
+                    </ol>
+                           </div>
                         </div>
                     </div>
                 </div>

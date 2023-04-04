@@ -84,28 +84,26 @@ var div4 =document.getElementById("PhysicLoad4");
     data.map((d, i)=>{
         
         HtmlText+=`
-        <div class="col-xl-3 col-lg-3 col-md-3 col-sm-8 mb-4 h-270-h-sm-fit mx-auto"
+        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4  mx-auto"
                         style="">
-                        <div class="card" style="border:1px solid #F99B27; height:100%; z-index:111;">
+                        <div class="card" style="border:1px solid #F99B27; z-index:111;">
 
                             <img src="../pictures/physics/${i+1}.png"
                                 class="card-img-top"
-                                style="width:100%; height: auto; object-fit:
-                                cover;" alt="">
+                                style="width:100%; height: auto; object-fit:cover;" alt=" the experminent Picture of" +${d.title}>
 
-                            <div class="card-body position-relative" style="height:
-                                100%;">
-                                <h5 class="card-title" style="font-size:
-                                    16px; line-height:16px;">
+                            <div class="card-body position-relative overflow-hidden" style="padding-bottom:65px;">
+                                <p class="card-title" style="font-size:
+                                    16px; line-height:16px; ">
+                                    <!--${d.title.slice(0,50)} --!>
                                     ${d.title}
-                                </h5>
-                                <br>
-                                <p class="card-text d-flex
-                                    justify-content-end
-                                    "
+
+                                </p>
+                                
+                                <p class="card-text d-flex justify-content-end "
                                     style="width:100%;">
                                     <span style="width:fit-content;
-                                        padding:3px 8px;
+                                        padding:1px 8px;
                                         background: linear-gradient(135deg,
                                         #F99B27 0%, #F99B20 100%);
                                         color:white; border-radius: 8px;
