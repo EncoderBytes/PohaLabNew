@@ -9,24 +9,24 @@ function load() {
     let data = [
         {
             title: "VernierCalliper",
-            link: "../simulations/physics/Ohmslaw.html"
+            link: "../simulations/physics/VernierCalliper.html"
         },
         {
-            title: `Time Presion of Pendulum`,
-            link: "ohm.html"
+            title: "Time Presion of Pendulum",
+            link: "../simulations/physics/SimplePendulam.html"
         },
         {
-            title: `Simple Pendulam`,
-            link: "ohm.html"
+            title: "Simple Pendulam",
+            link: "../simulations/physics/SimplePendulam.html"
         },
         {
-            title: `Law of Refraction`,
-            link: "ohm.html"
+            title: "Refraction Of Light",
+            link: "../simulations/physics/RefractionofLight.html"
         },
 
         {
-            title: `Principle of Momentum`,
-            link: "ohm.html"
+            title: "Principle of Moment",
+            link: "../simulations/physics/pricipleofmoment.html"
         },
         // {
         //     title: `AC Sonometer`,
