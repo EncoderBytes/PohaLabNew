@@ -17,7 +17,7 @@ function load() {
         },
         {
             title: `Examination of Animal & Plant Cell Uder Microscope`,
-            link: "ohm.html"
+            link: "../simulations/Biology/Microscope_examination_of_an_animal_cell.html"
         },
         {
             title: `Observation of Amoeba Fission`,

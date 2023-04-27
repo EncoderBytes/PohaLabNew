@@ -12,12 +12,12 @@ function load() {
             link: "../simulations/Chemistry/BoilingPointofEthylAlchohol.html"
         },
         {
-            title: `BP of Napthelene`,
-            link: "ohm.html"
+            title: "Boiling Point of Ethyle Alcohol",
+            link: "../simulations/Chemistry/BPofEthlyAlcohol.html"
         },
         {
-            title: `Pure Copper Sulphate Crystal From The Impure Sample`,
-            link: "ohm.html"
+            title: "Boiling Point of Nepthalene",
+            link: "../simulations/Chemistry/BPofnapthelene.html"
         },
         {
             title: `Demonstrate sublimation using Solid Ammonium Chloride`,
