@@ -9,7 +9,7 @@ function load() {
     let data = [
         {
             title: "Boiling Point of Alcohol by Distillation",
-            link: "../simulations/physics/Ohmslaw.html"
+            link: "../simulations/Chemistry/BoilingPointofEthylAlchohol.html"
         },
         {
             title: `BP of Napthelene`,
