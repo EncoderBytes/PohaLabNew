@@ -20,15 +20,14 @@ function load() {
             link: "../simulations/Chemistry/BPofnapthelene.html"
         },
         {
-            title: `Demonstrate sublimation using Solid Ammonium Chloride`,
-            link: "ohm.html"
+            title: `Prepare pure copper sulphate crystal from the given impure sample`,
+            link: "../simulations/Chemistry/Preparepurecoppersulphatecrystal.html"
         },
 
-        // {
-        //     title: `Conversion of Galvano-
-        //     meter to Ammeter`,
-        //     link: "ohm.html"
-        // },
+        {
+            title: `Sublimation`,
+            link: "../simulations/Chemistry/sublimation.html"
+        },
         // {
         //     title: `AC Sonometer`,
         //     link: "ohm.html"
