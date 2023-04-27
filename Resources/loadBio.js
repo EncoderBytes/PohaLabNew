@@ -89,12 +89,12 @@ function load() {
                                 style="width:100%; height: auto; object-fit:cover;" alt=" the experminent Picture of" +${d.title}>
 
                             <div class="card-body position-relative overflow-hidden" style="padding-bottom:65px;">
-                                <p class="card-title" style="font-size:
-                                    16px; line-height:16px; ">
+                                <h1 class="card-title" style="font-size:
+                                    16px; line-height:16px; font-weight: 700;">
                                     <!--${d.title.slice(0, 50)} --!>
                                     ${d.title}
 
-                                </p>
+                                </h1>
                                 
                                 <p class="card-text d-flex justify-content-end "
                                     style="width:100%;">
