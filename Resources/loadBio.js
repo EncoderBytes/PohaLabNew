@@ -8,25 +8,25 @@ function load() {
 
     let data = [
         {
-            title: "Alovera",
-            link: "../simulations/physics/Ohmslaw.html"
-        },
-        {
-            title: `Determination of the Effect of Tonicity`,
-            link: "ohm.html"
-        },
-        {
-            title: `Examination of Animal & Plant Cell Uder Microscope`,
+            title: `Alovera`,
             link: "../simulations/Biology/Microscope_examination_of_an_animal_cell.html"
         },
         {
+            title: `Examination of Animal & Plant Under Microscope`,
+            link: "../simulations/Biology/Microscopeexaminationofananimalcell.html"
+        },
+        {
+            title: `Examination of Animal Cell Under Microscope`,
+            link: "../simulations/Biology/Microscope_examination_of_an_animal&plant_cell.html"
+        },
+        {
             title: `Observation of Amoeba Fission`,
-            link: "ohm.html"
+            link: "../simulations/Biology/observationofbinaryfission.html"
         },
 
         {
             title: `Study Diff Type Amoeba`,
-            link: "ohm.html"
+            link: "../simulations/Biology/difftypesofbacteriaAmoeba.html"
         },
         // {
         //     title: `AC Sonometer`,
