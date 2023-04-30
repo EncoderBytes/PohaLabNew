@@ -9,7 +9,7 @@ function load() {
     let data = [
         {
             title: `Alovera`,
-            link: "../simulations/Biology/Microscope_examination_of_an_animal_cell.html"
+            link: "../simulations/Biology/Aloevera.html"
         },
         {
             title: `Examination of Animal & Plant Under Microscope`,
