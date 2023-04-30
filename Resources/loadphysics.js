@@ -13,7 +13,7 @@ function load() {
         },
         {
             title: "Time Presion of Pendulum",
-            link: "../simulations/physics/SimplePendulam.html"
+            link: "../simulations/physics/SimplePendulam2.html"
         },
         {
             title: "Simple Pendulam",
