@@ -1,6 +1,6 @@
 function load() {
     var div = document.getElementById("PhysicLoad");
-    // var div2 =document.getElementById("PhysicLoad2");
+    // var div2 = document.getElementById("PhysicLoad2");
     // var div3 =document.getElementById("PhysicLoad3");
     // var div4 =document.getElementById("PhysicLoad4");
 
