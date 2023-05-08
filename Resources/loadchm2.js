@@ -20,8 +20,8 @@ function load() {
             link: "../simulations/Chemistry/FehlingandTollensTest.html"
         },
         {
-            title: `Prepare pure copper sulphate crystal from the given impure sample`,
-            link: "../simulations/Chemistry/Preparepurecoppersulphatecrystal.html"
+            title: `Identify ketones using 2,4  dinitrophenyl Hydrazine Test`,
+            link: "../simulations/Chemistry/Identifyketonesusing2,4dinitrophenylhydrazinetest.html"
         },
 
         {
