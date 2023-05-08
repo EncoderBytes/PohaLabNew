@@ -25,8 +25,8 @@ function load() {
         },
 
         {
-            title: `Sublimation`,
-            link: "../simulations/Chemistry/sublimation.html"
+            title: ` Identify Sodium, Calcium, Strontium Barium, Copper, Potassium Radical by Flame Test`,
+            link: "../simulations/Chemistry/Identifysodium,calcium,strontiumbarium,copper,potassiumradicalbyflametest.html"
         },
         // {
         //     title: `AC Sonometer`,

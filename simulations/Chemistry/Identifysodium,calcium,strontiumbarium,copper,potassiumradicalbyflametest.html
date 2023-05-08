@@ -1,0 +1,988 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Poha Lab</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
+    <link rel="stylesheet" href="../../style.css">
+    <style>
+        .bg-blueLight {
+            background: linear-gradient(90deg, #F99B27 0%, #fda73d 100%);
+            color: white;
+        }
+
+        #menuItems button {
+            margin: 3px;
+        }
+
+        .navbar-toggler:focus,
+        .navbar-toggler:active,
+        .navbar-toggler-icon:focus {
+            outline: none;
+            box-shadow: none;
+        }
+
+        #menuItems button:hover {
+            border-bottom: 2px solid orange;
+        }
+
+        h3 {
+            font-size: 20px;
+        }
+
+        .form-check,
+        #resource ul li {
+            color: #8F8F8F;
+        }
+
+        h3 {
+            font-size: 18px;
+            font-style: normal;
+            font-weight: 600;
+        }
+
+        .ohms {
+            display: flex;
+            justify-content: space-between;
+            flex-direction: row;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        #Main {
+            height: 800px;
+        }
+
+        @media only screen and (max-width: 800px) {
+            #Main {
+                height: 1000px;
+            }
+        }
+    </style>
+    <script>
+        function change(target) {
+            List = document.getElementsByClassName("itemOfMenu");
+            for (i in List) {
+                List[i].style = "display:none";
+            }
+            if (target == "simulator") {
+                document.getElementById("Main").style = "background:#F9F9F9; padding-bottom:20px; height:fit-content;";
+                document.getElementById(target).style = "display:flex; justify-content:space-between; height:fit-content; width:fit-content; ";
+            } else {
+                document.getElementById(target).style.display = "block";
+                document.getElementById("Main").style = "background:#F9F9F9; height:fit-content; padding-bottom:20px;";
+            }
+        }
+    </script>
+</head>
+
+<body style="background-color: rgb(240,239,239);">
+    <div class="container-fluid">
+        <div class="container-fluid" style="height:70px; background-color: #F99B27;">
+            <nav class="navbar d-flex justify-content-between mx-2">
+                <div style="margin-left: 10rem;">
+                    <a href="../../index.html">
+                        <img src="../../pictures/logomain.png" alt="">
+
+                    </a>
+                </div>
+                <!-- <div class="info d-flex justify-content-center
+                            align-items-center gap-2">
+                        <h5 class="sm-hide">Carelotee Jonson</h5>
+                        <img src="data:image/jpeg;base64,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"
+                            style="width:40px; height:40px; object-fit:cover;
+                                border-radius: 50px;" alt="">
+                    </div> -->
+            </nav>
+        </div>
+
+        <div class="container bg-white rounded my-4 d-flex
+                align-items-center" style="min-height:270px;
+                max-height:fit-content">
+            <div class="row w-100 my-0 mx-auto overflow-hidden h-fit-content
+                    h-270">
+
+                <div class="col-xl-8 col-lg-8 col-md-7 col-sm-10 my-2
+                        mx-auto
+
+                        d-flex align-items-center justify-content-between 
+                        flex-column">
+                    <selection class=" align-self-start" style="text-transform:
+                            uppercase;">
+                        <h5 style="
+                                color:#8F8F8F;">
+                            Chemistry
+                        </h5>
+                        <h3 class="fs-1 h3-orange">
+                            Identify Sodium, Calcium, Strontium Barium, Copper, Potassium Radical by Flame Test
+                        </h3>
+                    </selection>
+                </div>
+                <div class="col-xl-4 col-lg-4 col-md-5 col-sm-8 my-2
+                        mx-auto
+
+                        d-flex align-items-center">
+                    <img src="../../pictures/chem/5.png" class="rounded" style="width:auto;
+                            height:224px; margin:0px auto;" alt="">
+                </div>
+            </div>
+
+        </div>
+
+        <div class="container my-2 position-relative" id="Main" style="background:#F9F9F9;
+                height:fit-content; padding-bottom:20px;">
+
+            <!-- <div class="container-fluid d-flex justify-content-start
+                    flex-wrap gap-3 p-0 rounded" style="background:#DADADA;
+                    height:fit-content;" id="menuItems">
+                <button style="width:fit-content; height:56px; font-weight:
+                        500; align-self: flex-start;" class="btn bg-blueLight
+                        py-1" onclick="change('theory')">Theory</button>
+                <button style="width:fit-content; height:56px; font-weight:
+                        500;" class="btn py-1" onclick="change('procedure')">Procedure</button>
+                <button style="width:fit-content; height:56px; font-weight:
+                        500;" class="btn py-1"> Animation</button>
+                <button style="width:fit-content; height:56px; font-weight:
+                        500;" class="btn py-1" onclick="change('simulator')">Simulator</button>
+                <button style="width:fit-content; height:56px; font-weight:
+                        500;" class="btn py-1" onclick="change('video')">Video</button>
+                <button style="width:fit-content; height:56px; font-weight:
+                        500;" class="btn py-1" onclick="change('vivaQuestion')">Vivo
+                    Voice</button>
+                <button style="width:fit-content; height:56px; font-weight:
+                        500;" class="btn py-1" onclick="change('resource')">Resources</button>
+                <button style="width:fit-content; height:56px; font-weight:
+                        500;" class="btn py-1">Feedback</button>
+            </div> -->
+
+            <div class="w-100 pb-5">
+                <nav class="navbar navbar-expand-lg bg-white rounded mx-3 mt-2" id="menuItems"
+                    style="position:absolute; left:0px; right:0px; z-index:222; ">
+                    <div class="container-fluid ">
+                        <button class="navbar-toggler border-0" style="font-size:15px" type="button"
+                            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                            <span class="navbar-toggler-icon"></span>
+                        </button>
+                        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                                <li class="nav-item mx-1">
+                                    <button style="width:100%; height:56px; font-weight:
+                            500; align-self: flex-start;" class="btn bg-blueLight
+                            py-1" onclick="change('theory')">Theory</button>
+                                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+                                </li>
+                                <li class="nav-item mx-1">
+                                    <!-- <a class="nav-link" href="#">Link</a> -->
+                                    <button style="width:100%; height:56px; font-weight:
+                            500;" class="btn py-1" onclick="change('procedure')">Procedure</button>
+                                </li>
+                                <li class="nav-item mx-1">
+                                    <button style="width:100%; height:56px; font-weight:
+                            500;" class="btn py-1"> Animation</button>
+                                </li>
+                                <li class="nav-item mx-1">
+                                    <button style="width:100%; height:56px; font-weight:
+                            500;" class="btn py-1" onclick="change('simulator')">Simulator</button>
+                                </li>
+                                <li class="nav-item mx-1">
+                                    <button style="width:100%; height:56px; font-weight:
+                            500;" class="btn py-1" onclick="change('video')">Video</button>
+                                </li>
+                                <li class="nav-item mx-1">
+                                    <button style="width:100%; height:56px; font-weight:
+                            500;" class="btn py-1" onclick="change('vivaQuestion')">Vivo
+                                        Voice</button>
+                                </li>
+                                <li class="nav-item mx-1">
+                                    <button style="width:100%; height:56px; font-weight:
+                            500;" class="btn py-1" onclick="change('resource')">Resources</button>
+                                </li>
+                                <li class="nav-item mx-1">
+                                    <button style="width:100%; height:56px; font-weight:
+                            500;" class="btn py-1">Feedback</button>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div>
+                </nav>
+            </div>
+
+
+            <div class="w-100 itemOfMenu my-5 pt-4" id="theory">
+                <div class="row ">
+                    <div class="col-lg-8 col-md-9 col-sm-12">
+                        <h3>
+                            Aim
+                        </h3>
+                        <p class="color-brown ">
+                            To determine the resistance per cm of a given
+                            wire
+                            by plotting a graph of potential difference
+                            versus
+                            current,
+                            and hence to determine its resistivity.
+                        </p>
+                    </div>
+                    <div class="col-lg-8 col-md-9 col-sm-12">
+
+                        <h3>
+                            The Theory
+                        </h3>
+                        <h6>
+                            What does Ohm's Law state?
+                        </h6>
+                        <p class="color-brown ">
+                            According to the Ohm's law, "The current flowing
+                            through a conductor is directly proportional to
+                            the
+                            potential difference across its ends provided
+                            the
+                            physical conditions (temperature, dimensions,
+                            pressure) of the conductor remains the same." If
+                            I
+                            be the current flowing through a conductor and V
+                            be
+                            the potential difference across its ends, then
+                            according to Ohm's Law,
+                        </p>
+                        <p class="color-brown ">
+                            I = V
+                            <br>
+                            V = I or V = IR
+                        </p>
+
+                        <p class="color-brown ">
+                            where, R is the constant of proportionality. It
+                            is
+                            known as resistance of the conductor. Or
+                            <br>
+                            V/I = R the formula.
+                            <br>
+                            R depends upon the material, temperature and
+                            dimensions of the conductor.
+                            <br>
+
+                            In S.I. units, the potential difference V is
+                            measured in volt and the current I in ampere,
+                            the
+                            resistance R is measured in ohm.
+                        </p>
+                        <h6>
+                            How do we establish the current-voltage
+                            relationship?
+                        </h6>
+                        <p class="color-brown ">
+                            To establish the current-voltage relationship,
+                            it is
+                            to be shown that the ratio V / I remains
+                            constant
+                            for a given resistance, therefore a graph
+                            between
+                            the potential difference(V) and the current (I)
+                            must
+                            be a straight line.
+                        </p>
+                        <h6>
+                            How then do we find the unknown values of
+                            resistance?
+                        </h6>
+
+                        <p class="color-brown "> It is the constant ratio
+                            that gives the unknown
+                            values of resistance,
+                            <br>
+                            V/I = R
+                            <br>
+                            For a wire of uniform cross-section, the
+                            resistance
+                            depends on the length l and the area of
+                            cross-section A. It also depends on the
+                            temperature
+                            of the conductor. At a given temperature the
+                            resistance,
+                            <br>
+
+                            R = p 1/A
+                            <br>
+                            where ρ is the specific resistance or
+                            resistivity
+                            and is characteristic of the material of wire.
+                            Hence, the specific resistance or resistivity of
+                            the
+                            material of the wire,
+                            <br>
+                            p = RA/1
+                            <br>
+                            If 'r' is the radius of the wire, then the cross
+                            sectional area, A = πr². Then the specific
+                            resistance or resistivity of the material of the
+                            wire is,
+
+                        </p>
+                    </div>
+                    <col-md-10 class="col-sm-12">
+                        <h3>
+                            Learning Objectives
+                        </h3>
+                        <p class="color-brown ">
+                        <ul class="color-brown">
+                            <li>
+                                Students learn Ohm’s law.
+                            </li>
+                            <li>Students know the relation between
+                                voltage, current and resistance. </li>
+                            <li>Students learn how to find out the
+                                resistivity of the material of a give
+                                wire.</li>
+                        </ul>
+                        </p>
+                    </col-md-10>
+
+                </div>
+            </div>
+
+            <!-- for procedure -->
+            <div class="w-100 itemOfMenu my-5 pt-4" id="procedure" style="display:none;">
+                <div class="row">
+                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
+                        <h3>
+                            Material Required
+                        </h3>
+                        <ul class="color-brown ">
+                            <li>
+                                A resistance wire
+                            </li>
+                            <li>
+                                A voltmeter and an ammeter of appropriate
+                                range
+                            </li>
+                            <li>
+                                A battery (battery eliminator)
+                            </li>
+                            <li>
+                                A rheostat
+                            </li>
+                            <li>
+                                A metre scale
+                            </li>
+                            <li>
+                                One way key
+                            </li>
+                            <li>
+                                Connecting wires
+                            </li>
+                            <li>
+                                A piece of sand paper
+                            </li>
+                            <li>
+                                Screw gauge
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
+                        <h3>
+                            Real Lab Procedure
+                        </h3>
+                        <ul class="color-brown ">
+                            <li>
+                                First we'll draw the circuit diagram.
+                            </li>
+                            <li>
+                                Arrange the apparatus in the same manner as
+                                given in the arrangement diagram.
+                            </li>
+                            <li>
+                                Clean the ends of the connecting wires with
+                                sand paper to remove insulation, if any.
+                            </li>
+                            <li>
+                                Make neat, clean and tight connections
+                                according to the circuit diagrams. While
+                                making connections
+                                ensure that +ve marked terminals of the
+                                voltmeter and ammeter are joined towards the
+                                +ve terminals
+                                of the battery.
+                            </li>
+                            <li>
+                                Determine the least count of voltmeter and
+                                ammeter, and also note the zero error, if
+                                any.
+                            </li>
+                            <li>
+                                Insert the key K, slide the rheostat contact
+                                and see that the ammeter and voltmeter are
+                                working
+                                properly.
+                            </li>
+                            <li>
+                                Adjust the sliding contact of the rheostat
+                                such that a small current passes through the
+                                resistance coil
+                                or the resistance wire.
+                            </li>
+                            <li>
+                                Note down the value of the potential
+                                difference V from the voltmeter and current
+                                I from the ammeter.
+                            </li>
+                            <li>
+                                Shift the rheostat contact slightly so that
+                                both the ammeter and voltmeter show full
+                                divisions
+                                readings and not in fraction.
+                            </li>
+                            <li>
+                                Record the readings of the voltmeter and
+                                ammeter.
+                            </li>
+                            <li>
+                                Take at least six sets of independent
+                                observations.
+                            </li>
+                            <li>
+                                Record the observations in a tabular column
+                            </li>
+                            <li>
+                                Now, cut the resistance wire at the points
+                                where it leaves the terminals, stretch it
+                                and find its length
+                                by the meter scale.
+                            </li>
+                            <li>
+                                Then find out the diameter and hence the
+                                radius of the wire using the screw gauge and
+                                calculate the
+                                cross- sectional area A (πr²).
+                            </li>
+                            <li>
+                                Plot a graph between current (I) along
+                                X-axis and potential difference across the
+                                wire (V) along Y-axis.
+                            </li>
+                            <li>
+                                The graph should be a stright line.
+                            </li>
+                            <li>
+                                Determine the slope of the graph. The slope
+                                will give the value of resistance (R) of the
+                                material of the
+                                wire.
+                            </li>
+                            <li>
+                                Calculate the resistance per centimeter of
+                                the wire.
+                            </li>
+                            <li>
+                                Now,calculate the resistivity of the
+                                material of the wire using the formula,
+                            </li>
+                        </ul>
+
+                    </div>
+                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
+                        <h3>
+                            Simulator Procedure
+                        </h3>
+                        <ul class="color-brown ">
+                            <li>
+                                Select the metal form the drop down list.
+                            </li>
+                            <li>
+                                Select the length of the wire from the
+                                slider.
+                            </li>
+                            <li>
+                                Select the diameter of the wire using the
+                                slider.
+                            </li>
+                            <li>
+                                Select the resistance of the rheostat using
+                                the slider.
+                            </li>
+                            <li>
+                                To see the circuit diagram, click on the
+                                ‘Show circuit diagram’ check box seen inside
+                                the simulator
+                                window.
+                            </li>
+                            <li>
+                                Connections can be made as seen in the
+                                circuit diagram by clicking and dragging the
+                                mouse form one
+                                connecting terminal to the other connecting
+                                terminal of the devices to be connected.
+                            </li>
+                            <li>
+                                Drag the wire and place it on the voltmeter
+                                to have it connected.
+                            </li>
+                            <li>
+                                Once all connections are made, click and
+                                drag the key to insert it into the switch.
+                            </li>
+                            <li>
+                                Slowly move the rheostat contact to change
+                                the voltage and current in the voltmeter and
+                                ammeter
+                                accordingly.
+                            </li>
+                            <li>
+                                Calculate the resistivity of the materials
+                                based on the length of the wire selected.
+                            </li>
+                            <li>
+                                Click on the ‘Show result’ check box to
+                                verify your result.
+                            </li>
+                            <li>
+                                Click on the ‘Reset’ button to redo the
+                                experiment.
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Simulator -->
+            <div class="w-100 itemOfMenu  pt-4 my-5
+                    position-relative " id="simulator" style="display:none;">
+                <img src="../../pictures/circle.png" style="width:60px;
+                        height:60px; position:absolute; top:20px; right:0px;" alt="">
+
+
+                <div class="h-100  w-100 overflow-hidden" style="
+                        z-index:111;">
+                    <h1 style="background-color: #F99B27; margin: 0;
+                        padding: 19px;">
+                        <!-- <img src="../../src/images/Group2.png" alt="" style="float: left; width: 30px;
+                            padding-top:16px;"> -->
+                        <span style="font-style: normal;
+                            font-weight:600;
+                            font-size: 25px; line-height: 39px;
+                            color:#FFFFFF; padding-left: 19px;">
+                            Identify Sodium, Calcium, Strontium Barium, Copper, Potassium Radical by Flame Test</span>
+                    </h1>
+                    <div class="row gap-5">
+                        <div class="col-lg-7 col-md-8 col-sm-12" style="background-color:white; width:800px;
+                                overflow-x: scroll; position: relative;">
+
+                            <iframe src="./Identifysodium,calcium,strontiumbarium,copper,potassiumradicalbyflametest/"
+                                frameborder="0" width="772px" height="531" allowfullscreen="allowfullscreen"></iframe>
+
+                            <!-- for animation -->
+                            <!-- Examination of Animal _ Plant Cell under Microscope -->
+                            <!-- <div class="animationDiv">
+                                <div class="scroll">
+                                </div>
+                            </div> -->
+
+
+                        </div>
+                        <div class="col-md-3 col-sm-12" style="
+                                background-color: #F5F5F5;" class="">
+                            <div class="mx-auto">
+                                <h2 style=" margin:0;background-color: #B0DD38;
+                            font-style: normal;font-weight:
+                            600;font-size: 24px;line-height:
+                            29px;padding: 10px;color: #FFFFFF;">
+                                    Instruction
+                                </h2>
+                                <ol style="padding: 10px 3px 0px 26px;;
+                            font-size:
+                            14px;">
+                                    <li>Ignite the match and turn on the spirit lamp. </li>
+                                    <li>Dip the rod in HCL and heat it.</li>
+                                    <li>Take Copper Chloride (green) on filter paper and add it on filter paper</li>
+                                    <li>put on glass.</li>
+                                    <li>add HCL and mix with rod to make thick paste.</li>
+                                    <li>Take paste in rod and heat it(Blueish Green).</li>
+                                    <li>Dip rod in HNO3 and heat it.</li>
+                                    <li>Add Calcium Chloride in glass and put HCL on it.</li>
+                                    <li>Take paste heat it. Shows Brige red colour.</li>
+
+
+                                </ol>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- <img src="../../pictures/vector3.png" style="position:absolute; left:0px; bottom:0px; width:400px;" alt=""> -->
+            </div>
+
+
+            <!-- Video -->
+            <div class="itemOfMenu my-5  pt-4 position-relative" style="height:650px; display: none;" id="video">
+                <img src="../../pictures/circle.png" style="width:60px;
+                        height:60px; position:absolute; top:20px; left:0px;" alt="">
+                <div class="d-flex justify-content-center align-items-center
+                        pb-5">
+                    <iframe src="https://drive.google.com/file/d/1e_v2kYucC-SacdiPpbH5nnGHWKPy8BS3/preview"
+                        class="rounded" style="width:640px; height:480px;
+                            z-index:111;" allow="autoplay"></iframe>
+                </div>
+
+                <img src="../../pictures/vectorRightOrange.png" style="position:absolute; bottom:0px; right:-12px;
+                        width:50%;" alt="">
+            </div>
+
+
+            <!-- viva question -->
+            <div class="itemOfMenu my-5  pt-4" id="vivaQuestion" style="display:none;">
+
+                <form>
+                    <div class="mb-3">
+                        <h3>
+                            1. Which Law explains the following? At constant
+                            temperature the current flowing through
+                            a conductor is directly proportional to the
+                            potential difference between its ends.
+                        </h3>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1">
+                            <label class="form-check-label" for="q1m1">
+                                Joule’s Law
+                            </label>
+
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2">
+                            <label class="form-check-label" for="q1m2">
+                                Boyle’s Law
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3">
+                            <label class="form-check-label" for="q1m3">
+                                Charle’s Law
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4">
+                            <label class="form-check-label" for="q1m4">
+                                Ohm’s Law
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <h3>
+                            2. What does the current through a wire depend
+                            on?
+                        </h3>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m1">
+                            <label class="form-check-label" for="q2m1">
+                                The potential difference applied.
+                            </label>
+
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m2">
+                            <label class="form-check-label" for="q2m2">
+                                The resistance of the wire.
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m3">
+                            <label class="form-check-label" for="q2m3">
+                                The thickness of the wire.
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m4">
+                            <label class="form-check-label" for="q2m4">
+                                Both resistance and potential difference.
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <h3>
+                            3. You are measuring the current in a circuit
+                            that is operated on an 18 V battery.
+                            The reads 40
+                            mA. Later you notice the current has dropped to
+                            20 mA. How much has the voltage changed?
+                        </h3>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="q3m1">
+                            <label class="form-check-label" for="q3m1"> 9 v
+                            </label>
+
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="q3m2">
+                            <label class="form-check-label" for="q3m2">
+                                36 v
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="q3m3">
+                            <label class="form-check-label" for="q3m3">
+                                0 v
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q3" id="q3m4">
+                            <label class="form-check-label" for="q3m4">
+                                18 v
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <h3>
+                            4. What is the shape of V v/s I graph for a
+                            linear resistor?
+                        </h3>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m1">
+                            <label class="form-check-label" for="q4m1">
+                                Parabola
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m2">
+                            <label class="form-check-label" for="q4m2">
+                                Straight line
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m3">
+                            <label class="form-check-label" for="q4m3">
+                                Hyperbola
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m4">
+                            <label class="form-check-label" for="q4m4">
+                                None of these
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <h3>
+                            5. Which of the following represent ohm’s
+                            law?
+                        </h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m1">
+                            <label class="form-check-label" for="q5m1">
+                                Current = Resistance × potential
+                                difference.
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m2">
+                            <label class="form-check-label" for="q5m2">
+                                Current = Resistance / Potential
+                                difference.
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m3">
+                            <label class="form-check-label" for="q5m3">
+                                Potential difference / current =
+                                Resistance.
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m4">
+                            <label class="form-check-label" for="q5m4">
+                                None of these.
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="mb-3">
+                        <h3>
+                            6. What is the potential difference
+                            required to
+                            pass a current of 5A through a metallic
+                            rod
+                            of resistance 10Ω?
+                        </h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="q6m1">
+                            <label class="form-check-label" for="q6m1"> 5V
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="q6m2">
+                            <label class="form-check-label" for="q6m2">
+                                50V
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="q6m3">
+                            <label class="form-check-label" for="q6m3">
+                                0.5V
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q6" id="q6m4">
+                            <label class="form-check-label" for="q6m4">
+                                0.05V
+                            </label>
+                        </div>
+
+                    </div>
+
+
+                    <div class="mb-3">
+                        <h3>
+                            7. Choose the correct statement from
+                            the
+                            alternatives?
+                        </h3>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q7" id="q7m1">
+                            <label class="form-check-label" for="q7m1"> Every material has
+                                resistance.
+                        </div>
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q7" id="q7m2">
+                            <label class="form-check-label" for="q7m2">
+                                Resistance of a material is
+                                the measure of
+                                how much it opposes the
+                                passage of free
+                                electrons.
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q7" id="q7m3">
+                            <label class="form-check-label" for="q7m3">
+                                All of them are true
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q7" id="q7m4">
+                            <label class="form-check-label" for="q7m4">
+                                The resistance of a material
+                                is independent
+                                of the current passing
+                                through it.
+                            </label>
+                        </div>
+
+                    </div>
+                    <button type="submit" class="btn
+                                            btn-primary">Submit</button>
+                    <button type="reset" class="btn fw-bold" style="background:
+                                            linear-gradient(135deg, #0072FF 0%,
+                                            #00C6FF 100%);
+                                            -webkit-background-clip: text;
+                                            -webkit-text-fill-color:
+                                            transparent;
+                                            background-clip: text;
+                                            text-fill-color: transparent;">Cancel</button>
+                </form>
+            </div>
+
+
+            <!-- Resources -->
+            <div class="itemOfMenu my-5 pt-4" id="resource" style="display:none;">
+                <div class="resourceItem">
+                    <h3>
+                        Books
+                    </h3>
+                    <ul>
+                        <li>
+                            Laboratory Manual Physics for
+                            class XII - Published by NCERT
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="resourceItem">
+                    <h3>
+                        Books
+                    </h3>
+                    <ul>
+                        <li>
+                            http://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/Chapter-3/index.html
+                        </li>
+                        <li>
+                            https://www.youtube.com/embed/4-GxinG7AVw?rel=0&vq=hd1080
+                        </li>
+                        <li>
+                            https://www.youtube.com/embed/Ls5_PcXZRc8?rel=0&vq=hd1080
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+    <!-- FOOTER -->
+    <div class="container-fluid position-relative
+                            overflow-hidden" style="height: 200px;">
+        <div class="container d-flex justify-content-end
+                                align-items-center h-100">
+            <p>
+                <span style="background:
+                                        linear-gradient(90deg, #F99B27 0%,
+                                        #fda73d 100%);
+                                        -webkit-background-clip: text;
+                                        -webkit-text-fill-color: transparent;
+                                        background-clip: text; font-weight:
+                                        bold;
+                                        text-fill-color: transparent;"> Poha
+                    E-Labs</span> <span class="sm-brown"> |
+                    All rights reserved - 2022</span>
+            </p>
+        </div>
+        <img src="../../pictures/footerCircle.png" style="height:200px; width:auto;
+                                position:absolute; right:-8px; bottom:-2px;" alt="">
+    </div>
+    <script>
+        // Add active class to the current button (highlight it)
+        var header = document.getElementById("menuItems");
+        var btns = header.getElementsByClassName("btn");
+        for (var i = 0; i < btns.length; i++) {
+            btns[i].addEventListener("click", function () {
+                var current = document.getElementsByClassName("bg-blueLight");
+                current[0].className = current[0].className.replace(" bg-blueLight", "");
+                this.className += " bg-blueLight";
+            });
+        }
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
