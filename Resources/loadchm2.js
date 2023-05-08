@@ -24,10 +24,10 @@ function load() {
             link: "../simulations/Chemistry/Identifyketonesusing2,4dinitrophenylhydrazinetest.html"
         },
 
-        {
-            title: ` Identify Sodium, Calcium, Strontium Barium, Copper, Potassium Radical by Flame Test`,
-            link: "../simulations/Chemistry/Identifysodium,calcium,strontiumbarium,copper,potassiumradicalbyflametest.html"
-        },
+        // {
+        //     title: ` Identify Sodium, Calcium, Strontium Barium, Copper, Potassium Radical by Flame Test`,
+        //     link: "../simulations/Chemistry/Identifysodium,calcium,strontiumbarium,copper,potassiumradicalbyflametest.html"
+        // },
         {
             title: `Standardizing NaOH Solution Volumetrically`,
             link: "../simulations/Chemistry/StandardizingNaOHSolutionVolumetrically.html"
