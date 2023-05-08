@@ -12,8 +12,8 @@ function load() {
             link: "../simulations/Chemistry/Identifysodiumcalciumstrontiumbariumcopperpotassiumradicalbyflametest.html"
         },
         {
-            title: "Boiling Point of Ethyle Alcohol",
-            link: "../simulations/Chemistry/BPofEthlyAlcohol.html"
+            title: "Determine the exact molarity of the Na2CO3 solution volumetrically",
+            link: "../simulations/Chemistry/DeterminetheexactmolarityoftheNa2CO3solutionvolumetrically.html"
         },
         {
             title: "Boiling Point of Nepthalene",
