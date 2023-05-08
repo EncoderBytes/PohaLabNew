@@ -28,10 +28,10 @@ function load() {
             title: ` Identify Sodium, Calcium, Strontium Barium, Copper, Potassium Radical by Flame Test`,
             link: "../simulations/Chemistry/Identifysodium,calcium,strontiumbarium,copper,potassiumradicalbyflametest.html"
         },
-        // {
-        //     title: `AC Sonometer`,
-        //     link: "ohm.html"
-        // },
+        {
+            title: `Standardizing NaOH Solution Volumetrically`,
+            link: "../simulations/Chemistry/StandardizingNaOHSolutionVolumetrically.html"
+        },
         // {
         //     title: `Concave Mirror-Focal
         //     Length by u-v Method`,
