@@ -16,8 +16,8 @@ function load() {
             link: "../simulations/Chemistry/DeterminetheexactmolarityoftheNa2CO3solutionvolumetrically.html"
         },
         {
-            title: "Boiling Point of Nepthalene",
-            link: "../simulations/Chemistry/BPofnapthelene.html"
+            title: "Fehling and Tollens Test",
+            link: "../simulations/Chemistry/FehlingandTollensTest.html"
         },
         {
             title: `Prepare pure copper sulphate crystal from the given impure sample`,
