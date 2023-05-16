@@ -12,11 +12,11 @@ function load() {
             link: "../simulations/Biology/Aloevera.html"
         },
         {
-            title: `Examination of Animal & Plant Under Microscope`,
+            title: `Microscopic Examination of a Plant Cell`,
             link: "../simulations/Biology/Microscopeexaminationofananimalcell.html"
         },
         {
-            title: `Examination of Animal Cell Under Microscope`,
+            title: `Determination of the Effect of Tonicity on Plasmolysis and Desplasmolysis in Animal Cell`,
             link: "../simulations/Biology/Microscope_examination_of_an_animal&plant_cell.html"
         },
         {
