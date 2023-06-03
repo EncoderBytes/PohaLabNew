@@ -78,147 +78,46 @@
             border: .5px solid #ddd;
         }
 
-        .star-rating {
-            margin: 25px 0 0px;
-            font-size: 0;
-            white-space: nowrap;
-            display: inline-block;
-            width: 175px;
-            height: 35px;
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+
+        .rate:not(:checked)>input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rate:not(:checked)>label {
+            float: right;
+            width: 1em;
             overflow: hidden;
-            position: relative;
-            background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
-            background-size: contain;
-        }
-
-        .star-rating i {
-            opacity: 0;
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 20%;
-            z-index: 1;
-            background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
-            background-size: contain;
-        }
-
-        .star-rating input {
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            opacity: 0;
-            display: inline-block;
-            width: 20%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            z-index: 2;
-            position: relative;
-        }
-
-        .star-rating input:hover+i,
-        .star-rating input:checked+i {
-            opacity: 1;
-        }
-
-        .star-rating i~i {
-            width: 40%;
-        }
-
-        .star-rating i~i~i {
-            width: 60%;
-        }
-
-        .star-rating i~i~i~i {
-            width: 80%;
-        }
-
-        .star-rating i~i~i~i~i {
-            width: 100%;
-        }
-
-        .choice {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-            padding: 20px;
-            display: block;
-        }
-
-        span.scale-rating {
-            margin: 5px 0 15px;
-            display: inline-block;
-
-            width: 100%;
-
-        }
-
-        span.scale-rating>label {
-            position: relative;
-            -webkit-appearance: none;
-            outline: 0 !important;
-            border: 1px solid grey;
-            height: 33px;
-            margin: 0 5px 0 0;
-            width: calc(10% - 7px);
-            float: left;
+            white-space: nowrap;
             cursor: pointer;
+            font-size: 50px;
+            color: #ccc;
         }
 
-        span.scale-rating label {
-            position: relative;
-            -webkit-appearance: none;
-            outline: 0 !important;
-            height: 33px;
-
-            margin: 0 5px 0 0;
-            width: calc(10% - 7px);
-            float: left;
-            cursor: pointer;
+        .rate:not(:checked)>label:before {
+            content: '★ ';
         }
 
-        span.scale-rating input[type=radio] {
-            position: absolute;
-            -webkit-appearance: none;
-            opacity: 0;
-            outline: 0 !important;
-            /*border-right: 1px solid grey;*/
-            height: 33px;
-
-            margin: 0 5px 0 0;
-
-            width: 100%;
-            float: left;
-            cursor: pointer;
-            z-index: 3;
+        .rate>input:checked~label {
+            color: #71AF06;
         }
 
-        span.scale-rating label:hover {
-            background: #71AF06;
+        .rate:not(:checked)>label:hover,
+        .rate:not(:checked)>label:hover~label {
+            color: #71AF06;
         }
 
-        span.scale-rating input[type=radio]:last-child {
-            border-right: 0;
-        }
-
-        span.scale-rating label input[type=radio]:checked~label {
-            -webkit-appearance: none;
-            margin: 0;
-            background: #71AF06;
-        }
-
-        span.scale-rating label:before {
-            content: attr(value);
-            top: 7px;
-            width: 100%;
-            position: absolute;
-            left: 0;
-            right: 0;
-            text-align: center;
-            vertical-align: middle;
-            z-index: 2;
+        .rate>input:checked+label:hover,
+        .rate>input:checked+label:hover~label,
+        .rate>input:checked~label:hover,
+        .rate>input:checked~label:hover~label,
+        .rate>label:hover~input:checked~label {
+            color: #71AF06;
         }
     </style>
     <script>
@@ -404,131 +303,16 @@
                 <div class="row ">
                     <div class="col-lg-8 col-md-9 col-sm-12">
                         <h3>
-                            Aim
-                        </h3>
-                        <p class="color-brown ">
-                            To determine the resistance per cm of a given
-                            wire
-                            by plotting a graph of potential difference
-                            versus
-                            current,
-                            and hence to determine its resistivity.
-                        </p>
-                    </div>
-                    <div class="col-lg-8 col-md-9 col-sm-12">
-
-                        <h3>
                             The Theory
                         </h3>
-                        <h6>
-                            What does Ohm's Law state?
-                        </h6>
                         <p class="color-brown ">
-                            According to the Ohm's law, "The current flowing
-                            through a conductor is directly proportional to
-                            the
-                            potential difference across its ends provided
-                            the
-                            physical conditions (temperature, dimensions,
-                            pressure) of the conductor remains the same." If
-                            I
-                            be the current flowing through a conductor and V
-                            be
-                            the potential difference across its ends, then
-                            according to Ohm's Law,
-                        </p>
-                        <p class="color-brown ">
-                            I = V
-                            <br>
-                            V = I or V = IR
-                        </p>
-
-                        <p class="color-brown ">
-                            where, R is the constant of proportionality. It
-                            is
-                            known as resistance of the conductor. Or
-                            <br>
-                            V/I = R the formula.
-                            <br>
-                            R depends upon the material, temperature and
-                            dimensions of the conductor.
-                            <br>
-
-                            In S.I. units, the potential difference V is
-                            measured in volt and the current I in ampere,
-                            the
-                            resistance R is measured in ohm.
-                        </p>
-                        <h6>
-                            How do we establish the current-voltage
-                            relationship?
-                        </h6>
-                        <p class="color-brown ">
-                            To establish the current-voltage relationship,
-                            it is
-                            to be shown that the ratio V / I remains
-                            constant
-                            for a given resistance, therefore a graph
-                            between
-                            the potential difference(V) and the current (I)
-                            must
-                            be a straight line.
-                        </p>
-                        <h6>
-                            How then do we find the unknown values of
-                            resistance?
-                        </h6>
-
-                        <p class="color-brown "> It is the constant ratio
-                            that gives the unknown
-                            values of resistance,
-                            <br>
-                            V/I = R
-                            <br>
-                            For a wire of uniform cross-section, the
-                            resistance
-                            depends on the length l and the area of
-                            cross-section A. It also depends on the
-                            temperature
-                            of the conductor. At a given temperature the
-                            resistance,
-                            <br>
-
-                            R = p 1/A
-                            <br>
-                            where ρ is the specific resistance or
-                            resistivity
-                            and is characteristic of the material of wire.
-                            Hence, the specific resistance or resistivity of
-                            the
-                            material of the wire,
-                            <br>
-                            p = RA/1
-                            <br>
-                            If 'r' is the radius of the wire, then the cross
-                            sectional area, A = πr². Then the specific
-                            resistance or resistivity of the material of the
-                            wire is,
-
+                            A fractional distillation technique can be used to separate a mixture of alcohol (ethanol)
+                            and water. This approach is
+                            based on the fact that the boiling points of the compounds in the mixture differ.
+                            "Fractional" distillation is used to
+                            separate mixtures of two liquids having differing boiling points, such as alcohol and water.
                         </p>
                     </div>
-                    <col-md-10 class="col-sm-12">
-                        <h3>
-                            Learning Objectives
-                        </h3>
-                        <p class="color-brown ">
-                        <ul class="color-brown">
-                            <li>
-                                Students learn Ohm’s law.
-                            </li>
-                            <li>Students know the relation between
-                                voltage, current and resistance. </li>
-                            <li>Students learn how to find out the
-                                resistivity of the material of a give
-                                wire.</li>
-                        </ul>
-                        </p>
-                    </col-md-10>
 
                 </div>
             </div>
@@ -538,200 +322,30 @@
                 <div class="row">
                     <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
                         <h3>
-                            Material Required
-                        </h3>
-                        <ul class="color-brown ">
-                            <li>
-                                A resistance wire
-                            </li>
-                            <li>
-                                A voltmeter and an ammeter of appropriate
-                                range
-                            </li>
-                            <li>
-                                A battery (battery eliminator)
-                            </li>
-                            <li>
-                                A rheostat
-                            </li>
-                            <li>
-                                A metre scale
-                            </li>
-                            <li>
-                                One way key
-                            </li>
-                            <li>
-                                Connecting wires
-                            </li>
-                            <li>
-                                A piece of sand paper
-                            </li>
-                            <li>
-                                Screw gauge
-                            </li>
-                        </ul>
-                    </div>
-                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
-                        <h3>
                             Real Lab Procedure
                         </h3>
-                        <ul class="color-brown ">
+                        <ol class="color-brown ">
                             <li>
-                                First we'll draw the circuit diagram.
+                                Fill the round-bottom flask with the ethanol-water mixture, and then assemble the
+                                fractional distillation apparatus
+                                by connecting the fractionating column to the flask.
                             </li>
                             <li>
-                                Arrange the apparatus in the same manner as
-                                given in the arrangement diagram.
+                                Connect the condenser to the fractioning column and place the distillate-capturing
+                                flask beneath it to capture the
+                                distillate.
                             </li>
                             <li>
-                                Clean the ends of the connecting wires with
-                                sand paper to remove insulation, if any.
+                                Using the Spirit lamp under the round-bottom flask, heat the mixture to above the
+                                boiling point of ethanol (80oC).
                             </li>
                             <li>
-                                Make neat, clean and tight connections
-                                according to the circuit diagrams. While
-                                making connections
-                                ensure that +ve marked terminals of the
-                                voltmeter and ammeter are joined towards the
-                                +ve terminals
-                                of the battery.
+                                Maintain a constant temperature in the mixture until the boiling stops. At this
+                                moment the distillation process is
+                                complete at all.
                             </li>
-                            <li>
-                                Determine the least count of voltmeter and
-                                ammeter, and also note the zero error, if
-                                any.
-                            </li>
-                            <li>
-                                Insert the key K, slide the rheostat contact
-                                and see that the ammeter and voltmeter are
-                                working
-                                properly.
-                            </li>
-                            <li>
-                                Adjust the sliding contact of the rheostat
-                                such that a small current passes through the
-                                resistance coil
-                                or the resistance wire.
-                            </li>
-                            <li>
-                                Note down the value of the potential
-                                difference V from the voltmeter and current
-                                I from the ammeter.
-                            </li>
-                            <li>
-                                Shift the rheostat contact slightly so that
-                                both the ammeter and voltmeter show full
-                                divisions
-                                readings and not in fraction.
-                            </li>
-                            <li>
-                                Record the readings of the voltmeter and
-                                ammeter.
-                            </li>
-                            <li>
-                                Take at least six sets of independent
-                                observations.
-                            </li>
-                            <li>
-                                Record the observations in a tabular column
-                            </li>
-                            <li>
-                                Now, cut the resistance wire at the points
-                                where it leaves the terminals, stretch it
-                                and find its length
-                                by the meter scale.
-                            </li>
-                            <li>
-                                Then find out the diameter and hence the
-                                radius of the wire using the screw gauge and
-                                calculate the
-                                cross- sectional area A (πr²).
-                            </li>
-                            <li>
-                                Plot a graph between current (I) along
-                                X-axis and potential difference across the
-                                wire (V) along Y-axis.
-                            </li>
-                            <li>
-                                The graph should be a stright line.
-                            </li>
-                            <li>
-                                Determine the slope of the graph. The slope
-                                will give the value of resistance (R) of the
-                                material of the
-                                wire.
-                            </li>
-                            <li>
-                                Calculate the resistance per centimeter of
-                                the wire.
-                            </li>
-                            <li>
-                                Now,calculate the resistivity of the
-                                material of the wire using the formula,
-                            </li>
-                        </ul>
 
-                    </div>
-                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
-                        <h3>
-                            Simulator Procedure
-                        </h3>
-                        <ul class="color-brown ">
-                            <li>
-                                Select the metal form the drop down list.
-                            </li>
-                            <li>
-                                Select the length of the wire from the
-                                slider.
-                            </li>
-                            <li>
-                                Select the diameter of the wire using the
-                                slider.
-                            </li>
-                            <li>
-                                Select the resistance of the rheostat using
-                                the slider.
-                            </li>
-                            <li>
-                                To see the circuit diagram, click on the
-                                ‘Show circuit diagram’ check box seen inside
-                                the simulator
-                                window.
-                            </li>
-                            <li>
-                                Connections can be made as seen in the
-                                circuit diagram by clicking and dragging the
-                                mouse form one
-                                connecting terminal to the other connecting
-                                terminal of the devices to be connected.
-                            </li>
-                            <li>
-                                Drag the wire and place it on the voltmeter
-                                to have it connected.
-                            </li>
-                            <li>
-                                Once all connections are made, click and
-                                drag the key to insert it into the switch.
-                            </li>
-                            <li>
-                                Slowly move the rheostat contact to change
-                                the voltage and current in the voltmeter and
-                                ammeter
-                                accordingly.
-                            </li>
-                            <li>
-                                Calculate the resistivity of the materials
-                                based on the length of the wire selected.
-                            </li>
-                            <li>
-                                Click on the ‘Show result’ check box to
-                                verify your result.
-                            </li>
-                            <li>
-                                Click on the ‘Reset’ button to redo the
-                                experiment.
-                            </li>
-                        </ul>
+                        </ol>
 
                     </div>
                 </div>
@@ -825,37 +439,38 @@
                 <form>
                     <div class="mb-3">
                         <h3>
-                            1. Which Law explains the following? At constant
-                            temperature the current flowing through
-                            a conductor is directly proportional to the
-                            potential difference between its ends.
+                            1. Liquid ethanol can be separated from a mixture of ethanol and water by:
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1">
-                            <label class="form-check-label" for="q1m1">
-                                Joule’s Law
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m1">
+                                a. Chromatography
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2">
-                            <label class="form-check-label" for="q1m2">
-                                Boyle’s Law
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m2">
+                                b. Centrifugation
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3">
-                            <label class="form-check-label" for="q1m3">
-                                Charle’s Law
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m3">
+                                c. Fractional Distillation
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4">
-                            <label class="form-check-label" for="q1m4">
-                                Ohm’s Law
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m4">
+                                d. All of the above
                             </label>
                         </div>
 
@@ -863,35 +478,40 @@
 
                     <div class="mb-3">
                         <h3>
-                            2. What does the current through a wire depend
-                            on?
+                            2. The process of heating a liquid mixture to form vapours and then cooling the vapours to
+                            get pure component is called
+                            ____________?
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m1">
-                            <label class="form-check-label" for="q2m1">
-                                The potential difference applied.
+                            <input class="form-check-input" type="radio" name="q2" id="q2m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m1">
+                                a. Distillation
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m2">
-                            <label class="form-check-label" for="q2m2">
-                                The resistance of the wire.
+                            <input class="form-check-input" type="radio" name="q2" id="q2m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m2">
+                                b. Chromatography
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m3">
-                            <label class="form-check-label" for="q2m3">
-                                The thickness of the wire.
+                            <input class="form-check-input" type="radio" name="q2" id="q2m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m3">
+                                c. Sublimation
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m4">
-                            <label class="form-check-label" for="q2m4">
-                                Both resistance and potential difference.
+                            <input class="form-check-input" type="radio" name="q2" id="q2m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m4">
+                                d. Crystallisation
                             </label>
                         </div>
 
@@ -899,37 +519,38 @@
 
                     <div class="mb-3">
                         <h3>
-                            3. You are measuring the current in a circuit
-                            that is operated on an 18 V battery.
-                            The reads 40
-                            mA. Later you notice the current has dropped to
-                            20 mA. How much has the voltage changed?
+                            3. The distilled water is collected in ____________?
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m1">
-                            <label class="form-check-label" for="q3m1"> 9 v
+                            <input class="form-check-input" type="radio" name="q3" id="q3m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m1">
+                                a. Receiver
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m2">
-                            <label class="form-check-label" for="q3m2">
-                                36 v
+                            <input class="form-check-input" type="radio" name="q3" id="q3m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m2">
+                                b. Adapter
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m3">
-                            <label class="form-check-label" for="q3m3">
-                                0 v
+                            <input class="form-check-input" type="radio" name="q3" id="q3m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m3">
+                                c. Condenser
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m4">
-                            <label class="form-check-label" for="q3m4">
-                                18 v
+                            <input class="form-check-input" type="radio" name="q3" id="q3m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m4">
+                                d. Round bottom flask
                             </label>
                         </div>
 
@@ -937,33 +558,37 @@
 
                     <div class="mb-3">
                         <h3>
-                            4. What is the shape of V v/s I graph for a
-                            linear resistor?
+                            4.The process of distillation is used for the liquids having ____________?
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m1">
-                            <label class="form-check-label" for="q4m1">
-                                Parabola
+                            <input class="form-check-input" type="radio" name="q4" id="q4m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m1">
+                                a. Sufficient difference in their boiling point
+                            </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m2">
-                            <label class="form-check-label" for="q4m2">
-                                Straight line
+                            <input class="form-check-input" type="radio" name="q4" id="q4m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m2">
+                                b. Sufficient difference in their melting point
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m3">
-                            <label class="form-check-label" for="q4m3">
-                                Hyperbola
+                            <input class="form-check-input" type="radio" name="q4" id="q4m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m3">
+                                c. Sufficient difference in their solubility
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m4">
-                            <label class="form-check-label" for="q4m4">
-                                None of these
+                            <input class="form-check-input" type="radio" name="q4" id="q4m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m4">
+                                d. None of the above
                             </label>
                         </div>
 
@@ -971,112 +596,36 @@
 
                     <div class="mb-3">
                         <h3>
-                            5. Which of the following represent ohm’s
-                            law?
+                            5. Which of the following will vaporize faster?
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1">
-                            <label class="form-check-label" for="q5m1">
-                                Current = Resistance × potential
-                                difference.
+                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m1">
+                                a. Aniline
+                            </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2">
-                            <label class="form-check-label" for="q5m2">
-                                Current = Resistance / Potential
-                                difference.
+                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m2">
+                                b. Chloroform
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3">
-                            <label class="form-check-label" for="q5m3">
-                                Potential difference / current =
-                                Resistance.
+                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m3">
+                                c. Water
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4">
-                            <label class="form-check-label" for="q5m4">
-                                None of these.
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            6. What is the potential difference
-                            required to
-                            pass a current of 5A through a metallic
-                            rod
-                            of resistance 10Ω?
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m1">
-                            <label class="form-check-label" for="q6m1"> 5V
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m2">
-                            <label class="form-check-label" for="q6m2">
-                                50V
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m3">
-                            <label class="form-check-label" for="q6m3">
-                                0.5V
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m4">
-                            <label class="form-check-label" for="q6m4">
-                                0.05V
-                            </label>
-                        </div>
-
-                    </div>
-
-
-                    <div class="mb-3">
-                        <h3>
-                            7. Choose the correct statement from
-                            the
-                            alternatives?
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m1">
-                            <label class="form-check-label" for="q7m1"> Every material has
-                                resistance.
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m2">
-                            <label class="form-check-label" for="q7m2">
-                                Resistance of a material is
-                                the measure of
-                                how much it opposes the
-                                passage of free
-                                electrons.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m3">
-                            <label class="form-check-label" for="q7m3">
-                                All of them are true
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m4">
-                            <label class="form-check-label" for="q7m4">
-                                The resistance of a material
-                                is independent
-                                of the current passing
-                                through it.
+                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m4">
+                                d. Kerosene
                             </label>
                         </div>
 
@@ -1101,9 +650,9 @@
                     <h3>
                         Books
                     </h3>
-                    <ul>
+                    <ol>
                         <li>
-                            1. Khyber Pakhtunkhwa Chemistry Practical Note Book Peshawar
+                            Khyber Pakhtunkhwa Chemistry Practical Note Book Peshawar
                         </li>
                         <li>
                             Khyber Pakhtunkhwa Chemistry Text Book Peshawar
@@ -1111,38 +660,31 @@
                         <li>
                             Chemistry 9 Chemistry Punjab Curriculum & Text Book Board Lahore
                         </li>
-                    </ul>
-                </div>
-
-                <div class="resourceItem">
-                    <h3>
-                        URLS
-                    </h3>
-                    <ul>
-                        <li>
-                            olabs.edu.in
-                        </li>
-                        <li>
-                            www.google.com
-                        </li>
-                    </ul>
+                    </ol>
                 </div>
             </div>
 
             <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display:none;">
-                <form method="post" action="#action-url">
+                <form method="post" action="# ">
                     <label>1. Your overall experience with us ?</label><br>
 
-                    <span class="star-rating">
-                        <input type="radio" name="rating1" value="1"><i></i>
-                        <input type="radio" name="rating1" value="2"><i></i>
-                        <input type="radio" name="rating1" value="3"><i></i>
-                        <input type="radio" name="rating1" value="4"><i></i>
-                        <input type="radio" name="rating1" value="5"><i></i>
-                    </span>
+
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                    <br>
                     <br>
                     <label class="pt-4" for="m_3189847521540640526commentText">2. Any Other
-                        suggestions:</label><br /><br />
+                        suggestions:</label><br />
                     <textarea cols="75" name="commentText" rows="5"></textarea><br>
                     <br>
                     <div class="clear"></div>

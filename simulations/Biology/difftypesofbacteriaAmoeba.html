@@ -78,147 +78,46 @@
             border: .5px solid #ddd;
         }
 
-        .star-rating {
-            margin: 25px 0 0px;
-            font-size: 0;
-            white-space: nowrap;
-            display: inline-block;
-            width: 175px;
-            height: 35px;
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+
+        .rate:not(:checked)>input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rate:not(:checked)>label {
+            float: right;
+            width: 1em;
             overflow: hidden;
-            position: relative;
-            background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
-            background-size: contain;
-        }
-
-        .star-rating i {
-            opacity: 0;
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 20%;
-            z-index: 1;
-            background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
-            background-size: contain;
-        }
-
-        .star-rating input {
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            opacity: 0;
-            display: inline-block;
-            width: 20%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            z-index: 2;
-            position: relative;
-        }
-
-        .star-rating input:hover+i,
-        .star-rating input:checked+i {
-            opacity: 1;
-        }
-
-        .star-rating i~i {
-            width: 40%;
-        }
-
-        .star-rating i~i~i {
-            width: 60%;
-        }
-
-        .star-rating i~i~i~i {
-            width: 80%;
-        }
-
-        .star-rating i~i~i~i~i {
-            width: 100%;
-        }
-
-        .choice {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-            padding: 20px;
-            display: block;
-        }
-
-        span.scale-rating {
-            margin: 5px 0 15px;
-            display: inline-block;
-
-            width: 100%;
-
-        }
-
-        span.scale-rating>label {
-            position: relative;
-            -webkit-appearance: none;
-            outline: 0 !important;
-            border: 1px solid grey;
-            height: 33px;
-            margin: 0 5px 0 0;
-            width: calc(10% - 7px);
-            float: left;
+            white-space: nowrap;
             cursor: pointer;
+            font-size: 50px;
+            color: #ccc;
         }
 
-        span.scale-rating label {
-            position: relative;
-            -webkit-appearance: none;
-            outline: 0 !important;
-            height: 33px;
-
-            margin: 0 5px 0 0;
-            width: calc(10% - 7px);
-            float: left;
-            cursor: pointer;
+        .rate:not(:checked)>label:before {
+            content: '★ ';
         }
 
-        span.scale-rating input[type=radio] {
-            position: absolute;
-            -webkit-appearance: none;
-            opacity: 0;
-            outline: 0 !important;
-            /*border-right: 1px solid grey;*/
-            height: 33px;
-
-            margin: 0 5px 0 0;
-
-            width: 100%;
-            float: left;
-            cursor: pointer;
-            z-index: 3;
+        .rate>input:checked~label {
+            color: #71AF06;
         }
 
-        span.scale-rating label:hover {
-            background: #71AF06;
+        .rate:not(:checked)>label:hover,
+        .rate:not(:checked)>label:hover~label {
+            color: #71AF06;
         }
 
-        span.scale-rating input[type=radio]:last-child {
-            border-right: 0;
-        }
-
-        span.scale-rating label input[type=radio]:checked~label {
-            -webkit-appearance: none;
-            margin: 0;
-            background: #71AF06;
-        }
-
-        span.scale-rating label:before {
-            content: attr(value);
-            top: 7px;
-            width: 100%;
-            position: absolute;
-            left: 0;
-            right: 0;
-            text-align: center;
-            vertical-align: middle;
-            z-index: 2;
+        .rate>input:checked+label:hover,
+        .rate>input:checked+label:hover~label,
+        .rate>input:checked~label:hover,
+        .rate>input:checked~label:hover~label,
+        .rate>label:hover~input:checked~label {
+            color: #71AF06;
         }
     </style>
     <script>
@@ -827,29 +726,33 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1">
-                            <label class="form-check-label" for="q1m1">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m1">
                                 Joule’s Law
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2">
-                            <label class="form-check-label" for="q1m2">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m2">
                                 Boyle’s Law
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3">
-                            <label class="form-check-label" for="q1m3">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m3">
                                 Charle’s Law
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4">
-                            <label class="form-check-label" for="q1m4">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m4">
                                 Ohm’s Law
                             </label>
                         </div>
@@ -863,29 +766,33 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m1">
-                            <label class="form-check-label" for="q2m1">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m1">
                                 The potential difference applied.
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m2">
-                            <label class="form-check-label" for="q2m2">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m2">
                                 The resistance of the wire.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m3">
-                            <label class="form-check-label" for="q2m3">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m3">
                                 The thickness of the wire.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m4">
-                            <label class="form-check-label" for="q2m4">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m4">
                                 Both resistance and potential difference.
                             </label>
                         </div>
@@ -902,28 +809,32 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m1">
-                            <label class="form-check-label" for="q3m1"> 9 v
+                            <input class="form-check-input" type="radio" name="q3" id="q3m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m1"> 9 v
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m2">
-                            <label class="form-check-label" for="q3m2">
+                            <input class="form-check-input" type="radio" name="q3" id="q3m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m2">
                                 36 v
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m3">
-                            <label class="form-check-label" for="q3m3">
+                            <input class="form-check-input" type="radio" name="q3" id="q3m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m3">
                                 0 v
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m4">
-                            <label class="form-check-label" for="q3m4">
+                            <input class="form-check-input" type="radio" name="q3" id="q3m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m4">
                                 18 v
                             </label>
                         </div>
@@ -937,27 +848,31 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m1">
-                            <label class="form-check-label" for="q4m1">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m1">
                                 Parabola
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m2">
-                            <label class="form-check-label" for="q4m2">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m2">
                                 Straight line
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m3">
-                            <label class="form-check-label" for="q4m3">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m3">
                                 Hyperbola
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m4">
-                            <label class="form-check-label" for="q4m4">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m4">
                                 None of these
                             </label>
                         </div>
@@ -970,30 +885,34 @@
                             law?
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1">
-                            <label class="form-check-label" for="q5m1">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m1">
                                 Current = Resistance × potential
                                 difference.
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2">
-                            <label class="form-check-label" for="q5m2">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m2">
                                 Current = Resistance / Potential
                                 difference.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3">
-                            <label class="form-check-label" for="q5m3">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m3">
                                 Potential difference / current =
                                 Resistance.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4">
-                            <label class="form-check-label" for="q5m4">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m4">
                                 None of these.
                             </label>
                         </div>
@@ -1009,26 +928,30 @@
                             of resistance 10Ω?
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m1">
-                            <label class="form-check-label" for="q6m1"> 5V
+                            <input class="form-check-input" type="radio" name="q6" id="q6m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q6m1"> 5V
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m2">
-                            <label class="form-check-label" for="q6m2">
+                            <input class="form-check-input" type="radio" name="q6" id="q6m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q6m2">
                                 50V
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m3">
-                            <label class="form-check-label" for="q6m3">
+                            <input class="form-check-input" type="radio" name="q6" id="q6m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q6m3">
                                 0.5V
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m4">
-                            <label class="form-check-label" for="q6m4">
+                            <input class="form-check-input" type="radio" name="q6" id="q6m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q6m4">
                                 0.05V
                             </label>
                         </div>
@@ -1043,13 +966,15 @@
                             alternatives?
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m1">
-                            <label class="form-check-label" for="q7m1"> Every material has
+                            <input class="form-check-input" type="radio" name="q7" id="q7m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q7m1"> Every material has
                                 resistance.
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m2">
-                            <label class="form-check-label" for="q7m2">
+                            <input class="form-check-input" type="radio" name="q7" id="q7m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q7m2">
                                 Resistance of a material is
                                 the measure of
                                 how much it opposes the
@@ -1059,15 +984,17 @@
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m3">
-                            <label class="form-check-label" for="q7m3">
+                            <input class="form-check-input" type="radio" name="q7" id="q7m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q7m3">
                                 All of them are true
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m4">
-                            <label class="form-check-label" for="q7m4">
+                            <input class="form-check-input" type="radio" name="q7" id="q7m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q7m4">
                                 The resistance of a material
                                 is independent
                                 of the current passing
@@ -1096,43 +1023,37 @@
                     <h3>
                         Books
                     </h3>
-                    <ul>
+                    <ol>
                         <li>
-                            Laboratory Manual Physics for
-                            class XII - Published by NCERT
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="resourceItem">
-                    <h3>
-                        Books
-                    </h3>
-                    <ul>
-                        <li>
-                            http://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/Chapter-3/index.html
+                            Khyber Pakhtunkhwa Biology 9 Practical Note Book Peshawar
                         </li>
                         <li>
-                            https://www.youtube.com/embed/4-GxinG7AVw?rel=0&vq=hd1080
+                            Khyber Pakhtunkhwa Biology 9 Text Book Peshawar
                         </li>
                         <li>
-                            https://www.youtube.com/embed/Ls5_PcXZRc8?rel=0&vq=hd1080
+                            Biology Book Curriculum & Text Book Board Lahore
                         </li>
-                    </ul>
+                    </ol>
                 </div>
             </div>
 
             <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display:none;">
-                <form method="post" action="#action-url">
+                <form method="post" action="# ">
                     <label>1. Your overall experience with us ?</label><br>
 
-                    <span class="star-rating">
-                        <input type="radio" name="rating1" value="1"><i></i>
-                        <input type="radio" name="rating1" value="2"><i></i>
-                        <input type="radio" name="rating1" value="3"><i></i>
-                        <input type="radio" name="rating1" value="4"><i></i>
-                        <input type="radio" name="rating1" value="5"><i></i>
-                    </span>
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                    <br>
                     <br>
                     <label class="pt-4" for="m_3189847521540640526commentText">2. Any Other
                         suggestions:</label><br /><br />

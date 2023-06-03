@@ -78,147 +78,46 @@
             border: .5px solid #ddd;
         }
 
-        .star-rating {
-            margin: 25px 0 0px;
-            font-size: 0;
-            white-space: nowrap;
-            display: inline-block;
-            width: 175px;
-            height: 35px;
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+
+        .rate:not(:checked)>input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rate:not(:checked)>label {
+            float: right;
+            width: 1em;
             overflow: hidden;
-            position: relative;
-            background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
-            background-size: contain;
-        }
-
-        .star-rating i {
-            opacity: 0;
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 20%;
-            z-index: 1;
-            background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
-            background-size: contain;
-        }
-
-        .star-rating input {
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            opacity: 0;
-            display: inline-block;
-            width: 20%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            z-index: 2;
-            position: relative;
-        }
-
-        .star-rating input:hover+i,
-        .star-rating input:checked+i {
-            opacity: 1;
-        }
-
-        .star-rating i~i {
-            width: 40%;
-        }
-
-        .star-rating i~i~i {
-            width: 60%;
-        }
-
-        .star-rating i~i~i~i {
-            width: 80%;
-        }
-
-        .star-rating i~i~i~i~i {
-            width: 100%;
-        }
-
-        .choice {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-            padding: 20px;
-            display: block;
-        }
-
-        span.scale-rating {
-            margin: 5px 0 15px;
-            display: inline-block;
-
-            width: 100%;
-
-        }
-
-        span.scale-rating>label {
-            position: relative;
-            -webkit-appearance: none;
-            outline: 0 !important;
-            border: 1px solid grey;
-            height: 33px;
-            margin: 0 5px 0 0;
-            width: calc(10% - 7px);
-            float: left;
+            white-space: nowrap;
             cursor: pointer;
+            font-size: 50px;
+            color: #ccc;
         }
 
-        span.scale-rating label {
-            position: relative;
-            -webkit-appearance: none;
-            outline: 0 !important;
-            height: 33px;
-
-            margin: 0 5px 0 0;
-            width: calc(10% - 7px);
-            float: left;
-            cursor: pointer;
+        .rate:not(:checked)>label:before {
+            content: '★ ';
         }
 
-        span.scale-rating input[type=radio] {
-            position: absolute;
-            -webkit-appearance: none;
-            opacity: 0;
-            outline: 0 !important;
-            /*border-right: 1px solid grey;*/
-            height: 33px;
-
-            margin: 0 5px 0 0;
-
-            width: 100%;
-            float: left;
-            cursor: pointer;
-            z-index: 3;
+        .rate>input:checked~label {
+            color: #71AF06;
         }
 
-        span.scale-rating label:hover {
-            background: #71AF06;
+        .rate:not(:checked)>label:hover,
+        .rate:not(:checked)>label:hover~label {
+            color: #71AF06;
         }
 
-        span.scale-rating input[type=radio]:last-child {
-            border-right: 0;
-        }
-
-        span.scale-rating label input[type=radio]:checked~label {
-            -webkit-appearance: none;
-            margin: 0;
-            background: #71AF06;
-        }
-
-        span.scale-rating label:before {
-            content: attr(value);
-            top: 7px;
-            width: 100%;
-            position: absolute;
-            left: 0;
-            right: 0;
-            text-align: center;
-            vertical-align: middle;
-            z-index: 2;
+        .rate>input:checked+label:hover,
+        .rate>input:checked+label:hover~label,
+        .rate>input:checked~label:hover,
+        .rate>input:checked~label:hover~label,
+        .rate>label:hover~input:checked~label {
+            color: #71AF06;
         }
     </style>
     <script>
@@ -305,7 +204,7 @@
                             Chemistry
                         </h5>
                         <h3 class="fs-1" style="color: #71AF06;">
-                            Sublimation
+                            Sublimation using solid Ammonium Chloride
                         </h3>
                     </selection>
                 </div>
@@ -559,7 +458,7 @@
                             font-weight:600;
                             font-size: 25px; line-height: 39px;
                             color:#FFFFFF; padding-left: 19px;">
-                            Sublimation</span>
+                            Sublimation Using Solid Ammonium Chloride</span>
                     </h1>
                     <div class="row gap-5">
                         <div class="col-lg-7 col-md-8 col-sm-12" style="background-color:white; width:800px;
@@ -617,11 +516,10 @@
 
             <!-- Video -->
             <div class="itemOfMenu my-5  pt-4 position-relative" style="height:650px; display: none;" id="video">
-                <img src="../../pictures/circle.png" style="width:60px;
-                        height:60px; position:absolute; top:20px; left:0px;" alt="">
+
                 <div class="d-flex justify-content-center align-items-center
                         pb-5">
-                    <iframe width="740px" height="480px" src="https://www.youtube.com/embed/k72pxhOMTHo"
+                    <iframe width="740px" height="480px" src="https://www.youtube.com/embed/v4v8SQgxc2Y"
                         title="YouTube video player" frameborder="0" style="z-index: 111;"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                         allowfullscreen>
@@ -642,29 +540,33 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1">
-                            <label class="form-check-label" for="q1m1">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m1">
                                 (a) Desublimation
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2">
-                            <label class="form-check-label" for="q1m2">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m2">
                                 (b) Solidification
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3">
-                            <label class="form-check-label" for="q1m3">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m3">
                                 (c ) Both (a) and (b)
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4">
-                            <label class="form-check-label" for="q1m4">
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m4">
                                 (d) None of the above
                             </label>
                         </div>
@@ -677,29 +579,33 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m1">
-                            <label class="form-check-label" for="q2m1">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m1">
                                 (a) Solidification
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m2">
-                            <label class="form-check-label" for="q2m2">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m2">
                                 (b) Sublimation
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m3">
-                            <label class="form-check-label" for="q2m3">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m3">
                                 (c ) Both (a) and (b)
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m4">
-                            <label class="form-check-label" for="q2m4">
+                            <input class="form-check-input" type="radio" name="q2" id="q2m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m4">
                                 (d) None of the above
                             </label>
                         </div>
@@ -717,27 +623,31 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m1">
-                            <label class="form-check-label" for="q3m1">(a) Solid
+                            <input class="form-check-input" type="radio" name="q3" id="q3m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m1">(a) Solid
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m2">
-                            <label class="form-check-label" for="q3m2">
+                            <input class="form-check-input" type="radio" name="q3" id="q3m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m2">
                                 (b) Liquid
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m3">
-                            <label class="form-check-label" for="q3m3">
+                            <input class="form-check-input" type="radio" name="q3" id="q3m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m3">
                                 (c ) Gas
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m4">
-                            <label class="form-check-label" for="q3m4">
+                            <input class="form-check-input" type="radio" name="q3" id="q3m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m4">
                                 (d) None of the above
                             </label>
                         </div>
@@ -750,27 +660,31 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m1">
-                            <label class="form-check-label" for="q4m1">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m1">
                                 (a) Iodine and Ammonium chloride
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m2">
-                            <label class="form-check-label" for="q4m2">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m2">
                                 (b) Iodine and sodium chloride
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m3">
-                            <label class="form-check-label" for="q4m3">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m3">
                                 (c ) Magnesium chloride and sodium chloride
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m4">
-                            <label class="form-check-label" for="q4m4">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m4">
                                 (d) Lead chloride and sodium chloride
                             </label>
                         </div>
@@ -782,34 +696,39 @@
                             Q5. Which of the following undergo sublimation?
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1">
-                            <label class="form-check-label" for="q5m1">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m1">
                                 (a) Naphthalene balls
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2">
-                            <label class="form-check-label" for="q5m2">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m2">
                                 (b) Ammonium chloride
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3">
-                            <label class="form-check-label" for="q5m3">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m3">
                                 (c ) Carbon dioxide
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4">
-                            <label class="form-check-label" for="q5m4">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m4">
                                 (d) All of the above
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4">
-                            <label class="form-check-label" for="q5m4">
+                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m4">
                                 (e) None of the above
                             </label>
                         </div>
@@ -820,30 +739,7 @@
                         <h3>
                             Q6. What do you understand by the term sublimation?
                         </h3>
-                        <!-- <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m1">
-                            <label class="form-check-label" for="q6m1"> 5V
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m2">
-                            <label class="form-check-label" for="q6m2">
-                                50V
-                            </label>
-                        </div>
 
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m3">
-                            <label class="form-check-label" for="q6m3">
-                                0.5V
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m4">
-                            <label class="form-check-label" for="q6m4">
-                                0.05V
-                            </label>
-                        </div> -->
                         <p>
                             <b>Answer:</b> The conversion of a compound directly from solid to gaseous state without
                             getting
@@ -858,43 +754,15 @@
                     <div class="mb-3">
                         <h3>
                             Q7. Why do naphthalene balls vanish with time without leaving any solid?
-                            Answer: Naphthalene balls disappear with time without leaving any solid because they undergo
+
+                        </h3>
+                        <p>
+                            <b>Answer:</b> Naphthalene balls disappear with time without leaving any solid because they
+                            undergo
                             sublimation, i.e. they
                             convert directly into vapours and disappear into the air without leaving any solid.
 
-                        </h3>
-                        <!-- <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m1">
-                            <label class="form-check-label" for="q7m1"> Every material has
-                                resistance.
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m2">
-                            <label class="form-check-label" for="q7m2">
-                                Resistance of a material is
-                                the measure of
-                                how much it opposes the
-                                passage of free
-                                electrons.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m3">
-                            <label class="form-check-label" for="q7m3">
-                                All of them are true
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m4">
-                            <label class="form-check-label" for="q7m4">
-                                The resistance of a material
-                                is independent
-                                of the current passing
-                                through it.
-                            </label>
-                        </div> -->
+                        </p>
 
                     </div>
                     <div class="mb-3">
@@ -909,38 +777,7 @@
                             diffuse quickly into the air, and
                             we can sense its fragrance several miles away.
                         </p>
-                        <!-- <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="q7" id="q7m1">
-                                                <label class="form-check-label" for="q7m1"> Every material has
-                                                    resistance.
-                                            </div>
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="q7" id="q7m2">
-                                                <label class="form-check-label" for="q7m2">
-                                                    Resistance of a material is
-                                                    the measure of
-                                                    how much it opposes the
-                                                    passage of free
-                                                    electrons.
-                                                </label>
-                                            </div>
-                    
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="q7" id="q7m3">
-                                                <label class="form-check-label" for="q7m3">
-                                                    All of them are true
-                                                </label>
-                                            </div>
-                    
-                                            <div class="form-check">
-                                                <input class="form-check-input" type="radio" name="q7" id="q7m4">
-                                                <label class="form-check-label" for="q7m4">
-                                                    The resistance of a material
-                                                    is independent
-                                                    of the current passing
-                                                    through it.
-                                                </label>
-                                            </div> -->
+
 
                     </div>
 
@@ -1008,9 +845,9 @@
                     <h3>
                         Books
                     </h3>
-                    <ul>
+                    <ol>
                         <li>
-                            1. Khyber Pakhtunkhwa Chemistry Practical Note Book Peshawar
+                            Khyber Pakhtunkhwa Chemistry Practical Note Book Peshawar
                         </li>
                         <li>
                             Khyber Pakhtunkhwa Chemistry Text Book Peshawar
@@ -1018,35 +855,27 @@
                         <li>
                             Chemistry 9 Chemistry Punjab Curriculum & Text Book Board Lahore
                         </li>
-                    </ul>
-                </div>
-
-                <div class="resourceItem">
-                    <h3>
-                        URLS
-                    </h3>
-                    <ul>
-                        <li>
-                            olabs.edu.in
-                        </li>
-                        <li>
-                            www.google.com
-                        </li>
-                    </ul>
+                    </ol>
                 </div>
             </div>
 
             <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display:none;">
-                <form method="post" action="#action-url">
+                <form method="post" action="# ">
                     <label>1. Your overall experience with us ?</label><br>
 
-                    <span class="star-rating">
-                        <input type="radio" name="rating1" value="1"><i></i>
-                        <input type="radio" name="rating1" value="2"><i></i>
-                        <input type="radio" name="rating1" value="3"><i></i>
-                        <input type="radio" name="rating1" value="4"><i></i>
-                        <input type="radio" name="rating1" value="5"><i></i>
-                    </span>
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                    <br>
                     <br>
                     <label class="pt-4" for="m_3189847521540640526commentText">2. Any Other
                         suggestions:</label><br /><br />

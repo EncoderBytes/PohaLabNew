@@ -11,7 +11,7 @@
 
 <body>
   <div id="unity-container" class="unity-desktop">
-    <canvas id="unity-canvas" width=1920 height=1080></canvas>
+    <canvas id="unity-canvas" width=960 height=600></canvas>
     <div id="unity-loading-bar">
       <div id="unity-logo"></div>
       <div id="unity-progress-bar-empty">
@@ -22,10 +22,10 @@
     <div id="unity-footer">
       <div id="unity-webgl-logo">
         <button style="margin: 9PX;
-                                              BACKGROUND: #b6da39;
-                                              border: none;
-                                              border-radius: 3px;
-                                              padding: 10px 20px;">
+                                                    BACKGROUND: #b6da39;
+                                                    border: none;
+                                                    border-radius: 3px;
+                                                    padding: 10px 20px;">
           Reset
         </button>
       </div>
@@ -66,11 +66,11 @@
     }
 
     var buildUrl = "Build";
-    var loaderUrl = buildUrl + "/To verify the laws of refraction by using a glass slab.loader.js";
+    var loaderUrl = buildUrl + "/reflection.loader.js";
     var config = {
-      dataUrl: buildUrl + "/To verify the laws of refraction by using a glass slab.data.unityweb",
-      frameworkUrl: buildUrl + "/To verify the laws of refraction by using a glass slab.framework.js.unityweb",
-      codeUrl: buildUrl + "/To verify the laws of refraction by using a glass slab.wasm.unityweb",
+      dataUrl: buildUrl + "/reflection.data.unityweb",
+      frameworkUrl: buildUrl + "/reflection.framework.js.unityweb",
+      codeUrl: buildUrl + "/reflection.wasm.unityweb",
       streamingAssetsUrl: "StreamingAssets",
       companyName: "DefaultCompany",
       productName: "SimplePendulum",

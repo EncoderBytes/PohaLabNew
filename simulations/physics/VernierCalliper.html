@@ -78,147 +78,46 @@
             border: .5px solid #ddd;
         }
 
-        .star-rating {
-            margin: 25px 0 0px;
-            font-size: 0;
-            white-space: nowrap;
-            display: inline-block;
-            width: 175px;
-            height: 35px;
+        .rate {
+            float: left;
+            height: 46px;
+            padding: 0 10px;
+        }
+
+        .rate:not(:checked)>input {
+            position: absolute;
+            top: -9999px;
+        }
+
+        .rate:not(:checked)>label {
+            float: right;
+            width: 1em;
             overflow: hidden;
-            position: relative;
-            background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjREREREREIiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
-            background-size: contain;
-        }
-
-        .star-rating i {
-            opacity: 0;
-            position: absolute;
-            left: 0;
-            top: 0;
-            height: 100%;
-            width: 20%;
-            z-index: 1;
-            background: url('data:image/svg+xml;base64,PHN2ZyB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHg9IjBweCIgeT0iMHB4IiB3aWR0aD0iMjBweCIgaGVpZ2h0PSIyMHB4IiB2aWV3Qm94PSIwIDAgMjAgMjAiIGVuYWJsZS1iYWNrZ3JvdW5kPSJuZXcgMCAwIDIwIDIwIiB4bWw6c3BhY2U9InByZXNlcnZlIj48cG9seWdvbiBmaWxsPSIjRkZERjg4IiBwb2ludHM9IjEwLDAgMTMuMDksNi41ODMgMjAsNy42MzkgMTUsMTIuNzY0IDE2LjE4LDIwIDEwLDE2LjU4MyAzLjgyLDIwIDUsMTIuNzY0IDAsNy42MzkgNi45MSw2LjU4MyAiLz48L3N2Zz4=');
-            background-size: contain;
-        }
-
-        .star-rating input {
-            -moz-appearance: none;
-            -webkit-appearance: none;
-            opacity: 0;
-            display: inline-block;
-            width: 20%;
-            height: 100%;
-            margin: 0;
-            padding: 0;
-            z-index: 2;
-            position: relative;
-        }
-
-        .star-rating input:hover+i,
-        .star-rating input:checked+i {
-            opacity: 1;
-        }
-
-        .star-rating i~i {
-            width: 40%;
-        }
-
-        .star-rating i~i~i {
-            width: 60%;
-        }
-
-        .star-rating i~i~i~i {
-            width: 80%;
-        }
-
-        .star-rating i~i~i~i~i {
-            width: 100%;
-        }
-
-        .choice {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            text-align: center;
-            padding: 20px;
-            display: block;
-        }
-
-        span.scale-rating {
-            margin: 5px 0 15px;
-            display: inline-block;
-
-            width: 100%;
-
-        }
-
-        span.scale-rating>label {
-            position: relative;
-            -webkit-appearance: none;
-            outline: 0 !important;
-            border: 1px solid grey;
-            height: 33px;
-            margin: 0 5px 0 0;
-            width: calc(10% - 7px);
-            float: left;
+            white-space: nowrap;
             cursor: pointer;
+            font-size: 50px;
+            color: #ccc;
         }
 
-        span.scale-rating label {
-            position: relative;
-            -webkit-appearance: none;
-            outline: 0 !important;
-            height: 33px;
-
-            margin: 0 5px 0 0;
-            width: calc(10% - 7px);
-            float: left;
-            cursor: pointer;
+        .rate:not(:checked)>label:before {
+            content: '★ ';
         }
 
-        span.scale-rating input[type=radio] {
-            position: absolute;
-            -webkit-appearance: none;
-            opacity: 0;
-            outline: 0 !important;
-            /*border-right: 1px solid grey;*/
-            height: 33px;
-
-            margin: 0 5px 0 0;
-
-            width: 100%;
-            float: left;
-            cursor: pointer;
-            z-index: 3;
+        .rate>input:checked~label {
+            color: #71AF06;
         }
 
-        span.scale-rating label:hover {
-            background: #71AF06;
+        .rate:not(:checked)>label:hover,
+        .rate:not(:checked)>label:hover~label {
+            color: #71AF06;
         }
 
-        span.scale-rating input[type=radio]:last-child {
-            border-right: 0;
-        }
-
-        span.scale-rating label input[type=radio]:checked~label {
-            -webkit-appearance: none;
-            margin: 0;
-            background: #71AF06;
-        }
-
-        span.scale-rating label:before {
-            content: attr(value);
-            top: 7px;
-            width: 100%;
-            position: absolute;
-            left: 0;
-            right: 0;
-            text-align: center;
-            vertical-align: middle;
-            z-index: 2;
+        .rate>input:checked+label:hover,
+        .rate>input:checked+label:hover~label,
+        .rate>input:checked~label:hover,
+        .rate>input:checked~label:hover~label,
+        .rate>label:hover~input:checked~label {
+            color: #71AF06;
         }
     </style>
     <script>
@@ -689,58 +588,19 @@
                                 <ol style="padding: 10px 3px 0px 26px; font-size:14px;">
 
                                     <li>
-                                        We'll first determine the vernier constant (VC), which is the least count
-                                        (L.C) of
-                                        the vernier calliper and record it
-                                        stepwise as in the equation, L.C = 1 MSD - 1 VSD.
+                                        1. Open the Vernier Calliper jaws and set the cylinder between the two jaws
                                     </li>
                                     <li>
-                                        Now, bring the movable jaw in close contact with the fixed jaw and find the
-                                        zero
-                                        error. Do this three times and
-                                        record the values. If there is no zero error, then record 'zero error nil'.
+                                        Take note of the location of the Vernier scale's zero point on the main scale
                                     </li>
                                     <li>
-                                        Open the jaws of the Vernier Calliper and place the sphere or cylinder
-                                        between the
-                                        two jaws and adjust the movable
-                                        jaw, such that it gently grips the body without any undue pressure on it.
-                                        That done,
-                                        tighten the screw attached to the
-                                        Vernier scale.
+                                        Take note of the number (n) of the Vernier scale division that corresponds to
+                                        the main scale division
                                     </li>
                                     <li>
-                                        Note the position of the zero mark of the Vernier scale on the main scale.
-                                        Record the
-                                        main scale reading just before
-                                        the zero mark of the vernier scale. This reading (N) is called main scale
-                                        reading (MSR).
+                                        Do the calculation accordingly
                                     </li>
-                                    <li>
-                                        Note the number (n) of the Vernier scale division which coincides with the
-                                        division
-                                        of the main scale.
-                                    </li>
-                                    <li>
-                                        You'll have to repeat steps 5 and 6 after rotating the body by 90o for
-                                        measuring the
-                                        diameter in a perpendicular
-                                        direction.
-                                    </li>
-                                    <li>
-                                        Repeat steps 4 to 7 for three different positions and record the
-                                        observations.
-                                    </li>
-                                    <li>
-                                        Now find total reading using the equation, TR = MSR+VSR = N+(n x L.C) and
-                                        apply the
-                                        zero correction.
-                                    </li>
-                                    <li>
-                                        Take the mean of the different values of the diameter and show that in the
-                                        result
-                                        with the proper unit.
-                                    </li>
+
                                 </ol>
                             </div>
                         </div>
@@ -779,30 +639,34 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1">
-                            <label class="form-check-label" for="q1m1">
-                                angular vernier
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m1">
+                                (a) angular vernier
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2">
-                            <label class="form-check-label" for="q1m2">
-                                least constant
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m2">
+                                (b) least constant
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3">
-                            <label class="form-check-label" for="q1m3">
-                                least count
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m3">
+                                (c) least count
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4">
-                            <label class="form-check-label" for="q1m4">
-                                zero correction
+                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q1m4">
+                                (d) zero correction
                             </label>
                         </div>
 
@@ -819,30 +683,34 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m1">
-                            <label class="form-check-label" for="q2m1">
-                                to measure the width of certain objects
+                            <input class="form-check-input" type="radio" name="q2" id="q2m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m1">
+                                (a) to measure the width of certain objects
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m2">
-                            <label class="form-check-label" for="q2m2">
-                                to measure the diameter of certain objects
+                            <input class="form-check-input" type="radio" name="q2" id="q2m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m2">
+                                (b) to measure the diameter of certain objects
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m3">
-                            <label class="form-check-label" for="q2m3">
-                                to measure the depth of certain objects
+                            <input class="form-check-input" type="radio" name="q2" id="q2m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m3">
+                                (c) to measure the depth of certain objects
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m4">
-                            <label class="form-check-label" for="q2m4">
-                                to measure the radius of certain objects
+                            <input class="form-check-input" type="radio" name="q2" id="q2m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q2m4">
+                                (d) to measure the radius of certain objects
                             </label>
                         </div>
 
@@ -854,30 +722,34 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m1">
-                            <label class="form-check-label" for="q3m1">
-                                Its idea was first conceived at Vernier in southern Germany.
+                            <input class="form-check-input" type="radio" name="q3" id="q3m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m1">
+                                (a) Its idea was first conceived at Vernier in southern Germany.
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m2">
-                            <label class="form-check-label" for="q3m2">
-                                It was first designed by a French mathematician, Pierre Vernier.
+                            <input class="form-check-input" type="radio" name="q3" id="q3m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m2">
+                                (b) It was first designed by a French mathematician, Pierre Vernier.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m3">
-                            <label class="form-check-label" for="q3m3">
-                                It is the Latin name for 'slide callipers'
+                            <input class="form-check-input" type="radio" name="q3" id="q3m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q3m3">
+                                (c) It is the Latin name for 'slide callipers'
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m4">
-                            <label class="form-check-label" for="q3m4">
-                                None of the above
+                            <input class="form-check-input" type="radio" name="q3" id="q3m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-labe text-black" for="q3m4">
+                                (d) None of the above
                             </label>
                         </div>
 
@@ -889,29 +761,33 @@
                         </h3>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m1">
-                            <label class="form-check-label" for="q4m1">
-                                Measuring the internal diameter of a cylindrical object or the depth of a vessel.
+                            <input class="form-check-input" type="radio" name="q4" id="q4m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m1">
+                                (a) Measuring the internal diameter of a cylindrical object or the depth of a vessel.
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m2">
-                            <label class="form-check-label" for="q4m2">
-                                Measuring the height of a tower.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m3">
-                            <label class="form-check-label" for="q4m3">
-                                Measuring the outer diameter of a spherical or cylindrical object.
+                            <input class="form-check-input" type="radio" name="q4" id="q4m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m2">
+                                (b) Measuring the height of a tower.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m4">
-                            <label class="form-check-label" for="q4m4">
-                                Measuring the length of an iron nail.
+                            <input class="form-check-input" type="radio" name="q4" id="q4m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m3">
+                                (c) Measuring the outer diameter of a spherical or cylindrical object.
+                            </label>
+                        </div>
+
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="q4" id="q4m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q4m4">
+                                (d) Measuring the length of an iron nail.
                             </label>
                         </div>
 
@@ -922,30 +798,34 @@
                             5. Which of the following is a true statement?
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1">
-                            <label class="form-check-label" for="q5m1">
-                                Zero error is a algebraically subtracted from the observed reading.
+                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m1">
+                                (a) Zero error is a algebraically subtracted from the observed reading.
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2">
-                            <label class="form-check-label" for="q5m2">
-                                Negative of zero error is zero correction.
+                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m2">
+                                (b) Negative of zero error is zero correction.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3">
-                            <label class="form-check-label" for="q5m3">
-                                Zero correction is algebraically added to the observed reading
+                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m3">
+                                (c) Zero correction is algebraically added to the observed reading
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4">
-                            <label class="form-check-label" for="q5m4">
-                                All of the above.
+                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q5m4">
+                                (d) All of the above.
                             </label>
                         </div>
 
@@ -956,31 +836,36 @@
                             6. Which of the following is incorrect with regard to zero error?
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m1">
-                            <label class="form-check-label" for="q6m1">
-                                It occurs if the zeros of main scale and vernier scale do not coincide.
+                            <input class="form-check-input" type="radio" name="q6" id="q6m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q6m1">
+                                (a) It occurs if the zeros of main scale and vernier scale do not coincide.
                             </label>
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m2">
-                            <label class="form-check-label" for="q6m2">
-                                It arises due to wear and tear of the instrument.
+                            <input class="form-check-input" type="radio" name="q6" id="q6m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q6m2">
+                                (b) It arises due to wear and tear of the instrument.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m3">
-                            <label class="form-check-label" for="q6m3">
-                                It is positive when vernier zero is to the left of main scale and negative if it is to
+                            <input class="form-check-input" type="radio" name="q6" id="q6m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q6m3">
+                                (c) It is positive when vernier zero is to the left of main scale and negative if it is
+                                to
                                 the
                                 right.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m4">
-                            <label class="form-check-label" for="q6m4">
-                                It is the error in the vernier callipers.
+                            <input class="form-check-input" type="radio" name="q6" id="q6m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q6m4">
+                                (d) It is the error in the vernier callipers.
                             </label>
                         </div>
 
@@ -994,30 +879,34 @@
                             accuracy?
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m1">
-                            <label class="form-check-label" for="q7m1"> Every material has
-                                Metre scale
+                            <input class="form-check-input" type="radio" name="q7" id="q7m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q7m1"> Every material has
+                                (a) Metre scale
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m2">
-                            <label class="form-check-label" for="q7m2">
-                                Spherometer
+                            <input class="form-check-input" type="radio" name="q7" id="q7m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q7m2">
+                                (b) Spherometer
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m3">
-                            <label class="form-check-label" for="q7m3">
-                                Vernier callipers
+                            <input class="form-check-input" type="radio" name="q7" id="q7m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q7m3">
+                                (c) Vernier callipers
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m4">
-                            <label class="form-check-label" for="q7m4">
-                                Screw guage
+                            <input class="form-check-input" type="radio" name="q7" id="q7m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q7m4">
+                                (d) Screw guage
                             </label>
                         </div>
 
@@ -1028,30 +917,34 @@
                             8. Vernier Constant is given by:
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m1">
-                            <label class="form-check-label" for="q7m1"> Every material has
-                                V.C.= 1 M.S.D.-1 V.S.D
+                            <input class="form-check-input" type="radio" name="q8" id="q8m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q8m1"> Every material has
+                                (a) V.C.= 1 M.S.D.-1 V.S.D
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m2">
-                            <label class="form-check-label" for="q7m2">
-                                V.C.= 1 M.S.D./1 V.S.D
+                            <input class="form-check-input" type="radio" name="q8" id="q8m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q8m2">
+                                (b) V.C.= 1 M.S.D./1 V.S.D
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m3">
-                            <label class="form-check-label" for="q7m3">
-                                V.C.= 1 V.S.D.-1 V.S.D
+                            <input class="form-check-input" type="radio" name="q8" id="q8m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q8m3">
+                                (c) V.C.= 1 V.S.D.-1 V.S.D
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m4">
-                            <label class="form-check-label" for="q7m4">
-                                V.C.= 1 M.S.D.+1 V.S.D
+                            <input class="form-check-input" type="radio" name="q8" id="q8m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q7m4">
+                                (d) V.C.= 1 M.S.D.+1 V.S.D
                             </label>
                         </div>
 
@@ -1061,67 +954,75 @@
                             9. Principle of vernier callipers:
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m1">
-                            <label class="form-check-label" for="q7m1"> Every material has
-                                N vernier scale division = (N/2) main scale divisions.
+                            <input class="form-check-input" type="radio" name="q9" id="q9m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q9m1"> Every material has
+                                (a) N vernier scale division = (N/2) main scale divisions.
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m2">
-                            <label class="form-check-label" for="q7m2">
-                                N main scale division = N vernier scale divisions.
+                            <input class="form-check-input" type="radio" name="q9" id="q9m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q9m2">
+                                (b) N main scale division = N vernier scale divisions.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m3">
-                            <label class="form-check-label" for="q7m3">
-                                N vernier scale division = (N-1) main scale divisions.
+                            <input class="form-check-input" type="radio" name="q9" id="q9m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q9m3">
+                                (c) N vernier scale division = (N-1) main scale divisions.
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m4">
-                            <label class="form-check-label" for="q7m4">
-                                N main scale division = (N-1) vernier scale divisions.
+                            <input class="form-check-input" type="radio" name="q9" id="q9m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q9m4">
+                                (d) N main scale division = (N-1) vernier scale divisions.
                             </label>
                         </div>
 
                     </div>
                     <div class="mb-3">
                         <h3>
-                            10. 10) A student used a vernier caliper to measure the length of his pencil.He found that
+                            10. A student used a vernier caliper to measure the length of his pencil.He found that
                             the main scale showed a reading
                             of 8.3 and vernier scale coincides with 5th position to the main scale.What was the correct
                             measurement of the length of
                             the pencil?
                         </h3>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m1">
-                            <label class="form-check-label" for="q7m1"> Every material has
-                                8.3
+                            <input class="form-check-input" type="radio" name="q10" id="q10m1"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q10m1"> Every material has
+                                (a) 8.3
                             </label>
 
                         </div>
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m2">
-                            <label class="form-check-label" for="q7m2">
-                                8.35
+                            <input class="form-check-input" type="radio" name="q10" id="q10m2"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q10m2">
+                                (b) 8.35
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m3">
-                            <label class="form-check-label" for="q7m3">
-                                8.5
+                            <input class="form-check-input" type="radio" name="q10" id="q10m3"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q10m3">
+                                (c) 8.5
                             </label>
                         </div>
 
                         <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m4">
-                            <label class="form-check-label" for="q7m4">
-                                8.8
+                            <input class="form-check-input" type="radio" name="q10" id="q10m4"
+                                style="border: solid 2px black;">
+                            <label class="form-check-label text-black" for="q10m4">
+                                (d) 8.8
                             </label>
                         </div>
 
@@ -1148,43 +1049,37 @@
                     <h3>
                         Books
                     </h3>
-                    <ul>
+                    <ol>
                         <li>
-                            Laboratory Manual Physics for
-                            class XII - Published by NCERT
-                        </li>
-                    </ul>
-                </div>
-
-                <div class="resourceItem">
-                    <h3>
-                        Books
-                    </h3>
-                    <ul>
-                        <li>
-                            http://epathshala.nic.in/wp-content/doc/book/flipbook/Class%20XII/12089-Physics%20Part-1/Chapter-3/index.html
+                            Khyber Pakhtunkhwa Physics 9 Practical Note Book Peshawar
                         </li>
                         <li>
-                            https://www.youtube.com/embed/4-GxinG7AVw?rel=0&vq=hd1080
+                            Khyber Pakhtunkhwa Physics 9 Text Book Peshawar
                         </li>
                         <li>
-                            https://www.youtube.com/embed/Ls5_PcXZRc8?rel=0&vq=hd1080
+                            Physics Book Curriculum & Text Book Board Lahore
                         </li>
-                    </ul>
+                    </ol>
                 </div>
             </div>
 
             <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display:none;">
-                <form method="post" action="#action-url">
+                <form method="post" action="# ">
                     <label>1. Your overall experience with us ?</label><br>
 
-                    <span class="star-rating">
-                        <input type="radio" name="rating1" value="1"><i></i>
-                        <input type="radio" name="rating1" value="2"><i></i>
-                        <input type="radio" name="rating1" value="3"><i></i>
-                        <input type="radio" name="rating1" value="4"><i></i>
-                        <input type="radio" name="rating1" value="5"><i></i>
-                    </span>
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rate" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rate" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rate" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rate" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rate" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div>
+                    <br>
                     <br>
                     <label class="pt-4" for="m_3189847521540640526commentText">2. Any Other
                         suggestions:</label><br /><br />
