@@ -119,6 +119,20 @@
         .rate>label:hover~input:checked~label {
             color: #71AF06;
         }
+
+        #navbarSupportContent {
+            margin: 0 0 0 35rem;
+        }
+
+        @media screen and (max-width: 600px) {
+            #navbarSupportedContent {
+
+                margin: 0;
+                background-color: #084568;
+            }
+
+
+        }
     </style>
     <script>
         function change(target) {
@@ -142,7 +156,7 @@
         <div class="container-fluid" style="height:70px; background-color: #084568;">
             <nav class="navbar navbar-expand-lg container">
                 <div class="container-fluid">
-                    <a style="  line-height: 41px;" href="index.html">
+                    <a style="  line-height: 41px;" href="../../index.html">
                         <img src="../../pictures/logomain.png" alt="">
                     </a>
                     <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -150,7 +164,7 @@
                         aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent" style="margin: 0 0 0 35rem;">
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
 
                             <li class="nav-item" style=" display: inline-block; margin: 0 5px;">
@@ -265,60 +279,65 @@
                     style="position:absolute; left:0px; right:0px; z-index:222; ">
                     <div class="container-fluid ">
                         <button class="navbar-toggler border-0" style="font-size:15px" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+                            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1"
                             aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
-                        <div class="collapse navbar-collapse " id="navbarSupportedContent">
+                        <div class="collapse navbar-collapse " id="navbarSupportedContent1">
                             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                                 <li class="nav-item mx-1">
                                     <button style="width:100%; height:56px; font-weight:
-                                                    500; align-self: flex-start;" class="btn bg-blueLight
-                                                    py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                                                500; align-self: flex-start;" class="btn bg-blueLight
+                                                                py-1" data-bs-toggle="collapse"
+                                        data-bs-target="#navbarSupportedContent1"
+                                        aria-controls="navbarSupportedContent1"
                                         onclick="change('theory')">Theory</button>
                                     <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
                                 </li>
                                 <li class="nav-item mx-1">
                                     <!-- <a class="nav-link" href="#">Link</a> -->
                                     <button style="width:100%; height:56px; font-weight:
-                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                                                500;" class="btn py-1" data-bs-toggle="collapse"
+                                        data-bs-target="#navbarSupportedContent1"
+                                        aria-controls="navbarSupportedContent1"
                                         onclick="change('procedure')">Procedure</button>
                                 </li>
                                 <!-- <li class="nav-item mx-1">
-                                                            <button style="width:100%; height:56px; font-weight:
-                                                    500;" class="btn py-1">  Animation</button>
-                                                        </li> -->
+                                                                        <button style="width:100%; height:56px; font-weight:
+                                                                500;" class="btn py-1">  Animation</button>
+                                                                    </li> -->
                                 <li class="nav-item mx-1">
                                     <button style="width:100%; height:56px; font-weight:
-                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                                                500;" class="btn py-1" data-bs-toggle="collapse"
+                                        data-bs-target="#navbarSupportedContent1"
+                                        aria-controls="navbarSupportedContent1"
                                         onclick="change('simulator')">Simulator</button>
                                 </li>
                                 <li class="nav-item mx-1">
                                     <button style="width:100%; height:56px; font-weight:
-                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                        onclick="change('video')">Video</button>
+                                                                500;" class="btn py-1" data-bs-toggle="collapse"
+                                        data-bs-target="#navbarSupportedContent1"
+                                        aria-controls="navbarSupportedContent1" onclick="change('video')">Video</button>
                                 </li>
                                 <li class="nav-item mx-1">
                                     <button style="width:100%; height:56px; font-weight:
-                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                                        onclick="change('vivaQuestion')">Vivo
+                                                                500;" class="btn py-1" data-bs-toggle="collapse"
+                                        data-bs-target="#navbarSupportedContent1"
+                                        aria-controls="navbarSupportedContent1" onclick="change('vivaQuestion')">Vivo
                                         Voice</button>
                                 </li>
                                 <li class="nav-item mx-1">
                                     <button style="width:100%; height:56px; font-weight:
-                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                                                500;" class="btn py-1" data-bs-toggle="collapse"
+                                        data-bs-target="#navbarSupportedContent1"
+                                        aria-controls="navbarSupportedContent1"
                                         onclick="change('resource')">Resources</button>
                                 </li>
                                 <li class="nav-item mx-1">
                                     <button style="width:100%; height:56px; font-weight:
-                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                                                                500;" class="btn py-1" data-bs-toggle="collapse"
+                                        data-bs-target="#navbarSupportedContent1"
+                                        aria-controls="navbarSupportedContent1"
                                         onclick="change('Feedback')">Feedback</button>
                                 </li>
 
