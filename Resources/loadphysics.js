@@ -8,7 +8,7 @@ function load() {
 
     let data = [
         {
-            title: "VernierCalliper",
+            title: "Vernier Calliper",
             link: "../simulations/physics/VernierCalliper.html"
         },
         {
