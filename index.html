@@ -32,6 +32,14 @@
             margin: 0 0 0 35rem;
         }
 
+        .herosec {
+            min-height: 370px;
+            max-height: fit-content;
+            background-image: url(./pictures/bg.jpg);
+            background-repeat: no-repeat;
+            background-size: 100%;
+        }
+
         @media screen and (max-width: 600px) {
             #navbarSupportedContent {
 
@@ -39,7 +47,13 @@
                 background-color: #084568;
             }
 
-
+            .herosec {
+                min-height: 370px;
+                max-height: fit-content;
+                background-image: url(./pictures/bg.jpg);
+                background-repeat: no-repeat;
+                background-size: 100% 100%;
+            }
         }
     </style>
 </head>
@@ -112,10 +126,8 @@
 
     <div class="container-fluid overflow-hidden">
         <!-- A new way to shrap your Knowledge -->
-        <div class="container  rounded my-4 d-flex
-                align-items-center"
-            style="min-height:370px;
-                max-height:fit-content; background-image: url(./pictures/bg.jpg); background-repeat: no-repeat; background-size: cover;">
+        <div class="container herosec rounded my-4 d-flex
+                align-items-center">
             <div class="row w-100" style="margin: 0 34px;">
                 <div class="col-md-2"></div>
                 <div class=" col-md-4 col-sm-10 mx-auto
