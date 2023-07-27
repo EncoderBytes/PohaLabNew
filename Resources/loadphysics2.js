@@ -8,24 +8,24 @@ function load() {
 
     let data = [
         {
-            title: "VernierCalliper",
+            title: "Study resistors in a series circuit",
             link: "../simulations/physics/VernierCalliper.html"
         },
         {
-            title: "Time Presion of Pendulum",
+            title: "Study Resistors in a parallax circuit",
             link: "../simulations/physics/SimplePendulam2.html"
         },
         {
-            title: "Simple Pendulam",
+            title: "Verify Ohm’s law (using wire as a conductor)",
             link: "../simulations/physics/SimplePendulam.html"
         },
         {
-            title: "Refraction Of Light",
+            title: "Find the focal length of a convex lens by parallax method",
             link: "../simulations/physics/RefractionofLight.html"
         },
 
         {
-            title: "Principle of Moment",
+            title: "Verify the laws of refraction by using a glass slab",
             link: "../simulations/physics/pricipleofmoment.html"
         },
         // {

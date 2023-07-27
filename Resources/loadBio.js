@@ -8,24 +8,24 @@ function load() {
 
     let data = [
         {
-            title: `Alovera`,
+            title: `Identification of cell wall, cell membrane, cytoplasm, nucleus and chloroplast using (Alovera)`,
             link: "../simulations/Biology/Aloevera.html"
         },
         {
-            title: `Microscopic Examination of a Plant Cell`,
+            title: `Microscopic examination of an animal cell (Blood) and a plant cell (e.g. from onion epidermis) using appropriate temporary techniques such as iodine or methylene blue`,
             link: "../simulations/Biology/Microscopeexaminationofananimalcell.html"
         },
         {
-            title: `Determination of the Effect of Tonicity on Plasmolysis and Desplasmolysis in Animal Cell`,
+            title: `Determination of the effect of tonicity on plasmolysis and de-plasmolysis in plant cells or red blood cells`,
             link: "../simulations/Biology/Microscope_examination_of_an_animal&plant_cell.html"
         },
         {
-            title: `Observation of Amoeba Fission`,
+            title: `Observation of binary fission in amoeba by using slides/charts`,
             link: "../simulations/Biology/observationofbinaryfission.html"
         },
 
         {
-            title: `Study Diff Type Amoeba`,
+            title: `Study different types of Bacteria, Amoeba, Paramecium, and Volvox with the help of prepared slides and fresh culture / Charts`,
             link: "../simulations/Biology/difftypesofbacteriaAmoeba.html"
         },
         // {

@@ -8,24 +8,24 @@ function load() {
 
     let data = [
         {
-            title: "Vernier Calliper",
+            title: "Measure the area of the cross-section of a solid cylinder by measuring its diameter with Vernier callipers",
             link: "../simulations/physics/VernierCalliper.html"
         },
         {
-            title: "Time Presion of Pendulum",
+            title: "Study the effect of length of simple pendulum on its time period and hence find the value of ‘g’ by calculation",
             link: "../simulations/physics/SimplePendulam2.html"
         },
         {
-            title: "Simple Pendulam",
+            title: "Prove that time period of a simple pendulum is independent of mass of the Pendulum",
             link: "../simulations/physics/SimplePendulam.html"
         },
         {
-            title: "Refraction Of Light",
+            title: "To verify the laws of refraction by using a glass slab",
             link: "../simulations/physics/RefractionofLight.html"
         },
 
         {
-            title: "Principle of Moment",
+            title: "Verify the principle of moments by using a metre rod balanced on a wedge",
             link: "../simulations/physics/pricipleofmoment.html"
         },
         // {

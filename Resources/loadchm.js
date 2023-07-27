@@ -8,15 +8,15 @@ function load() {
 
     let data = [
         {
-            title: "Separate The Given Mixture of Alcohol And Water By Distillation",
+            title: "Separate the given mixture of alcohol and water by distillation",
             link: "../simulations/Chemistry/BoilingPointofEthylAlchohol.html"
         },
         {
-            title: "Boiling Point of Ethyle Alcohol",
+            title: "To determine the boiling point of ethyl alcohol",
             link: "../simulations/Chemistry/BPofEthlyAlcohol.html"
         },
         {
-            title: "Boiling Point of Nepthalene",
+            title: "To determine the melting point of naphthalene",
             link: "../simulations/Chemistry/BPofnapthelene.html"
         },
         {
@@ -25,7 +25,7 @@ function load() {
         },
 
         {
-            title: `Sublimation using Solid Ammonium Chloride`,
+            title: `To demonstrate sublimation using Solid Ammonium Chloride`,
             link: "../simulations/Chemistry/sublimation.html"
         },
         // {
