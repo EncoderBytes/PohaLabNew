@@ -308,15 +308,16 @@
                                     <button style="width:100%; height:56px; font-weight:
                                                                     500;" class="btn py-1" data-bs-toggle="collapse"
                                         data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('simulator')">Simulator</button>
+                                        aria-controls="navbarSupportedContent1" onclick="change('video')">Video</button>
                                 </li>
                                 <li class="nav-item mx-1">
                                     <button style="width:100%; height:56px; font-weight:
                                                                     500;" class="btn py-1" data-bs-toggle="collapse"
                                         data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1" onclick="change('video')">Video</button>
+                                        aria-controls="navbarSupportedContent1"
+                                        onclick="change('simulator')">Simulator</button>
                                 </li>
+                                
                                 <li class="nav-item mx-1">
                                     <button style="width:100%; height:56px; font-weight:
                                                                     500;" class="btn py-1" data-bs-toggle="collapse"
@@ -484,7 +485,7 @@
             <!-- viva question -->
             <div class="itemOfMenu my-5  pt-4" id="vivaQuestion" style="display:none;">
 
-                <form>
+                <form id="quizForm">
                     <div class="mb-3">
                         <h3>
                             1. Liquid ethanol can be separated from a mixture of ethanol and water by:
@@ -743,6 +744,8 @@
 
             </div>
 
+            <div id="resultMessage" style="font-size: 23px; color: green; font-family: verdana;"></div>
+
         </div>
 
 
@@ -768,6 +771,81 @@
         <img src="../../pictures/footerCircle.png" style="height:200px; width:auto;
                                 position:absolute; right:-8px; bottom:-2px;" alt="">
     </div>
+<!-- <script>
+    // Correct answers
+    const answers = {
+        q1m3: true,
+        q2m1: true,
+        q3m1: true,
+        q4m3: true,
+        q5m2: true,
+    };
+
+    // Function to handle the form submission
+    document.getElementById('quizForm').onsubmit = function (event) {
+        event.preventDefault();
+
+        // Variables to keep track of the results
+        let totalQuestions = 0;
+        let correctAnswers = 0;
+
+        // Loop through the radio buttons and check the answers
+        const radioButtons = document.querySelectorAll('input[type="radio"]');
+        radioButtons.forEach((radio) => {
+            const questionId = radio.id;
+            const selectedAnswer = radio.checked;
+            const correctAnswer = answers[questionId];
+
+            if (selectedAnswer === correctAnswer) {
+                // Correct answer selected
+                radio.parentElement.style.backgroundColor = 'green';
+                correctAnswers++;
+            } else {
+                // Wrong answer selected
+                radio.parentElement.style.backgroundColor = 'red';
+                radio.parentElement.style.color = 'white'; // Set text color to white for better visibility
+            }
+
+            totalQuestions++;
+            radio.disabled = true; // Disable the radio buttons after submission
+        });
+
+        // Calculate the percentage of correct answers
+        const percentageCorrect = (correctAnswers / totalQuestions) * 100;
+        const resultMessage = `You Correct ${correctAnswers} out of 5 questions`;
+
+        // Show the result message
+        const resultContainer = document.getElementById('resultMessage');
+        resultContainer.textContent = resultMessage;
+        resultContainer.style.display = 'block';
+    };
+</script> -->
+<!-- Add this script at the end of your HTML body or in a separate .js file -->
+<script>
+    const answers = {
+        q1m3: true,
+        q2m1: true,
+        q3m1: true,
+        q4m3: true,
+        q5m2: true,
+    };
+
+    document.getElementById('quizForm').addEventListener('submit', function (event) {
+        event.preventDefault();
+        const form = event.target;
+        const formData = new FormData(form);
+
+        for (const [key, value] of formData.entries()) {
+            const answerElement = document.getElementById(key);
+            if (value === 'true') {
+                answerElement.nextElementSibling.style.color = 'green';
+            } else {
+                answerElement.nextElementSibling.style.color = 'red';
+            }
+        }
+    });
+</script>
+
     <script>
         // Add active class to the current button (highlight it)
         var header = document.getElementById("menuItems");
