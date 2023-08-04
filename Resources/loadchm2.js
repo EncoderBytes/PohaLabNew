@@ -8,7 +8,7 @@ function load() {
 
     let data = [
         {
-            title: "Identify Sodium, Calcium, Strontium Barium, Copper, Potassium Fadical by Flame Test",
+            title: "Identify sodium, Calcium, Strontium, Barium, Copper, and Potassium ions by flame test",
             link: "../simulations/Chemistry/Identifysodiumcalciumstrontiumbariumcopperpotassiumradicalbyflametest.html"
         },
         {
@@ -16,11 +16,11 @@ function load() {
             link: "../simulations/Chemistry/DeterminetheexactmolarityoftheNa2CO3solutionvolumetrically.html"
         },
         {
-            title: "Fehling and Tollens Test",
+            title: "Identify aldehydes using Fehling’s test and Tollen’s Test ",
             link: "../simulations/Chemistry/FehlingandTollensTest.html"
         },
         {
-            title: `Identify ketones using 2,4  dinitrophenyl Hydrazine Test`,
+            title: `Identify ketones using 2,4-dinitrophenyl Hydrazine test `,
             link: "../simulations/Chemistry/Identifyketonesusing2,4dinitrophenylhydrazinetest.html"
         },
 
@@ -29,8 +29,12 @@ function load() {
         //     link: "../simulations/Chemistry/Identifysodium,calcium,strontiumbarium,copper,potassiumradicalbyflametest.html"
         // },
         {
-            title: `Standardizing NaOH Solution Volumetrically`,
+            title: `Standardize the given NaOH solution volumetrically`,
             link: "../simulations/Chemistry/StandardizingNaOHSolutionVolumetrically.html"
+        },
+        {
+            title: `Identify saturated and unsaturated organic compounds by KMnO4 test `,
+            link: "../simulations/Chemistry/IdentifysaturatedandunsaturatedorganiccompoundsbyKMnO4test.html"
         },
         // {
         //     title: `Concave Mirror-Focal
