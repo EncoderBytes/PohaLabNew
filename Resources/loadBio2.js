@@ -8,25 +8,25 @@ function load() {
 
     let data = [
         {
-            title: `Alovera`,
-            link: "../simulations/Biology/Aloevera.html"
+            title: `Activity to compare the breathing rate at rest and after exercise`,
+            link: "../simulations/Biology/breathingrate.html"
         },
         {
-            title: `Examination of Animal & Plant Under Microscope`,
-            link: "../simulations/Biology/Microscopeexaminationofananimalcell.html"
+            title: `Demonstration of the presence of tar in cigarette smoke and also showing by charts and pictures the difference of lungs of smokers and non-smokers`,
+            link: "../simulations/Biology/cigratesmoking.html"
         },
         {
-            title: `Examination of Animal Cell Under Microscope`,
-            link: "../simulations/Biology/Microscope_examination_of_an_animal&plant_cell.html"
+            title: `Examination of the structure of the Kidney (Sheep Kidney / Model) `,
+            link: "../simulations/Biology/structureofkidney.html"
         },
         {
-            title: `Observation of Amoeba Fission`,
-            link: "../simulations/Biology/observationofbinaryfission.html"
+            title: `Identify the different parts and draw a labeled diagram of the longitudinal section of the eye of a sheep or a bull`,
+            link: "../simulations/Biology/eyeofthesheep.html"
         },
 
         {
-            title: `Study Diff Type Amoeba`,
-            link: "../simulations/Biology/difftypesofbacteriaAmoeba.html"
+            title: `Observation of binary fission in Amoeba by using slides, Photomicrographs, and Charts`,
+            link: "../simulations/Biology/fissioninamoeba.html"
         },
         // {
         //     title: `AC Sonometer`,
