@@ -1,255 +1,344 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Poha Lab</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="../../style.css" />
     <style>
-        .bg-blueLight {
-            background: linear-gradient(90deg, #71AF06 0%, #8DCE1C 100%);
-            color: white;
-        }
+      .bg-blueLight {
+        background: linear-gradient(90deg, #71af06 0%, #8dce1c 100%);
+        color: white;
+      }
 
-        #menuItems button {
-            margin: 3px;
-        }
+      #menuItems button {
+        margin: 3px;
+      }
 
-        .navbar-toggler:focus,
-        .navbar-toggler:active,
-        .navbar-toggler-icon:focus {
-            outline: none;
-            box-shadow: none;
-        }
+      .navbar-toggler:focus,
+      .navbar-toggler:active,
+      .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
+      }
 
-        #menuItems button:hover {
-            border-bottom: 2px solid 71AF06;
-        }
+      #menuItems button:hover {
+        border-bottom: 2px solid 71AF06;
+      }
 
-        h3 {
-            font-size: 20px;
-        }
+      h3 {
+        font-size: 20px;
+      }
 
-        .form-check,
-        #resource ul li {
-            color: #8F8F8F;
-        }
+      .form-check,
+      #resource ul li {
+        color: #8f8f8f;
+      }
 
-        h3 {
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 600;
-        }
+      h3 {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+      }
 
-        .ohms {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+      .ohms {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
 
+      #Main {
+        height: 800px;
+      }
+
+      @media only screen and (max-width: 800px) {
         #Main {
-            height: 800px;
+          height: 1000px;
         }
+      }
 
-        @media only screen and (max-width: 800px) {
-            #Main {
-                height: 1000px;
-            }
-        }
+      .feedback {
+        width: 100%;
+        max-width: 780px;
+        background: #fff;
+        margin: 0 auto;
+        padding: 15px;
+        box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
+      }
 
+      .survey-hr {
+        margin: 10px 0;
+        border: 0.5px solid #ddd;
+      }
 
-        .feedback {
-            width: 100%;
-            max-width: 780px;
-            background: #fff;
-            margin: 0 auto;
-            padding: 15px;
-            box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
-        }
+      .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+      }
 
-        .survey-hr {
-            margin: 10px 0;
-            border: .5px solid #ddd;
-        }
+      .rate:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+      }
 
-        .rate {
-            float: left;
-            height: 46px;
-            padding: 0 10px;
-        }
+      .rate:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 50px;
+        color: #ccc;
+      }
 
-        .rate:not(:checked)>input {
-            position: absolute;
-            top: -9999px;
-        }
+      .rate:not(:checked) > label:before {
+        content: "★ ";
+      }
 
-        .rate:not(:checked)>label {
-            float: right;
-            width: 1em;
-            overflow: hidden;
-            white-space: nowrap;
-            cursor: pointer;
-            font-size: 50px;
-            color: #ccc;
-        }
+      .rate > input:checked ~ label {
+        color: #71af06;
+      }
 
-        .rate:not(:checked)>label:before {
-            content: '★ ';
-        }
+      .rate:not(:checked) > label:hover,
+      .rate:not(:checked) > label:hover ~ label {
+        color: #71af06;
+      }
 
-        .rate>input:checked~label {
-            color: #71AF06;
-        }
+      .rate > input:checked + label:hover,
+      .rate > input:checked + label:hover ~ label,
+      .rate > input:checked ~ label:hover,
+      .rate > input:checked ~ label:hover ~ label,
+      .rate > label:hover ~ input:checked ~ label {
+        color: #71af06;
+      }
 
-        .rate:not(:checked)>label:hover,
-        .rate:not(:checked)>label:hover~label {
-            color: #71AF06;
-        }
+      #navbarSupportedContent {
+        margin: 0 0 0 35rem;
+      }
 
-        .rate>input:checked+label:hover,
-        .rate>input:checked+label:hover~label,
-        .rate>input:checked~label:hover,
-        .rate>input:checked~label:hover~label,
-        .rate>label:hover~input:checked~label {
-            color: #71AF06;
-        }
-
-
+      @media screen and (max-width: 600px) {
         #navbarSupportedContent {
-            margin: 0 0 0 35rem;
+          margin: 0;
+          background-color: #084568;
         }
-
-        @media screen and (max-width: 600px) {
-            #navbarSupportedContent {
-
-                margin: 0;
-                background-color: #084568;
-            }
-
-
-        }
+      }
     </style>
     <script>
-        function change(target) {
-            List = document.getElementsByClassName("itemOfMenu");
-            for (i in List) {
-                List[i].style = "display:none";
-            }
-            if (target == "simulator") {
-                document.getElementById("Main").style = "background:#F9F9F9; padding-bottom:20px; height:fit-content;";
-                document.getElementById(target).style = "display:flex; justify-content:space-between; height:fit-content; width:fit-content; ";
-            } else {
-                document.getElementById(target).style.display = "block";
-                document.getElementById("Main").style = "background:#F9F9F9; height:fit-content; padding-bottom:20px;";
-            }
+      function change(target) {
+        List = document.getElementsByClassName("itemOfMenu");
+        for (i in List) {
+          List[i].style = "display:none";
         }
+        if (target == "simulator") {
+          document.getElementById("Main").style =
+            "background:#F9F9F9; padding-bottom:20px; height:fit-content;";
+          document.getElementById(target).style =
+            "display:flex; justify-content:space-between; height:fit-content; width:fit-content; ";
+        } else {
+          document.getElementById(target).style.display = "block";
+          document.getElementById("Main").style =
+            "background:#F9F9F9; height:fit-content; padding-bottom:20px;";
+        }
+      }
     </script>
-</head>
+  </head>
 
-<body style="background-color: rgb(240,239,239);">
+  <body style="background-color: rgb(240, 239, 239)">
     <div class="container-fluid">
-        <div class="container-fluid" style="height:70px; background-color: #084568;">
-            <nav class="navbar navbar-expand-lg container">
-                <div class="container-fluid">
-                    <a style="  line-height: 41px;" href="../../index.html">
-                        <img src="../../pictures/logomain.png" alt="">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                            <li class="nav-item" style=" display: inline-block; margin: 0 5px;">
-                                <a class="active nav-link"
-                                    style="color: white; text-decoration: auto;  font-size: 17px;  padding: 10px 13px;  border-radius: 3px;  text-transform: uppercase;"
-                                    href="../../index.html">
-                                    Home
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    About
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    Gallery
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    News
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    Contact
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    REgistration
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <div class="container bg-white rounded my-4 d-flex
-                align-items-center" style="min-height:270px;
-                max-height:fit-content">
-            <div class="row w-100 my-0 mx-auto overflow-hidden h-fit-content
-                    h-270">
-
-                <div class="col-xl-8 col-lg-8 col-md-7 col-sm-10 my-2
-                        mx-auto
-
-                        d-flex align-items-center justify-content-between 
-                        flex-column">
-                    <selection class=" align-self-start" style="text-transform:
-                            uppercase;">
-                        <h5 style="
-                                color:#8F8F8F;">
-                            Biology
-                        </h5>
-                        <h3 class="fs-1" style="color: #71AF06;">
-                            Demonstration of the presence of tar in cigarette smoke and also showing by charts and pictures the difference of lungs of smokers and non-smokers
-                        </h3>
-                    </selection>
-                </div>
-                <div class=" col-xl-4 col-lg-4 col-md-5 col-sm-8 my-2 mx-auto d-flex align-items-center">
-                    <img src="../../pictures/bio/3.png" class="rounded" style="width:auto;
-                            height:224px; margin:0px auto;" alt="">
-                </div>
+      <div
+        class="container-fluid"
+        style="height: 70px; background-color: #084568"
+      >
+        <nav class="navbar navbar-expand-lg container">
+          <div class="container-fluid">
+            <a style="line-height: 41px" href="../../index.html">
+              <img src="../../pictures/logomain.png" alt="" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="active nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="../../index.html"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    About
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    Gallery
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    News
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    Contact
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    REgistration
+                  </a>
+                </li>
+              </ul>
             </div>
+          </div>
+        </nav>
+      </div>
 
+      <div
+        class="container bg-white rounded my-4 d-flex align-items-center"
+        style="min-height: 270px; max-height: fit-content"
+      >
+        <div class="row w-100 my-0 mx-auto overflow-hidden h-fit-content h-270">
+          <div
+            class="col-xl-8 col-lg-8 col-md-7 col-sm-10 my-2 mx-auto d-flex align-items-center justify-content-between flex-column"
+          >
+            <selection
+              class="align-self-start"
+              style="text-transform: uppercase"
+            >
+              <h5 style="color: #8f8f8f">Biology</h5>
+              <h3 class="fs-1" style="color: #71af06">
+                Demonstration of the presence of tar in cigarette smoke and also
+                showing by charts and pictures the difference of lungs of
+                smokers and non-smokers
+              </h3>
+            </selection>
+          </div>
+          <div
+            class="col-xl-4 col-lg-4 col-md-5 col-sm-8 my-2 mx-auto d-flex align-items-center"
+          >
+            <img
+              src="../../pictures/bio/3.png"
+              class="rounded"
+              style="width: auto; height: 224px; margin: 0px auto"
+              alt=""
+            />
+          </div>
         </div>
+      </div>
 
-        <div class="container my-2 position-relative" id="Main" style="background:#F9F9F9;
-                height:fit-content; padding-bottom:20px;">
-
-            <!-- <div class="container-fluid d-flex justify-content-start
+      <div
+        class="container my-2 position-relative"
+        id="Main"
+        style="background: #f9f9f9; height: fit-content; padding-bottom: 20px"
+      >
+        <!-- <div class="container-fluid d-flex justify-content-start
                     flex-wrap gap-3 p-0 rounded" style="background:#DADADA;
                     height:fit-content;" id="menuItems">
                 <button style="width:fit-content; height:56px; font-weight:
@@ -272,773 +361,1074 @@
                         500;" class="btn py-1">Feedback</button>
             </div> -->
 
-            <div class="w-100 pb-5">
-                <nav class="navbar navbar-expand-lg bg-white rounded mx-3 mt-2" id="menuItems"
-                    style="position:absolute; left:0px; right:0px; z-index:222; ">
-                    <div class="container-fluid ">
-                        <button class="navbar-toggler border-0" style="font-size:15px" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse " id="navbarSupportedContent1">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500; align-self: flex-start;" class="btn bg-blueLight
-                                                                py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('theory')">Theory</button>
-                                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <!-- <a class="nav-link" href="#">Link</a> -->
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('procedure')">Procedure</button>
-                                </li>
-                                <!-- <li class="nav-item mx-1">
+        <div class="w-100 pb-5">
+          <nav
+            class="navbar navbar-expand-lg bg-white rounded mx-3 mt-2"
+            id="menuItems"
+            style="position: absolute; left: 0px; right: 0px; z-index: 222"
+          >
+            <div class="container-fluid">
+              <button
+                class="navbar-toggler border-0"
+                style="font-size: 15px"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent1"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse"
+                id="navbarSupportedContent1"
+              >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item mx-1">
+                    <button
+                      style="
+                        width: 100%;
+                        height: 56px;
+                        font-weight: 500;
+                        align-self: flex-start;
+                      "
+                      class="btn bg-blueLight py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('theory')"
+                    >
+                      Theory
+                    </button>
+                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+                  </li>
+                  <li class="nav-item mx-1">
+                    <!-- <a class="nav-link" href="#">Link</a> -->
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('procedure')"
+                    >
+                      Procedure
+                    </button>
+                  </li>
+                  <!-- <li class="nav-item mx-1">
                                                                         <button style="width:100%; height:56px; font-weight:
                                                                 500;" class="btn py-1">  Animation</button>
                                                                     </li> -->
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1" onclick="change('video')">Video</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('simulator')">Simulator</button>
-                                </li>
-                                
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1" onclick="change('vivaQuestion')">Viva
-                                        Voice</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('resource')">Resources</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('Feedback')">Feedback</button>
-                                </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('video')"
+                    >
+                      Video
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('simulator')"
+                    >
+                      Simulator
+                    </button>
+                  </li>
 
-
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('vivaQuestion')"
+                    >
+                      Viva Voice
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('resource')"
+                    >
+                      Resources
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('Feedback')"
+                    >
+                      Feedback
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </nav>
+        </div>
 
-
-            <div class="w-100 itemOfMenu my-5 pt-4" id="theory">
-                <div class="row ">
-                    <div class="col-lg-8 col-md-9 col-sm-12">
-<!--                         <h4>
+        <div class="w-100 itemOfMenu my-5 pt-4" id="theory">
+          <div class="row">
+            <div class="col-lg-8 col-md-9 col-sm-12">
+              <!--                         <h4>
                             ACTIVITY TO COMPARE THE BREATHING RATE AT REST AND AFTER EXERCISE
                         </h4> -->
-                        <p class=" ">
-                            Cigarette smoke contains various harmful substances, including tar, which is a sticky, brown residue that forms when tobacco is burned. Tar contains numerous toxic chemicals and carcinogens that can have detrimental effects on the respiratory system. By conducting a practical demonstration, we can show the presence of tar in cigarette smoke and visually illustrate the differences in lung health between smokers and non-smokers.
+              <p class=" ">
+                Cigarette smoke contains various harmful substances, including
+                tar, which is a sticky, brown residue that forms when tobacco is
+                burned. Tar contains numerous toxic chemicals and carcinogens
+                that can have detrimental effects on the respiratory system. By
+                conducting a practical demonstration, we can show the presence
+                of tar in cigarette smoke and visually illustrate the
+                differences in lung health between smokers and non-smokers.
+              </p>
+              <h4>Apparatus</h4>
+              <p class=" "></p>
+              <ol>
+                <li>Cigarettes or tobacco samples</li>
+                <li>Glass jar with a lid</li>
+                <li>Cotton balls or filter paper</li>
+                <li>Safety goggles and gloves</li>
+                <li>Spirit lamp</li>
+                <li>Pictures or illustrations of healthy and diseased lungs</li>
+              </ol>
+              <h4>Precautions</h4>
+              <p class=" ">
+                It is important to conduct this practical demonstration in a
+                well-ventilated area and follow safety protocols to minimize
+                exposure to harmful smoke and protect the well-being of
+                participants.
+              </p>
 
-                        </p>
-                        <h4>
-                            Apparatus
-                        </h4>
-                        <p class=" ">
+              <h4>Difference between healthy lungs and diseased lungs:</h4>
+              <ol>
+                <li>
+                  Healthy lungs exhibit a pinkish color and smooth texture.
+                </li>
+                <li>
+                  Diseased lungs associated with smoking may show tar deposits,
+                  blackened areas, and indications of respiratory diseases such
+                  as lung cancer or COPD.
+                </li>
+                <li>
+                  The comparison between healthy and diseased lungs visually
+                  emphasizes the negative impact of smoking on lung health.
+                </li>
+              </ol>
 
-                        </p>
-                        <ol>
-                            <li>
-                               Cigarettes or tobacco samples
-                            </li>
-                            <li>
-                               Glass jar with a lid
-                            </li>
-                            <li>
-                                Cotton balls or filter paper
-                            </li>
-                            <li>
-                                Safety goggles and gloves
-                            </li>
-                            <li>
-                                Spirit lamp
-                            </li>
-                            <li>
-                                Pictures or illustrations of healthy and diseased lungs
-                            </li>
-                        </ol>
-                        <h4>
-                            Precautions
-                        </h4>
-                        <p class=" ">
-                                    It is important to conduct this practical demonstration in a well-ventilated area and follow safety protocols to minimize exposure to harmful smoke and protect the well-being of participants.
-                        </p>
-
-                        <h4>
-                            Difference between healthy lungs and diseased lungs:
-                        </h4>
-                        <p class=" ">
-                            <ol>
-                                <li>
-                                    Healthy lungs exhibit a pinkish color and smooth texture.
-                                </li>
-                                <li>
-                                    Diseased lungs associated with smoking may show tar deposits, blackened areas, and indications of respiratory diseases such as lung cancer or COPD.
-                                </li>
-                                <li>
-                                    The comparison between healthy and diseased lungs visually emphasizes the negative impact of smoking on lung health.
-                                </li>
-                            </ol>
-                        </p>
-
-                        <h4>
-                            Observation
-                        </h4>
-                        <p class=" ">
-                            <ol>
-                                <li>
-                                    Presence of tar in cigarette smoke:
-                                </li>
-                                <ul>
-                                    <li>
-                                        The cotton ball or filter paper inside the jar turns brown due to the condensation of tar.
-                                    </li>
-                                    <li>
-                                        Note the presence of tar by rubbing white tissue paper on the inner wall of the funnel.
-                                    </li>
-                                </ul>
-                            </ol>
-                        </p>
-                    </div>
-
-                </div>
+              <h4>Observation</h4>
+              <ol>
+                <li>Presence of tar in cigarette smoke:</li>
+                <ul>
+                  <li>
+                    The cotton ball or filter paper inside the jar turns brown
+                    due to the condensation of tar.
+                  </li>
+                  <li>
+                    Note the presence of tar by rubbing white tissue paper on
+                    the inner wall of the funnel.
+                  </li>
+                </ul>
+              </ol>
             </div>
+          </div>
+        </div>
 
-            <!-- for procedure -->
-            <div class="w-100 itemOfMenu my-5 pt-4" id="procedure" style="display:none;">
-                <div class="row">
-                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
-                        <h4>
-                            Procedure
-                        </h4>
-                        <ol>
-                            <li>
-                                Demonstrating the presence of tar in cigarette smoke
-                            </li>
-                            <li>
-                                Put on safety goggles and gloves to ensure personal safety.
-                            </li>
-                            <li>
-                                Take a glass jar and place a cotton ball or a piece of filter paper at the bottom.
-                            </li>
-                            <li>
-                                Ignite a cigarette using match and let it burn for a few seconds.
-                            </li>
-                            <li>
-                                Ignite a cigarette using match and let it burn for a few seconds.
-                            </li>
-                            <li>
-                                Blow the smoke into the jar and quickly close the lid to trap the smoke inside.
-                            </li>
-                            <li>
-                                Allow the jar to sit undisturbed for a few minutes to allow the tar to condense on the cotton ball or filter paper.
-                            </li>
-                            <li>
-                                Carefully remove the cotton ball or filter paper and observe the brown discoloration caused by the tar.
-                            </li>
-                            <li>
-                                This demonstrates the presence of tar in cigarette smoke.
-                            </li>
-                        </ol>
-                    </div>
-                </div>
+        <!-- for procedure -->
+        <div
+          class="w-100 itemOfMenu my-5 pt-4"
+          id="procedure"
+          style="display: none"
+        >
+          <div class="row">
+            <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
+              <h4>Procedure</h4>
+              <ol>
+                <li>Demonstrating the presence of tar in cigarette smoke</li>
+                <li>
+                  Put on safety goggles and gloves to ensure personal safety.
+                </li>
+                <li>
+                  Take a glass jar and place a cotton ball or a piece of filter
+                  paper at the bottom.
+                </li>
+                <li>
+                  Ignite a cigarette using match and let it burn for a few
+                  seconds.
+                </li>
+                <li>
+                  Ignite a cigarette using match and let it burn for a few
+                  seconds.
+                </li>
+                <li>
+                  Blow the smoke into the jar and quickly close the lid to trap
+                  the smoke inside.
+                </li>
+                <li>
+                  Allow the jar to sit undisturbed for a few minutes to allow
+                  the tar to condense on the cotton ball or filter paper.
+                </li>
+                <li>
+                  Carefully remove the cotton ball or filter paper and observe
+                  the brown discoloration caused by the tar.
+                </li>
+                <li>
+                  This demonstrates the presence of tar in cigarette smoke.
+                </li>
+              </ol>
             </div>
+          </div>
+        </div>
 
-            <!-- Simulator -->
-            <div class="w-100 itemOfMenu  pt-4 my-5
-                    position-relative " id="simulator" style="display:none;">
-                <img src="../../pictures/circle.png" style="width:60px;
-                        height:60px; position:absolute; top:20px; right:0px;" alt="">
+        <!-- Simulator -->
+        <div
+          class="w-100 itemOfMenu pt-4 my-5 position-relative"
+          id="simulator"
+          style="display: none"
+        >
+          <img
+            src="../../pictures/circle.png"
+            style="
+              width: 60px;
+              height: 60px;
+              position: absolute;
+              top: 20px;
+              right: 0px;
+            "
+            alt=""
+          />
 
-
-                <div class="h-100  w-100 overflow-hidden" style="
-                        z-index:111;">
-                    <h1 style="background-color: #084568; margin: 0;
-                        padding: 19px;">
-                        <!-- <img src="../../src/images/Group2.png" alt="" style="float: left; width: 30px;
+          <div class="h-100 w-100 overflow-hidden" style="z-index: 111">
+            <h1 style="background-color: #084568; margin: 0; padding: 19px">
+              <!-- <img src="../../src/images/Group2.png" alt="" style="float: left; width: 30px;
                             padding-top:16px;"> -->
-                        <span style="font-style: normal;
-                            font-weight:600;
-                            font-size: 25px; line-height: 39px;
-                            color:#FFFFFF; padding-left: 0px; text-transform: capitalize;">
-                            DEMONSTRATION OF THE PRESENCE OF TAR IN CIGARETTE SMOKE AND ALSO SHOWING BY CHARTS AND PICTURES THE DIFFERENCE OF LUNGS OF SMOKERS AND NON-SMOKERS</span>
-                    </h1>
-                    <div class="row gap-5">
-                        <div class="col-lg-7 col-md-8 col-sm-12" style="background-color:white; width:800px;
-                                overflow-x: scroll; position: relative;">
+              <span
+                style="
+                  font-style: normal;
+                  font-weight: 600;
+                  font-size: 25px;
+                  line-height: 39px;
+                  color: #ffffff;
+                  padding-left: 0px;
+                  text-transform: capitalize;
+                "
+              >
+                DEMONSTRATION OF THE PRESENCE OF TAR IN CIGARETTE SMOKE AND ALSO
+                SHOWING BY CHARTS AND PICTURES THE DIFFERENCE OF LUNGS OF
+                SMOKERS AND NON-SMOKERS</span
+              >
+            </h1>
+            <div class="row gap-5">
+              <div
+                class="col-lg-7 col-md-8 col-sm-12"
+                style="
+                  background-color: white;
+                  width: 800px;
+                  overflow-x: scroll;
+                  position: relative;
+                "
+              >
+                <iframe
+                  src="./10biology/Demonstrationofthepresenceoftarincigarettesmoke"
+                  frameborder="0"
+                  width="772px"
+                  height="531"
+                  allowfullscreen="allowfullscreen"
+                ></iframe>
 
-                            <iframe src="10biology/Breathing Rate" frameborder="0" width="772px" height="531"
-                                allowfullscreen="allowfullscreen"></iframe>
-
-                            <!-- for animation -->
-                            <!-- <div class="animationDiv">
+                <!-- for animation -->
+                <!-- <div class="animationDiv">
                                 <div class="scroll">
                                 </div>
                             </div> -->
+              </div>
+              <div
+                class="col-md-3 col-sm-12"
+                style="background-color: #f5f5f5"
+                class=""
+              >
+                <div class="mx-auto">
+                  <h2
+                    style="
+                      margin: 0;
+                      background-color: #71af06;
+                      font-style: normal;
+                      font-weight: 600;
+                      font-size: 24px;
+                      line-height: 29px;
+                      padding: 10px;
+                      color: #ffffff;
+                    "
+                  >
+                    Steps
+                  </h2>
+                  <ol style="padding: 10px 3px 0px 26px; font-size: 14px">
+                    <li>
+                      Choose three slides and mark them X, Y and Z respectively.
+                    </li>
 
-
-                        </div>
-                        <div class="col-md-3 col-sm-12" style="
-                                background-color: #F5F5F5;" class="">
-                            <div class="mx-auto">
-                                <h2 style=" margin:0;background-color: #71AF06;
-                            font-style: normal;font-weight:
-                            600;font-size: 24px;line-height:
-                            29px;padding: 10px;color: #FFFFFF;">
-                                    Steps
-                                </h2>
-                                <ol style="padding: 10px 3px 0px 26px;;
-                            font-size:
-                            14px;">
-                                    <li>Choose three slides and mark them X, Y and Z respectively.
-
-                                    <li>Put a drop of blood on each slide by piercing the tip of the finger by a
-                                        sterilized needle.</li>
-                                    <li>Add 2-3 drops of sugar solution of 0.1; 0.9 and 5% on slide X, Y and Z
-                                        respectively.</li>
-                                    <li> Cover each slide with a cover slip and observe under microscope
-                                    </li>
-
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
+                    <li>
+                      Put a drop of blood on each slide by piercing the tip of
+                      the finger by a sterilized needle.
+                    </li>
+                    <li>
+                      Add 2-3 drops of sugar solution of 0.1; 0.9 and 5% on
+                      slide X, Y and Z respectively.
+                    </li>
+                    <li>
+                      Cover each slide with a cover slip and observe under
+                      microscope
+                    </li>
+                  </ol>
                 </div>
-                <!-- <img src="../../pictures/vector3.png" style="position:absolute; left:0px; bottom:0px; width:400px;" alt=""> -->
+              </div>
             </div>
-
-
-            <!-- Video -->
-            <div class="itemOfMenu my-5  pt-4 position-relative" style="height:650px; display: none;" id="video">
-                <div class="d-flex justify-content-center align-items-center
-                        pb-5">
-                    <iframe width="740px" height="480px" src="https://www.youtube.com/embed/v6RhCpYtYjA"
-                        title="YouTube video player" frameborder="0" style="z-index: 111;"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <img src="../../pictures/vectorRightOrange.png" style="position:absolute; bottom:0px; right:-12px;
-                        width:50%;" alt="">
-            </div>
-
-
-            <!-- viva question -->
-            <div class="itemOfMenu my-5  pt-4" id="vivaQuestion" style="display:none;">
-
-                <form>
-                    <div class="mb-3">
-                        <h3>
-                            1.  What is the purpose of demonstrating the presence of tar in cigarette smoke?
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m1">
-                                 a) To raise awareness about the harmful effects of smoking 
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m2">
-                                b) To promote smoking cessation programs 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m3">
-                                c) To encourage people to quit smoking 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m4">
-                               d) To educate about the health risks associated with smoking
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            2.  How can you demonstrate the presence of tar in cigarette smoke? 
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m1">
-                                 a) Using a smoke analyzer device  
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m2">
-                               b) Collecting and analyzing cigarette smoke residue 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m3">
-                               c) Conducting a chemical test on cigarette smoke 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m4">
-                                d) Observing the color changes of a filter exposed to cigarette smoke
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            3.  What happens to the color of the filter when exposed to cigarette smoke containing tar?
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m1">
-                                 a) The filter remains unchanged in color
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m2">
-                                 b) The filter turns yellowish-brown or dark brown
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m3">
-                                 c) The filter becomes lighter in color
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m4">
-                                  d) The filter turns blue or green
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            4.  Why does the filter change color when exposed to cigarette smoke? 
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m1">
-                                a) Due to the presence of nicotine in the smoke
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m2">
-                                 b) Due to the heat generated by the cigarette
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m3">
-                                 c) Due to the chemicals and tar particles in the smoke 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m4">
-                                d) Due to the presence of carbon monoxide in the smoke
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            5.  What are the harmful effects of tar on the respiratory system?
-
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                 a) Tar causes lung cancer  
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                b) Tar leads to chronic bronchitis and emphysema 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                               c) Tar damages the cilia in the airways 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                d) All of the above
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            6.  How do the lungs of smokers differ from the lungs of non-smokers? 
-
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                a) Smokers' lungs have a higher lung capacity 
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                b) Smokers' lungs are cleaner and free from tar  
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                              c) Smokers' lungs show signs of tar accumulation and damage 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                d) Smokers' lungs are more resistant to respiratory diseases
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            7.  What visual evidence can be used to demonstrate the difference in lungs between smokers and non-smokers? 
-
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                a) X-ray images of lungs 
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                 b) CT scan images of lungs
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                                c) Comparative photographs of healthy and tar-filled lungs
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                d) All of the above
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            8.  What are some common health problems associated with smoking? 
-
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                               a) Lung cancer 
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                b) Chronic obstructive pulmonary disease (COPD) 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                               c) Cardiovascular diseases 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                d) All of the above
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                           9.   How can smoking cessation benefit individuals?  
-
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                               a) Reduced risk of developing smoking-related diseases 
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                 b) Improved lung function and overall health   
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                               c) Increased life expectancy  
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                d) All of the above
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            10. What measures can be taken to discourage smoking and promote a smoke-free environment? a) Implementing tobacco control policies
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                a) Implementing tobacco control policies
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                  b) Conducting anti-smoking campaigns and awareness programs   
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                               c) Providing smoking cessation support and resources
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                d) All of the above
-                            </label>
-                        </div>
-
-                    </div>
-                    <button type="submit" class="btn
-                                            btn-primary">Submit</button>
-                    <button type="reset" class="btn fw-bold" style="background:
-                                            linear-gradient(135deg, #0072FF 0%,
-                                            #00C6FF 100%);
-                                            -webkit-background-clip: text;
-                                            -webkit-text-fill-color:
-                                            transparent;
-                                            background-clip: text;
-                                            text-fill-color: transparent;">Cancel</button>
-                </form>
-            </div>
-
-
-            <!-- Resources -->
-            <div class="itemOfMenu my-5 pt-4" id="resource" style="display:none;">
-                <div class="resourceItem">
-                    <h3>
-                        Books
-                    </h3>
-                    <ol>
-                        <li>
-                            Khyber Pakhtunkhwa Biology 9 Practical Note Book Peshawar
-                        </li>
-                        <li>
-                            Khyber Pakhtunkhwa Biology 9 Text Book Peshawar
-                        </li>
-                        <li>
-                            Biology Book Curriculum & Text Book Board Lahore
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display:none;">
-                <form method="post" action="# ">
-                    <label>1. Your overall experience with us ?</label><br>
-
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                    </div>
-                    <br>
-                    <br>
-                    <label class="pt-4" for="m_3189847521540640526commentText">2. Any Other
-                        suggestions:</label><br /><br />
-                    <textarea cols="75" name="commentText" rows="5"></textarea><br>
-                    <br>
-                    <div class="clear"></div>
-                    <input style="background:#71AF06;color:#fff;padding:12px;border:0" type="submit"
-                        value="Submit your review">&nbsp;
-                </form>
-
-
-            </div>
-
+          </div>
+          <!-- <img src="../../pictures/vector3.png" style="position:absolute; left:0px; bottom:0px; width:400px;" alt=""> -->
         </div>
 
+        <!-- Video -->
+        <div
+          class="itemOfMenu my-5 pt-4 position-relative"
+          style="height: 650px; display: none"
+          id="video"
+        >
+          <div class="d-flex justify-content-center align-items-center pb-5">
+            <iframe
+              width="740px"
+              height="480px"
+              src="https://www.youtube.com/embed/v6RhCpYtYjA"
+              title="YouTube video player"
+              frameborder="0"
+              style="z-index: 111"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
 
+          <img
+            src="../../pictures/vectorRightOrange.png"
+            style="position: absolute; bottom: 0px; right: -12px; width: 50%"
+            alt=""
+          />
+        </div>
+
+        <!-- viva question -->
+        <div
+          class="itemOfMenu my-5 pt-4"
+          id="vivaQuestion"
+          style="display: none"
+        >
+          <form>
+            <div class="mb-3">
+              <h3>
+                1. What is the purpose of demonstrating the presence of tar in
+                cigarette smoke?
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m1">
+                  a) To raise awareness about the harmful effects of smoking
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m2">
+                  b) To promote smoking cessation programs
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m3">
+                  c) To encourage people to quit smoking
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m4">
+                  d) To educate about the health risks associated with smoking
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                2. How can you demonstrate the presence of tar in cigarette
+                smoke?
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m1">
+                  a) Using a smoke analyzer device
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m2">
+                  b) Collecting and analyzing cigarette smoke residue
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m3">
+                  c) Conducting a chemical test on cigarette smoke
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m4">
+                  d) Observing the color changes of a filter exposed to
+                  cigarette smoke
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                3. What happens to the color of the filter when exposed to
+                cigarette smoke containing tar?
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m1">
+                  a) The filter remains unchanged in color
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m2">
+                  b) The filter turns yellowish-brown or dark brown
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m3">
+                  c) The filter becomes lighter in color
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m4">
+                  d) The filter turns blue or green
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                4. Why does the filter change color when exposed to cigarette
+                smoke?
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m1">
+                  a) Due to the presence of nicotine in the smoke
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m2">
+                  b) Due to the heat generated by the cigarette
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m3">
+                  c) Due to the chemicals and tar particles in the smoke
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m4">
+                  d) Due to the presence of carbon monoxide in the smoke
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                5. What are the harmful effects of tar on the respiratory
+                system?
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Tar causes lung cancer
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Tar leads to chronic bronchitis and emphysema
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Tar damages the cilia in the airways
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) All of the above
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                6. How do the lungs of smokers differ from the lungs of
+                non-smokers?
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Smokers' lungs have a higher lung capacity
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Smokers' lungs are cleaner and free from tar
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Smokers' lungs show signs of tar accumulation and damage
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) Smokers' lungs are more resistant to respiratory diseases
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                7. What visual evidence can be used to demonstrate the
+                difference in lungs between smokers and non-smokers?
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) X-ray images of lungs
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) CT scan images of lungs
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Comparative photographs of healthy and tar-filled lungs
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) All of the above
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                8. What are some common health problems associated with smoking?
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Lung cancer
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Chronic obstructive pulmonary disease (COPD)
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Cardiovascular diseases
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) All of the above
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>9. How can smoking cessation benefit individuals?</h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Reduced risk of developing smoking-related diseases
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Improved lung function and overall health
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Increased life expectancy
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) All of the above
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                10. What measures can be taken to discourage smoking and promote
+                a smoke-free environment? a) Implementing tobacco control
+                policies
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Implementing tobacco control policies
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Conducting anti-smoking campaigns and awareness programs
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Providing smoking cessation support and resources
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) All of the above
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button
+              type="reset"
+              class="btn fw-bold"
+              style="
+                background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+              "
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+
+        <!-- Resources -->
+        <div class="itemOfMenu my-5 pt-4" id="resource" style="display: none">
+          <div class="resourceItem">
+            <h3>Books</h3>
+            <ol>
+              <li>Khyber Pakhtunkhwa Biology 9 Practical Note Book Peshawar</li>
+              <li>Khyber Pakhtunkhwa Biology 9 Text Book Peshawar</li>
+              <li>Biology Book Curriculum & Text Book Board Lahore</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display: none">
+          <form method="post" action="# ">
+            <label>1. Your overall experience with us ?</label><br />
+
+            <div class="rate">
+              <input type="radio" id="star5" name="rate" value="5" />
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="rate" value="4" />
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="rate" value="3" />
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="rate" value="2" />
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="rate" value="1" />
+              <label for="star1" title="text">1 star</label>
+            </div>
+            <br />
+            <br />
+            <label class="pt-4" for="m_3189847521540640526commentText"
+              >2. Any Other suggestions:</label
+            ><br /><br />
+            <textarea cols="75" name="commentText" rows="5"></textarea><br />
+            <br />
+            <div class="clear"></div>
+            <input
+              style="background: #71af06; color: #fff; padding: 12px; border: 0"
+              type="submit"
+              value="Submit your review"
+            />&nbsp;
+          </form>
+        </div>
+      </div>
     </div>
     <!-- FOOTER -->
-    <div class="container-fluid position-relative
-                            overflow-hidden" style="height: 200px;">
-        <div class="container d-flex justify-content-end
-                                align-items-center h-100">
-            <p>
-                <span style="background:
-                                        linear-gradient(90deg, #F99B27 0%,
-                                        #fda73d 100%);
-                                        -webkit-background-clip: text;
-                                        -webkit-text-fill-color: transparent;
-                                        background-clip: text; font-weight:
-                                        bold;
-                                        text-fill-color: transparent;"> Poha
-                    E-Labs</span> <span class="sm-brown"> |
-                    All rights reserved - 2022</span>
-            </p>
-        </div>
-        <img src="../../pictures/footerCircle.png" style="height:200px; width:auto;
-                                position:absolute; right:-8px; bottom:-2px;" alt="">
+    <div
+      class="container-fluid position-relative overflow-hidden"
+      style="height: 200px"
+    >
+      <div
+        class="container d-flex justify-content-end align-items-center h-100"
+      >
+        <p>
+          <span
+            style="
+              background: linear-gradient(90deg, #f99b27 0%, #fda73d 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              font-weight: bold;
+              text-fill-color: transparent;
+            "
+          >
+            Poha E-Labs</span
+          >
+          <span class="sm-brown"> | All rights reserved - 2022</span>
+        </p>
+      </div>
+      <img
+        src="../../pictures/footerCircle.png"
+        style="
+          height: 200px;
+          width: auto;
+          position: absolute;
+          right: -8px;
+          bottom: -2px;
+        "
+        alt=""
+      />
     </div>
     <script>
-        // Add active class to the current button (highlight it)
-        var header = document.getElementById("menuItems");
-        var btns = header.getElementsByClassName("btn");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                var current = document.getElementsByClassName("bg-blueLight");
-                current[0].className = current[0].className.replace(" bg-blueLight", "");
-                this.className += " bg-blueLight";
-            });
-        }
+      // Add active class to the current button (highlight it)
+      var header = document.getElementById("menuItems");
+      var btns = header.getElementsByClassName("btn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          var current = document.getElementsByClassName("bg-blueLight");
+          current[0].className = current[0].className.replace(
+            " bg-blueLight",
+            ""
+          );
+          this.className += " bg-blueLight";
+        });
+      }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

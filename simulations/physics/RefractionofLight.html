@@ -1,257 +1,342 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Poha Lab</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="../../style.css" />
     <style>
-        .bg-blueLight {
-            background: linear-gradient(90deg, #71AF06 0%, #8DCE1C 100%);
-            color: white;
-        }
+      .bg-blueLight {
+        background: linear-gradient(90deg, #71af06 0%, #8dce1c 100%);
+        color: white;
+      }
 
-        #menuItems button {
-            margin: 3px;
-        }
+      #menuItems button {
+        margin: 3px;
+      }
 
-        .navbar-toggler:focus,
-        .navbar-toggler:active,
-        .navbar-toggler-icon:focus {
-            outline: none;
-            box-shadow: none;
-        }
+      .navbar-toggler:focus,
+      .navbar-toggler:active,
+      .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
+      }
 
-        #menuItems button:hover {
-            border-bottom: 2px solid 71AF06;
-        }
+      #menuItems button:hover {
+        border-bottom: 2px solid 71AF06;
+      }
 
-        h3 {
-            font-size: 20px;
-        }
+      h3 {
+        font-size: 20px;
+      }
 
-        .form-check,
-        #resource ul li {
-            color: #8F8F8F;
-        }
+      .form-check,
+      #resource ul li {
+        color: #8f8f8f;
+      }
 
-        h3 {
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 600;
-        }
+      h3 {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+      }
 
-        .ohms {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+      .ohms {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
 
+      #Main {
+        height: 800px;
+      }
+
+      @media only screen and (max-width: 800px) {
         #Main {
-            height: 800px;
+          height: 1000px;
         }
+      }
 
-        @media only screen and (max-width: 800px) {
-            #Main {
-                height: 1000px;
-            }
-        }
+      .feedback {
+        width: 100%;
+        max-width: 780px;
+        background: #fff;
+        margin: 0 auto;
+        padding: 15px;
+        box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
+      }
 
+      .survey-hr {
+        margin: 10px 0;
+        border: 0.5px solid #ddd;
+      }
 
-        .feedback {
-            width: 100%;
-            max-width: 780px;
-            background: #fff;
-            margin: 0 auto;
-            padding: 15px;
-            box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
-        }
+      .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+      }
 
-        .survey-hr {
-            margin: 10px 0;
-            border: .5px solid #ddd;
-        }
+      .rate:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+      }
 
-        .rate {
-            float: left;
-            height: 46px;
-            padding: 0 10px;
-        }
+      .rate:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 50px;
+        color: #ccc;
+      }
 
-        .rate:not(:checked)>input {
-            position: absolute;
-            top: -9999px;
-        }
+      .rate:not(:checked) > label:before {
+        content: "★ ";
+      }
 
-        .rate:not(:checked)>label {
-            float: right;
-            width: 1em;
-            overflow: hidden;
-            white-space: nowrap;
-            cursor: pointer;
-            font-size: 50px;
-            color: #ccc;
-        }
+      .rate > input:checked ~ label {
+        color: #71af06;
+      }
 
-        .rate:not(:checked)>label:before {
-            content: '★ ';
-        }
+      .rate:not(:checked) > label:hover,
+      .rate:not(:checked) > label:hover ~ label {
+        color: #71af06;
+      }
 
-        .rate>input:checked~label {
-            color: #71AF06;
-        }
+      .rate > input:checked + label:hover,
+      .rate > input:checked + label:hover ~ label,
+      .rate > input:checked ~ label:hover,
+      .rate > input:checked ~ label:hover ~ label,
+      .rate > label:hover ~ input:checked ~ label {
+        color: #71af06;
+      }
 
-        .rate:not(:checked)>label:hover,
-        .rate:not(:checked)>label:hover~label {
-            color: #71AF06;
-        }
+      #navbarSupportedContent {
+        margin: 0 0 0 35rem;
+      }
 
-        .rate>input:checked+label:hover,
-        .rate>input:checked+label:hover~label,
-        .rate>input:checked~label:hover,
-        .rate>input:checked~label:hover~label,
-        .rate>label:hover~input:checked~label {
-            color: #71AF06;
-        }
-
+      @media screen and (max-width: 600px) {
         #navbarSupportedContent {
-            margin: 0 0 0 35rem;
+          margin: 0;
+          background-color: #084568;
         }
-
-        @media screen and (max-width: 600px) {
-            #navbarSupportedContent {
-
-                margin: 0;
-                background-color: #084568;
-            }
-
-
-        }
+      }
     </style>
     <script>
-        function change(target) {
-            List = document.getElementsByClassName("itemOfMenu");
-            for (i in List) {
-                List[i].style = "display:none";
-            }
-            if (target == "simulator") {
-                document.getElementById("Main").style = "background:#F9F9F9; padding-bottom:20px; height:fit-content;";
-                document.getElementById(target).style = "display:flex; justify-content:space-between; height:fit-content; width:fit-content; ";
-            } else {
-                document.getElementById(target).style.display = "block";
-                document.getElementById("Main").style = "background:#F9F9F9; height:fit-content; padding-bottom:20px;";
-            }
+      function change(target) {
+        List = document.getElementsByClassName("itemOfMenu");
+        for (i in List) {
+          List[i].style = "display:none";
         }
+        if (target == "simulator") {
+          document.getElementById("Main").style =
+            "background:#F9F9F9; padding-bottom:20px; height:fit-content;";
+          document.getElementById(target).style =
+            "display:flex; justify-content:space-between; height:fit-content; width:fit-content; ";
+        } else {
+          document.getElementById(target).style.display = "block";
+          document.getElementById("Main").style =
+            "background:#F9F9F9; height:fit-content; padding-bottom:20px;";
+        }
+      }
     </script>
-</head>
+  </head>
 
-<body style="background-color: rgb(240,239,239);">
+  <body style="background-color: rgb(240, 239, 239)">
     <div class="container-fluid">
-        <div class="container-fluid" style="height:70px; background-color: #084568;">
-            <nav class="navbar navbar-expand-lg container">
-                <div class="container-fluid">
-                    <a style="  line-height: 41px;" href="../../index.html">
-                        <img src="../../pictures/logomain.png" alt="">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                            <li class="nav-item" style=" display: inline-block; margin: 0 5px;">
-                                <a class="active nav-link"
-                                    style="color: white; text-decoration: auto;  font-size: 17px;  padding: 10px 13px;  border-radius: 3px;  text-transform: uppercase;"
-                                    href="../../index.html">
-                                    Home
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    About
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    Gallery
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    News
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    Contact
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    REgistration
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <div class="container bg-white rounded my-4 d-flex
-                align-items-center" style="min-height:270px;
-                max-height:fit-content">
-            <div class="row w-100 my-0 mx-auto overflow-hidden h-fit-content
-                    h-270">
-
-                <div class="col-xl-8 col-lg-8 col-md-7 col-sm-10 my-2
-                        mx-auto
-
-                        d-flex align-items-center justify-content-between 
-                        flex-column">
-                    <selection class=" align-self-start" style="text-transform:
-                            uppercase;">
-                        <h5 style="
-                                color:#8F8F8F;">
-                            Physics
-                        </h5>
-                        <h3 class="fs-1" style="color:#71AF06">
-                            To verify the laws of refraction by using a glass slab
-                        </h3>
-                    </selection>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-5 col-sm-8 my-2
-                        mx-auto
-
-                        d-flex align-items-center">
-                    <img src="../../pictures/physics/4.png" class="rounded" style="width:auto;
-                            height:224px; margin:0px auto;" alt="">
-                </div>
+      <div
+        class="container-fluid"
+        style="height: 70px; background-color: #084568"
+      >
+        <nav class="navbar navbar-expand-lg container">
+          <div class="container-fluid">
+            <a style="line-height: 41px" href="../../index.html">
+              <img src="../../pictures/logomain.png" alt="" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="active nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="../../index.html"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    About
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    Gallery
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    News
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    Contact
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    REgistration
+                  </a>
+                </li>
+              </ul>
             </div>
+          </div>
+        </nav>
+      </div>
 
+      <div
+        class="container bg-white rounded my-4 d-flex align-items-center"
+        style="min-height: 270px; max-height: fit-content"
+      >
+        <div class="row w-100 my-0 mx-auto overflow-hidden h-fit-content h-270">
+          <div
+            class="col-xl-8 col-lg-8 col-md-7 col-sm-10 my-2 mx-auto d-flex align-items-center justify-content-between flex-column"
+          >
+            <selection
+              class="align-self-start"
+              style="text-transform: uppercase"
+            >
+              <h5 style="color: #8f8f8f">Physics</h5>
+              <h3 class="fs-1" style="color: #71af06">
+                To verify the laws of refraction by using a glass slab
+              </h3>
+            </selection>
+          </div>
+          <div
+            class="col-xl-4 col-lg-4 col-md-5 col-sm-8 my-2 mx-auto d-flex align-items-center"
+          >
+            <img
+              src="../../pictures/physics/4.png"
+              class="rounded"
+              style="width: auto; height: 224px; margin: 0px auto"
+              alt=""
+            />
+          </div>
         </div>
+      </div>
 
-        <div class="container my-2 position-relative" id="Main" style="background:#F9F9F9;
-                height:fit-content; padding-bottom:20px;">
-
-            <!-- <div class="container-fluid d-flex justify-content-start
+      <div
+        class="container my-2 position-relative"
+        id="Main"
+        style="background: #f9f9f9; height: fit-content; padding-bottom: 20px"
+      >
+        <!-- <div class="container-fluid d-flex justify-content-start
                     flex-wrap gap-3 p-0 rounded" style="background:#DADADA;
                     height:fit-content;" id="menuItems">
                 <button style="width:fit-content; height:56px; font-weight:
@@ -274,835 +359,1076 @@
                         500;" class="btn py-1">Feedback</button>
             </div> -->
 
-            <div class="w-100 pb-5">
-                <nav class="navbar navbar-expand-lg bg-white rounded mx-3 mt-2" id="menuItems"
-                    style="position:absolute; left:0px; right:0px; z-index:222; ">
-                    <div class="container-fluid ">
-                        <button class="navbar-toggler border-0" style="font-size:15px" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse " id="navbarSupportedContent1">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500; align-self: flex-start;" class="btn bg-blueLight
-                                                                    py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('theory')">Theory</button>
-                                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <!-- <a class="nav-link" href="#">Link</a> -->
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('procedure')">Procedure</button>
-                                </li>
-                                <!-- <li class="nav-item mx-1">
+        <div class="w-100 pb-5">
+          <nav
+            class="navbar navbar-expand-lg bg-white rounded mx-3 mt-2"
+            id="menuItems"
+            style="position: absolute; left: 0px; right: 0px; z-index: 222"
+          >
+            <div class="container-fluid">
+              <button
+                class="navbar-toggler border-0"
+                style="font-size: 15px"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent1"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse"
+                id="navbarSupportedContent1"
+              >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item mx-1">
+                    <button
+                      style="
+                        width: 100%;
+                        height: 56px;
+                        font-weight: 500;
+                        align-self: flex-start;
+                      "
+                      class="btn bg-blueLight py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('theory')"
+                    >
+                      Theory
+                    </button>
+                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+                  </li>
+                  <li class="nav-item mx-1">
+                    <!-- <a class="nav-link" href="#">Link</a> -->
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('procedure')"
+                    >
+                      Procedure
+                    </button>
+                  </li>
+                  <!-- <li class="nav-item mx-1">
                                                                             <button style="width:100%; height:56px; font-weight:
                                                                     500;" class="btn py-1">  Animation</button>
                                                                         </li> -->
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1" onclick="change('video')">Video</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('simulator')">Simulator</button>
-                                </li>
-                                
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1" onclick="change('vivaQuestion')">Viva
-                                        Voice</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('resource')">Resources</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('Feedback')">Feedback</button>
-                                </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('video')"
+                    >
+                      Video
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('simulator')"
+                    >
+                      Simulator
+                    </button>
+                  </li>
 
-
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('vivaQuestion')"
+                    >
+                      Viva Voice
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('resource')"
+                    >
+                      Resources
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('Feedback')"
+                    >
+                      Feedback
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </nav>
+        </div>
 
-
-            <div class="w-100 itemOfMenu my-5 pt-4" id="theory">
-                <div class="row ">
-
-                    <div class="col-lg-8 col-md-9 col-sm-12">
-                        <!-- 
+        <div class="w-100 itemOfMenu my-5 pt-4" id="theory">
+          <div class="row">
+            <div class="col-lg-8 col-md-9 col-sm-12">
+              <!-- 
                         <h2>
                             To verify laws of refraction using Glass Slab
                         </h2> -->
-                        <h3>
-                            Objective:
-                        </h3>
-                        <p class="">
-                            To trace the path of a ray of light passing through a rectangular glass slab for different
-                            angles of incidence and to
-                            measure the angle of incidence, angle of refraction and angle of emergence and interpret the
-                            result.
-                        </p>
-                        <h3>
-                            Theory:
-                        </h3>
-                        <p class="">
-                            When light travels from one medium to another medium, it generally bends or refracts. The
-                            law of refraction gives us a
-                            way of predicting the amount of bend. The law of refraction is also known as Snell's law,
-                            named after Willobrord Snell,
-                            who discovered the law in 1621.
-                            Snell's law gives the relationship between angles of incidence and refraction for a wave
-                            impinging on an interface
-                            between two media with different indices of refraction.
-                        </p>
-                        <img src="../../pictures/physics/Theory1.png" alt="">
-                        <h3 class="py-2">
-                            Refraction :
-                        </h3>
+              <h3>Objective:</h3>
+              <p class="">
+                To trace the path of a ray of light passing through a
+                rectangular glass slab for different angles of incidence and to
+                measure the angle of incidence, angle of refraction and angle of
+                emergence and interpret the result.
+              </p>
+              <h3>Theory:</h3>
+              <p class="">
+                When light travels from one medium to another medium, it
+                generally bends or refracts. The law of refraction gives us a
+                way of predicting the amount of bend. The law of refraction is
+                also known as Snell's law, named after Willobrord Snell, who
+                discovered the law in 1621. Snell's law gives the relationship
+                between angles of incidence and refraction for a wave impinging
+                on an interface between two media with different indices of
+                refraction.
+              </p>
+              <img src="../../pictures/physics/Theory1.png" alt="" />
+              <h3 class="py-2">Refraction :</h3>
 
-                        <p class="">
-                            When we talk about the speed of light, we're usually talking about the speed of light in a
-                            vacuum, which is 3.00 x 108
-                            m/s. When light travels through something else, such as glass, diamond, or plastic, it
-                            travels at a different speed. The
-                            speed of light in a given material is related to a quantity called the index of refraction,
-                            n, which is defined as the
-                            ratio of the speed of light in vacuum to the speed of light in the medium:
+              <p class="">
+                When we talk about the speed of light, we're usually talking
+                about the speed of light in a vacuum, which is 3.00 x 108 m/s.
+                When light travels through something else, such as glass,
+                diamond, or plastic, it travels at a different speed. The speed
+                of light in a given material is related to a quantity called the
+                index of refraction, n, which is defined as the ratio of the
+                speed of light in vacuum to the speed of light in the medium:
+              </p>
+              <p class="" style="font-weight: bold">
+                index of refraction: n = c / v, where the speed of light in a
+                medium is 'v' and 'c' is the speed of light in vacuum.
+              </p>
+              <img
+                class="d-flex justify-content-center"
+                src="../../pictures/physics/Theory2.png"
+                alt=""
+              />
+              <h3 class="py-2">Rules Of Refraction</h3>
 
+              <p class="">
+                <b>Rule-1:</b> When a light ray travels from a rarer medium to a
+                denser medium, the light ray bends towards the normal.
+                <br />
+                <b>Rule-2:</b> When a light ray travels from a denser medium to
+                a rarer medium, the light ray bends away from the normal.
 
-                        </p>
-                        <p class="" style="font-weight: bold;">
-                            index of refraction: n = c / v, where the speed of light in a medium is 'v' and 'c' is the
-                            speed of light in vacuum.
-                        </p>
-                        <img class="d-flex justify-content-center" src="../../pictures/physics/Theory2.png" alt="">
-                        <h3 class="py-2">
-                            Rules Of Refraction
-                        </h3>
-
-                        <p class="">
-                            <b>Rule-1:</b> When a light ray travels from a rarer medium to a denser medium, the light
-                            ray bends towards the normal.
-                            <br>
-                            <b>Rule-2:</b> When a light ray travels from a denser medium to a rarer medium, the light
-                            ray bends
-                            away from the normal.
-
-                            <img src="../../pictures/physics/Theory3.png" alt="">
-
-
-                        </p>
-                    </div>
-                    <col-md-10 class="col-sm-12">
-                        <h3>
-                            Example of Refraction
-                        </h3>
-                        <p class="">
-                            If you place a pencil in a glass of water, you will see that the pencil appears to be bent.
-                            Now, you know for a fact
-                            that the pencil is not bent at all, it just appears to be so. This is the effect of
-                            refraction of light.
-                        </p>
-
-                        <img src="../../pictures/physics/Theory4.png" alt="">
-                    </col-md-10>
-
-                </div>
+                <img src="../../pictures/physics/Theory3.png" alt="" />
+              </p>
             </div>
+            <col-md-10 class="col-sm-12">
+              <h3>Example of Refraction</h3>
+              <p class="">
+                If you place a pencil in a glass of water, you will see that the
+                pencil appears to be bent. Now, you know for a fact that the
+                pencil is not bent at all, it just appears to be so. This is the
+                effect of refraction of light.
+              </p>
 
-            <!-- for procedure -->
-            <div class="w-100 itemOfMenu my-5 pt-4" id="procedure" style="display:none;">
-                <div class="row">
-                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
-                        <h3>
-                            Apparatus
-                        </h3>
-                        <p>
-                            A drawing board, rectangular glass slab, office pins, sheet of white paper, a protractor and
-                            sharply pointed pencil.
-                        </p>
-                        <ol class="">
-                            <li>
-                                Fix a sheet of white paper on a drawing board with drawing pins. Place the given
-                                glass slab nearly in the middle of
-                                the sheet.
-                            </li>
-                            <li>
-                                Mark the boundary of the glass slab with a sharp pencil and label it as PQRS after
-                                removing the slab from its
-                                position.
-                            </li>
-                            <li>
-                                On the line PQ mark a point E and draw a normal N1EN2 at it. Draw a line AE making
-                                angle AEN1 with the normal.The
-                                angle should neither too small nor too large (say about 40 degree).
-                            </li>
-                            <li>
-                                Now place the glass slab again on its boundary PQRS and fix two pins A and B
-                                vertically about 10 cm apart on the line
-                                AE (say points A and B).
-                            </li>
-                            <li>
-                                Look through the glass slab along the plane of the paper from the side SR and move
-                                your head until the images of the
-                                two pins A and B are seen clearly. Closing your one eye ,adjust the position of your
-                                head in such a way that the images
-                                of the pins A and B lie in the same straight line.
-                            </li>
-                            <li>
-                                Fix two other pins C and D vertically in such a way that the images of the pins A and
-                                B and pins C and D, all these
-                                four, lie in the same straight line. Ensure that the feet of the pins ( not their heads
-                                ) lie in the same straight line.
-                            </li>
-                            <li>
-                                Remove the slab and also the pins from the board and encircle the pin-pricks on the
-                                paper,with a sharp pencil.
-                            </li>
-                            <li>
-                                Join the points D and C and produce the line DC towards the slab so that it meets the
-                                boundary line RS at the point
-                                F. Join the points e and F. Thus for the incident ray represented by line AE, the
-                                refracted ray and the emergant ray are
-                                represented by EF and FD respectively.
-                            </li>
-                            <li>
-                                On the line RS draw a normal N1'FN2' at point F. Now, with a protractor, measure
-                                angle AEN1, angle FEN2 and angle
-                                DFN2' labelled as angle i, angle r and angle e respectively.
-                            </li>
-                            <li>
-                                Now place the glass slab at some other position on the sheet of paper fixed on the
-                                board and repeat all the above
-                                steps again taking another angle of incidence.
-                            </li>
-                            <li>
-                                Measure the angle of incidence i.e angle of refraction, angle of emergence, again.
-                            </li>
-                            <li>
-                                Make a record of your observations in the observation table as shown below.
-                            </li>
-                        </ol>
-                        <img src="../../pictures/physics/proce1.png" alt="">
-                    </div>
-                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
-                        <h3>
-                            Obsevation Table
-                        </h3>
-                        <img src="../../pictures/physics/proce2.png" alt="">
-                    </div>
-                </div>
+              <img src="../../pictures/physics/Theory4.png" alt="" />
+            </col-md-10>
+          </div>
+        </div>
+
+        <!-- for procedure -->
+        <div
+          class="w-100 itemOfMenu my-5 pt-4"
+          id="procedure"
+          style="display: none"
+        >
+          <div class="row">
+            <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
+              <h3>Apparatus</h3>
+              <p>
+                A drawing board, rectangular glass slab, office pins, sheet of
+                white paper, a protractor and sharply pointed pencil.
+              </p>
+              <ol class="">
+                <li>
+                  Fix a sheet of white paper on a drawing board with drawing
+                  pins. Place the given glass slab nearly in the middle of the
+                  sheet.
+                </li>
+                <li>
+                  Mark the boundary of the glass slab with a sharp pencil and
+                  label it as PQRS after removing the slab from its position.
+                </li>
+                <li>
+                  On the line PQ mark a point E and draw a normal N1EN2 at it.
+                  Draw a line AE making angle AEN1 with the normal.The angle
+                  should neither too small nor too large (say about 40 degree).
+                </li>
+                <li>
+                  Now place the glass slab again on its boundary PQRS and fix
+                  two pins A and B vertically about 10 cm apart on the line AE
+                  (say points A and B).
+                </li>
+                <li>
+                  Look through the glass slab along the plane of the paper from
+                  the side SR and move your head until the images of the two
+                  pins A and B are seen clearly. Closing your one eye ,adjust
+                  the position of your head in such a way that the images of the
+                  pins A and B lie in the same straight line.
+                </li>
+                <li>
+                  Fix two other pins C and D vertically in such a way that the
+                  images of the pins A and B and pins C and D, all these four,
+                  lie in the same straight line. Ensure that the feet of the
+                  pins ( not their heads ) lie in the same straight line.
+                </li>
+                <li>
+                  Remove the slab and also the pins from the board and encircle
+                  the pin-pricks on the paper,with a sharp pencil.
+                </li>
+                <li>
+                  Join the points D and C and produce the line DC towards the
+                  slab so that it meets the boundary line RS at the point F.
+                  Join the points e and F. Thus for the incident ray represented
+                  by line AE, the refracted ray and the emergant ray are
+                  represented by EF and FD respectively.
+                </li>
+                <li>
+                  On the line RS draw a normal N1'FN2' at point F. Now, with a
+                  protractor, measure angle AEN1, angle FEN2 and angle DFN2'
+                  labelled as angle i, angle r and angle e respectively.
+                </li>
+                <li>
+                  Now place the glass slab at some other position on the sheet
+                  of paper fixed on the board and repeat all the above steps
+                  again taking another angle of incidence.
+                </li>
+                <li>
+                  Measure the angle of incidence i.e angle of refraction, angle
+                  of emergence, again.
+                </li>
+                <li>
+                  Make a record of your observations in the observation table as
+                  shown below.
+                </li>
+              </ol>
+              <img src="../../pictures/physics/proce1.png" alt="" />
             </div>
+            <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
+              <h3>Obsevation Table</h3>
+              <img src="../../pictures/physics/proce2.png" alt="" />
+            </div>
+          </div>
+        </div>
 
-            <!-- Simulator -->
-            <div class="w-100 itemOfMenu  pt-4 my-5
-                    position-relative " id="simulator" style="display:none;">
-                <img src="../../pictures/circle.png" style="width:60px;
-                        height:60px; position:absolute; top:20px; right:0px;" alt="">
+        <!-- Simulator -->
+        <div
+          class="w-100 itemOfMenu pt-4 my-5 position-relative"
+          id="simulator"
+          style="display: none"
+        >
+          <img
+            src="../../pictures/circle.png"
+            style="
+              width: 60px;
+              height: 60px;
+              position: absolute;
+              top: 20px;
+              right: 0px;
+            "
+            alt=""
+          />
 
-
-                <div class="h-100  w-100 overflow-hidden" style="
-                        z-index:111;">
-                    <h1 style="background-color: #084568; margin: 0;
-                        padding: 19px;">
-                        <!-- <img src="../../src/images/Group2.png" alt="" style="float: left; width: 30px;
+          <div class="h-100 w-100 overflow-hidden" style="z-index: 111">
+            <h1 style="background-color: #084568; margin: 0; padding: 19px">
+              <!-- <img src="../../src/images/Group2.png" alt="" style="float: left; width: 30px;
                             padding-top:16px;"> -->
-                        <span style="font-style: normal;
-                            font-weight:600;
-                            font-size: 25px; line-height: 39px;
-                            color:#FFFFFF; padding-left: 19px;">
-                            TO VERIFY THE LAWS OF REFRACTION BY USING A GLASS SLAB</span>
-                    </h1>
-                    <div class="row gap-5">
-                        <div class="col-lg-7 col-md-8 col-sm-12" style="background-color:white; width:800px;
-                                overflow-x: scroll; position: relative;">
+              <span
+                style="
+                  font-style: normal;
+                  font-weight: 600;
+                  font-size: 25px;
+                  line-height: 39px;
+                  color: #ffffff;
+                  padding-left: 19px;
+                "
+              >
+                TO VERIFY THE LAWS OF REFRACTION BY USING A GLASS SLAB</span
+              >
+            </h1>
+            <div class="row gap-5">
+              <div
+                class="col-lg-7 col-md-8 col-sm-12"
+                style="
+                  background-color: white;
+                  width: 800px;
+                  overflow-x: scroll;
+                  position: relative;
+                "
+              >
+                <iframe
+                  src="9physics/Reflection of light"
+                  frameborder="0"
+                  width="772px"
+                  height="531"
+                  allowfullscreen="allowfullscreen"
+                ></iframe>
 
-                            <iframe src="9physics/Reflection of light" frameborder="0" width="772px" height="531"
-                                allowfullscreen="allowfullscreen"></iframe>
-
-                            <!-- for animation -->
-                            <!-- Examination of Animal _ Plant Cell under Microscope -->
-                            <!-- <div class="animationDiv">
+                <!-- for animation -->
+                <!-- Examination of Animal _ Plant Cell under Microscope -->
+                <!-- <div class="animationDiv">
                                 <div class="scroll">
                                 </div>
                             </div> -->
-
-
-                        </div>
-                        <div class="col-md-3 col-sm-12" style="
-                                background-color: #F5F5F5;" class="">
-                            <div class="mx-auto">
-                                <h2 style=" margin:0;background-color: #71AF06;
-                            font-style: normal;font-weight:
-                            600;font-size: 24px;line-height:
-                            29px;padding: 10px;color: #FFFFFF;">
-                                    Steps
-                                </h2>
-                                <ol style="padding: 10px 3px 0px 26px;;
-                            font-size:
-                            14px;">
-                                    <li>
-                                        Fix a sheet of white paper on a drawing board with drawing pins. Place the given
-                                        glass slab nearly in the middle of
-                                        the sheet.
-                                    </li>
-                                    <li>
-                                        Mark the boundary of the glass slab with a sharp pencil and label it as PQRS
-                                        after
-                                        removing the slab from its
-                                        position.
-                                    </li>
-                                    <li>
-                                        On the line PQ mark a point E and draw a normal N1EN2 at it. Draw a line AE
-                                        making
-                                        angle AEN1 with the normal.The
-                                        angle should neither too small nor too large (say about 40 degree).
-                                    </li>
-                                    <li>
-                                        Now place the glass slab again on its boundary PQRS and fix two pins A and B
-                                        vertically about 10 cm apart on the line
-                                        AE (say points A and B).
-                                    </li>
-                                    <li>
-                                        Look through the glass slab along the plane of the paper from the side SR and
-                                        move
-                                        your head until the images of the
-                                        two pins A and B are seen clearly. Closing your one eye ,adjust the position of
-                                        your
-                                        head in such a way that the images
-                                        of the pins A and B lie in the same straight line.
-                                    </li>
-                                    <li>
-                                        Fix two other pins C and D vertically in such a way that the images of the pins
-                                        A and
-                                        B and pins C and D, all these
-                                        four, lie in the same straight line. Ensure that the feet of the pins ( not
-                                        their heads
-                                        ) lie in the same straight line.
-                                    </li>
-                                    <li>
-                                        Remove the slab and also the pins from the board and encircle the pin-pricks on
-                                        the
-                                        paper,with a sharp pencil.
-                                    </li>
-                                    <li>
-                                        Join the points D and C and produce the line DC towards the slab so that it
-                                        meets the
-                                        boundary line RS at the point
-                                        F. Join the points e and F. Thus for the incident ray represented by line AE,
-                                        the
-                                        refracted ray and the emergant ray are
-                                        represented by EF and FD respectively.
-                                    </li>
-                                    <li>
-                                        On the line RS draw a normal N1'FN2' at point F. Now, with a protractor, measure
-                                        angle AEN1, angle FEN2 and angle
-                                        DFN2' labelled as angle i, angle r and angle e respectively.
-                                    </li>
-                                    <li>
-                                        Now place the glass slab at some other position on the sheet of paper fixed on
-                                        the
-                                        board and repeat all the above
-                                        steps again taking another angle of incidence.
-                                    </li>
-                                    <li>
-                                        Measure the angle of incidence i.e angle of refraction, angle of emergence,
-                                        again.
-                                    </li>
-                                    <li>
-                                        Make a record of your observations in the observation table as shown below.
-                                    </li>
-
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div
+                class="col-md-3 col-sm-12"
+                style="background-color: #f5f5f5"
+                class=""
+              >
+                <div class="mx-auto">
+                  <h2
+                    style="
+                      margin: 0;
+                      background-color: #71af06;
+                      font-style: normal;
+                      font-weight: 600;
+                      font-size: 24px;
+                      line-height: 29px;
+                      padding: 10px;
+                      color: #ffffff;
+                    "
+                  >
+                    Steps
+                  </h2>
+                  <ol style="padding: 10px 3px 0px 26px; font-size: 14px">
+                    <li>
+                      Fix a sheet of white paper on a drawing board with drawing
+                      pins. Place the given glass slab nearly in the middle of
+                      the sheet.
+                    </li>
+                    <li>
+                      Mark the boundary of the glass slab with a sharp pencil
+                      and label it as PQRS after removing the slab from its
+                      position.
+                    </li>
+                    <li>
+                      On the line PQ mark a point E and draw a normal N1EN2 at
+                      it. Draw a line AE making angle AEN1 with the normal.The
+                      angle should neither too small nor too large (say about 40
+                      degree).
+                    </li>
+                    <li>
+                      Now place the glass slab again on its boundary PQRS and
+                      fix two pins A and B vertically about 10 cm apart on the
+                      line AE (say points A and B).
+                    </li>
+                    <li>
+                      Look through the glass slab along the plane of the paper
+                      from the side SR and move your head until the images of
+                      the two pins A and B are seen clearly. Closing your one
+                      eye ,adjust the position of your head in such a way that
+                      the images of the pins A and B lie in the same straight
+                      line.
+                    </li>
+                    <li>
+                      Fix two other pins C and D vertically in such a way that
+                      the images of the pins A and B and pins C and D, all these
+                      four, lie in the same straight line. Ensure that the feet
+                      of the pins ( not their heads ) lie in the same straight
+                      line.
+                    </li>
+                    <li>
+                      Remove the slab and also the pins from the board and
+                      encircle the pin-pricks on the paper,with a sharp pencil.
+                    </li>
+                    <li>
+                      Join the points D and C and produce the line DC towards
+                      the slab so that it meets the boundary line RS at the
+                      point F. Join the points e and F. Thus for the incident
+                      ray represented by line AE, the refracted ray and the
+                      emergant ray are represented by EF and FD respectively.
+                    </li>
+                    <li>
+                      On the line RS draw a normal N1'FN2' at point F. Now, with
+                      a protractor, measure angle AEN1, angle FEN2 and angle
+                      DFN2' labelled as angle i, angle r and angle e
+                      respectively.
+                    </li>
+                    <li>
+                      Now place the glass slab at some other position on the
+                      sheet of paper fixed on the board and repeat all the above
+                      steps again taking another angle of incidence.
+                    </li>
+                    <li>
+                      Measure the angle of incidence i.e angle of refraction,
+                      angle of emergence, again.
+                    </li>
+                    <li>
+                      Make a record of your observations in the observation
+                      table as shown below.
+                    </li>
+                  </ol>
                 </div>
-                <!-- <img src="../../pictures/vector3.png" style="position:absolute; left:0px; bottom:0px; width:400px;" alt=""> -->
+              </div>
             </div>
-
-
-            <!-- Video -->
-            <div class="itemOfMenu my-5  pt-4 position-relative" style="height:650px; display: none;" id="video">
-
-                <div class="d-flex justify-content-center align-items-center
-                        pb-5">
-                    <iframe width="740px" height="480px" src="https://www.youtube.com/embed/lk6Oi_UWiU0"
-                        title="YouTube video player" frameborder="0" style="z-index: 111;"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <img src="../../pictures/vectorRightOrange.png" style="position:absolute; bottom:0px; right:-12px;
-                        width:50%;" alt="">
-            </div>
-
-
-            <!-- viva question -->
-            <div class="itemOfMenu my-5  pt-4" id="vivaQuestion" style="display:none;">
-
-                <form>
-                    <div class="mb-3">
-                        <h3>
-                            1: A ray of light incident on one of the parallel faces of a rectangular glass slab, emerges
-                            out of the opposite
-                            parallel face
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m1">
-                                (a) <img src="../../pictures/physics/viva1.png" alt="">
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m2">
-                                (b) <img src="../../pictures/physics/viva2.png" alt="">
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m3">
-                                (c) <img src="../../pictures/physics/viva3.png" alt="">
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m4">
-                                (d) <img src="../../pictures/physics/viva4.png" alt="">
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            2: Why does bending of light takes place ?
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m1">
-                                (a) Because light travels with same velocity in different media
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m2">
-                                (b) Because it travels with different velocity in different media
-
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m3">
-                                (c) None of these
-
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m4">
-                                (d) Both resistance and potential difference.
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            3: In which direction does a ray bend when it travels from a denser medium to a rarer medium
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m1">
-                                (a) It bends away from the normal as it meets the surface of rarer medium
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m2">
-                                (b) It bends towards the normal as it meets the surface of rarer medium
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m3">
-                                (c) It goes straight
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m4">
-                                (d) None of these
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            4: Refractive index is the property of :
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m1">
-                                (a) One medium
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m2">
-                                (b) The pair of media
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m3">
-                                (c) One vacuum
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m4">
-                                (d) None of these
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            5: Does the refractive index of substance change with the colour of light ?
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                (a) No, refractive index does not depend upon the colour of light (wavelength)
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                (b) Yes, refractive index depends upon the colour of light (wavelength)
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                (c) None of these.
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            6: Give the example of total internal reflection
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q6m1">
-                                (a) Mirage (Mrig Trishna), generally observed in deserts in summer
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q6m2">
-                                (b) Looming, generally observed in cold region
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q6m3">
-                                (c) Both of these
-                            </label>
-                        </div>
-                    </div>
-
-
-                    <div class="mb-3">
-                        <h3>
-                            7: What is critical angle ?
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q7m1">
-                                (a) Critical angle is the angle of incidence for which angle of refraction is 45 degree
-                                when
-                                light travels from denser
-                                medium to rarer
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q7m2">
-                                (b) Is the angle of incidence for which angle of refraction is 90 when light travels
-                                from
-                                rarer
-                                to denser medium
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q7m3">
-                                (c) Is the angle of incidence for which angle of refraction is 90 when light travels
-                                from
-                                denser
-                                to rarer medium
-
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q7m4">
-                                (d) None of these
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            8: What do you mean by the statement "Refractive Index of glass is 1.5"
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q8" id="q8m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q8m1">
-                                (a) It means refractive index of glass with respect to air is 1.5
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q8" id="q8m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q8m2">
-                                (b) Refractive index of air with respect to glass is 1.5
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q8" id="q8m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q8m3">
-                                (c) It means refractive index of glass with respect to water is 1.5
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q8" id="q8m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q8m4">
-                                (d) None of these
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            9: What is the advantage of "total internal reflection" over reflection ?
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q9" id="q9m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q9m1">
-                                (a) Total internal reflection is an interesting phenomenon than reflection
-
-                            </label>
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q9" id="q9m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q9m2">
-                                (b) Loss of intensity of light is less in total internal reflection than reflection
-
-                            </label>
-                        </div>
-
-
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q9" id="q9m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q9m4">
-                                (c) None of these
-                            </label>
-                        </div>
-
-                    </div>
-                    <button type="submit" class="btn
-                                            btn-primary">Submit</button>
-                    <button type="reset" class="btn fw-bold" style="background:
-                                            linear-gradient(135deg, #0072FF 0%,
-                                            #00C6FF 100%);
-                                            -webkit-background-clip: text;
-                                            -webkit-text-fill-color:
-                                            transparent;
-                                            background-clip: text;
-                                            text-fill-color: transparent;">Cancel</button>
-                </form>
-            </div>
-
-
-            <!-- Resources -->
-            <div class="itemOfMenu my-5 pt-4" id="resource" style="display:none;">
-                <div class="resourceItem">
-                    <h3>
-                        Books
-                    </h3>
-                    <ol>
-                        <li>
-                            Khyber Pakhtunkhwa Physics 9 Practical Note Book Peshawar
-                        </li>
-                        <li>
-                            Khyber Pakhtunkhwa Physics 9 Text Book Peshawar
-                        </li>
-                        <li>
-                            Physics Book Curriculum & Text Book Board Lahore
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display:none;">
-                <form method="post" action="# ">
-                    <label>1. Your overall experience with us ?</label><br>
-
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                    </div>
-                    <br>
-                    <br>
-                    <label class="pt-4" for="m_3189847521540640526commentText">2. Any Other
-                        suggestions:</label><br /><br />
-                    <textarea cols="75" name="commentText" rows="5"></textarea><br>
-                    <br>
-                    <div class="clear"></div>
-                    <input style="background:#71AF06;color:#fff;padding:12px;border:0" type="submit"
-                        value="Submit your review">&nbsp;
-                </form>
-
-
-            </div>
-
+          </div>
+          <!-- <img src="../../pictures/vector3.png" style="position:absolute; left:0px; bottom:0px; width:400px;" alt=""> -->
         </div>
 
+        <!-- Video -->
+        <div
+          class="itemOfMenu my-5 pt-4 position-relative"
+          style="height: 650px; display: none"
+          id="video"
+        >
+          <div class="d-flex justify-content-center align-items-center pb-5">
+            <iframe
+              width="740px"
+              height="480px"
+              src="https://www.youtube.com/embed/lk6Oi_UWiU0"
+              title="YouTube video player"
+              frameborder="0"
+              style="z-index: 111"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
 
+          <img
+            src="../../pictures/vectorRightOrange.png"
+            style="position: absolute; bottom: 0px; right: -12px; width: 50%"
+            alt=""
+          />
+        </div>
+
+        <!-- viva question -->
+        <div
+          class="itemOfMenu my-5 pt-4"
+          id="vivaQuestion"
+          style="display: none"
+        >
+          <form>
+            <div class="mb-3">
+              <h3>
+                1: A ray of light incident on one of the parallel faces of a
+                rectangular glass slab, emerges out of the opposite parallel
+                face
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m1">
+                  (a) <img src="../../pictures/physics/viva1.png" alt="" />
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m2">
+                  (b) <img src="../../pictures/physics/viva2.png" alt="" />
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m3">
+                  (c) <img src="../../pictures/physics/viva3.png" alt="" />
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m4">
+                  (d) <img src="../../pictures/physics/viva4.png" alt="" />
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>2: Why does bending of light takes place ?</h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m1">
+                  (a) Because light travels with same velocity in different
+                  media
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m2">
+                  (b) Because it travels with different velocity in different
+                  media
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m3">
+                  (c) None of these
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m4">
+                  (d) Both resistance and potential difference.
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                3: In which direction does a ray bend when it travels from a
+                denser medium to a rarer medium
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m1">
+                  (a) It bends away from the normal as it meets the surface of
+                  rarer medium
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m2">
+                  (b) It bends towards the normal as it meets the surface of
+                  rarer medium
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m3">
+                  (c) It goes straight
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m4">
+                  (d) None of these
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>4: Refractive index is the property of :</h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m1">
+                  (a) One medium
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m2">
+                  (b) The pair of media
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m3">
+                  (c) One vacuum
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m4">
+                  (d) None of these
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                5: Does the refractive index of substance change with the colour
+                of light ?
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  (a) No, refractive index does not depend upon the colour of
+                  light (wavelength)
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  (b) Yes, refractive index depends upon the colour of light
+                  (wavelength)
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  (c) None of these.
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>6: Give the example of total internal reflection</h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q6"
+                  id="q6m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q6m1">
+                  (a) Mirage (Mrig Trishna), generally observed in deserts in
+                  summer
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q6"
+                  id="q6m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q6m2">
+                  (b) Looming, generally observed in cold region
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q6"
+                  id="q6m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q6m3">
+                  (c) Both of these
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>7: What is critical angle ?</h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q7"
+                  id="q7m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q7m1">
+                  (a) Critical angle is the angle of incidence for which angle
+                  of refraction is 45 degree when light travels from denser
+                  medium to rarer
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q7"
+                  id="q7m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q7m2">
+                  (b) Is the angle of incidence for which angle of refraction is
+                  90 when light travels from rarer to denser medium
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q7"
+                  id="q7m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q7m3">
+                  (c) Is the angle of incidence for which angle of refraction is
+                  90 when light travels from denser to rarer medium
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q7"
+                  id="q7m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q7m4">
+                  (d) None of these
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                8: What do you mean by the statement "Refractive Index of glass
+                is 1.5"
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q8"
+                  id="q8m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q8m1">
+                  (a) It means refractive index of glass with respect to air is
+                  1.5
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q8"
+                  id="q8m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q8m2">
+                  (b) Refractive index of air with respect to glass is 1.5
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q8"
+                  id="q8m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q8m3">
+                  (c) It means refractive index of glass with respect to water
+                  is 1.5
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q8"
+                  id="q8m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q8m4">
+                  (d) None of these
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                9: What is the advantage of "total internal reflection" over
+                reflection ?
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q9"
+                  id="q9m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q9m1">
+                  (a) Total internal reflection is an interesting phenomenon
+                  than reflection
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q9"
+                  id="q9m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q9m2">
+                  (b) Loss of intensity of light is less in total internal
+                  reflection than reflection
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q9"
+                  id="q9m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q9m4">
+                  (c) None of these
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button
+              type="reset"
+              class="btn fw-bold"
+              style="
+                background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+              "
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+
+        <!-- Resources -->
+        <div class="itemOfMenu my-5 pt-4" id="resource" style="display: none">
+          <div class="resourceItem">
+            <h3>Books</h3>
+            <ol>
+              <li>Khyber Pakhtunkhwa Physics 9 Practical Note Book Peshawar</li>
+              <li>Khyber Pakhtunkhwa Physics 9 Text Book Peshawar</li>
+              <li>Physics Book Curriculum & Text Book Board Lahore</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display: none">
+          <form method="post" action="# ">
+            <label>1. Your overall experience with us ?</label><br />
+
+            <div class="rate">
+              <input type="radio" id="star5" name="rate" value="5" />
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="rate" value="4" />
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="rate" value="3" />
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="rate" value="2" />
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="rate" value="1" />
+              <label for="star1" title="text">1 star</label>
+            </div>
+            <br />
+            <br />
+            <label class="pt-4" for="m_3189847521540640526commentText"
+              >2. Any Other suggestions:</label
+            ><br /><br />
+            <textarea cols="75" name="commentText" rows="5"></textarea><br />
+            <br />
+            <div class="clear"></div>
+            <input
+              style="background: #71af06; color: #fff; padding: 12px; border: 0"
+              type="submit"
+              value="Submit your review"
+            />&nbsp;
+          </form>
+        </div>
+      </div>
     </div>
     <!-- FOOTER -->
-    <div class="container-fluid position-relative
-                            overflow-hidden" style="height: 200px;">
-        <div class="container d-flex justify-content-end
-                                align-items-center h-100">
-            <p>
-                <span style="background:
-                                        linear-gradient(90deg, #F99B27 0%,
-                                        #fda73d 100%);
-                                        -webkit-background-clip: text;
-                                        -webkit-text-fill-color: transparent;
-                                        background-clip: text; font-weight:
-                                        bold;
-                                        text-fill-color: transparent;"> Poha
-                    E-Labs</span> <span class="sm-brown"> |
-                    All rights reserved - 2022</span>
-            </p>
-        </div>
-        <img src="../../pictures/footerCircle.png" style="height:200px; width:auto;
-                                position:absolute; right:-8px; bottom:-2px;" alt="">
+    <div
+      class="container-fluid position-relative overflow-hidden"
+      style="height: 200px"
+    >
+      <div
+        class="container d-flex justify-content-end align-items-center h-100"
+      >
+        <p>
+          <span
+            style="
+              background: linear-gradient(90deg, #f99b27 0%, #fda73d 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              font-weight: bold;
+              text-fill-color: transparent;
+            "
+          >
+            Poha E-Labs</span
+          >
+          <span class="sm-brown"> | All rights reserved - 2022</span>
+        </p>
+      </div>
+      <img
+        src="../../pictures/footerCircle.png"
+        style="
+          height: 200px;
+          width: auto;
+          position: absolute;
+          right: -8px;
+          bottom: -2px;
+        "
+        alt=""
+      />
     </div>
     <script>
-        // Add active class to the current button (highlight it)
-        var header = document.getElementById("menuItems");
-        var btns = header.getElementsByClassName("btn");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                var current = document.getElementsByClassName("bg-blueLight");
-                current[0].className = current[0].className.replace(" bg-blueLight", "");
-                this.className += " bg-blueLight";
-            });
-        }
+      // Add active class to the current button (highlight it)
+      var header = document.getElementById("menuItems");
+      var btns = header.getElementsByClassName("btn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          var current = document.getElementsByClassName("bg-blueLight");
+          current[0].className = current[0].className.replace(
+            " bg-blueLight",
+            ""
+          );
+          this.className += " bg-blueLight";
+        });
+      }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

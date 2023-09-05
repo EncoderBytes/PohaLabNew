@@ -1,255 +1,343 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Poha Lab</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="../../style.css" />
     <style>
-        .bg-blueLight {
-            background: linear-gradient(90deg, #71AF06 0%, #8DCE1C 100%);
-            color: white;
-        }
+      .bg-blueLight {
+        background: linear-gradient(90deg, #71af06 0%, #8dce1c 100%);
+        color: white;
+      }
 
-        #menuItems button {
-            margin: 3px;
-        }
+      #menuItems button {
+        margin: 3px;
+      }
 
-        .navbar-toggler:focus,
-        .navbar-toggler:active,
-        .navbar-toggler-icon:focus {
-            outline: none;
-            box-shadow: none;
-        }
+      .navbar-toggler:focus,
+      .navbar-toggler:active,
+      .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
+      }
 
-        #menuItems button:hover {
-            border-bottom: 2px solid 71AF06;
-        }
+      #menuItems button:hover {
+        border-bottom: 2px solid 71AF06;
+      }
 
-        h3 {
-            font-size: 20px;
-        }
+      h3 {
+        font-size: 20px;
+      }
 
-        .form-check,
-        #resource ul li {
-            color: #8F8F8F;
-        }
+      .form-check,
+      #resource ul li {
+        color: #8f8f8f;
+      }
 
-        h3 {
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 600;
-        }
+      h3 {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+      }
 
-        .ohms {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+      .ohms {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
 
+      #Main {
+        height: 800px;
+      }
+
+      @media only screen and (max-width: 800px) {
         #Main {
-            height: 800px;
+          height: 1000px;
         }
+      }
 
-        @media only screen and (max-width: 800px) {
-            #Main {
-                height: 1000px;
-            }
-        }
+      .feedback {
+        width: 100%;
+        max-width: 780px;
+        background: #fff;
+        margin: 0 auto;
+        padding: 15px;
+        box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
+      }
 
+      .survey-hr {
+        margin: 10px 0;
+        border: 0.5px solid #ddd;
+      }
 
-        .feedback {
-            width: 100%;
-            max-width: 780px;
-            background: #fff;
-            margin: 0 auto;
-            padding: 15px;
-            box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
-        }
+      .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+      }
 
-        .survey-hr {
-            margin: 10px 0;
-            border: .5px solid #ddd;
-        }
+      .rate:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+      }
 
-        .rate {
-            float: left;
-            height: 46px;
-            padding: 0 10px;
-        }
+      .rate:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 50px;
+        color: #ccc;
+      }
 
-        .rate:not(:checked)>input {
-            position: absolute;
-            top: -9999px;
-        }
+      .rate:not(:checked) > label:before {
+        content: "★ ";
+      }
 
-        .rate:not(:checked)>label {
-            float: right;
-            width: 1em;
-            overflow: hidden;
-            white-space: nowrap;
-            cursor: pointer;
-            font-size: 50px;
-            color: #ccc;
-        }
+      .rate > input:checked ~ label {
+        color: #71af06;
+      }
 
-        .rate:not(:checked)>label:before {
-            content: '★ ';
-        }
+      .rate:not(:checked) > label:hover,
+      .rate:not(:checked) > label:hover ~ label {
+        color: #71af06;
+      }
 
-        .rate>input:checked~label {
-            color: #71AF06;
-        }
+      .rate > input:checked + label:hover,
+      .rate > input:checked + label:hover ~ label,
+      .rate > input:checked ~ label:hover,
+      .rate > input:checked ~ label:hover ~ label,
+      .rate > label:hover ~ input:checked ~ label {
+        color: #71af06;
+      }
 
-        .rate:not(:checked)>label:hover,
-        .rate:not(:checked)>label:hover~label {
-            color: #71AF06;
-        }
+      #navbarSupportedContent {
+        margin: 0 0 0 35rem;
+      }
 
-        .rate>input:checked+label:hover,
-        .rate>input:checked+label:hover~label,
-        .rate>input:checked~label:hover,
-        .rate>input:checked~label:hover~label,
-        .rate>label:hover~input:checked~label {
-            color: #71AF06;
-        }
-
-
+      @media screen and (max-width: 600px) {
         #navbarSupportedContent {
-            margin: 0 0 0 35rem;
+          margin: 0;
+          background-color: #084568;
         }
-
-        @media screen and (max-width: 600px) {
-            #navbarSupportedContent {
-
-                margin: 0;
-                background-color: #084568;
-            }
-
-
-        }
+      }
     </style>
     <script>
-        function change(target) {
-            List = document.getElementsByClassName("itemOfMenu");
-            for (i in List) {
-                List[i].style = "display:none";
-            }
-            if (target == "simulator") {
-                document.getElementById("Main").style = "background:#F9F9F9; padding-bottom:20px; height:fit-content;";
-                document.getElementById(target).style = "display:flex; justify-content:space-between; height:fit-content; width:fit-content; ";
-            } else {
-                document.getElementById(target).style.display = "block";
-                document.getElementById("Main").style = "background:#F9F9F9; height:fit-content; padding-bottom:20px;";
-            }
+      function change(target) {
+        List = document.getElementsByClassName("itemOfMenu");
+        for (i in List) {
+          List[i].style = "display:none";
         }
+        if (target == "simulator") {
+          document.getElementById("Main").style =
+            "background:#F9F9F9; padding-bottom:20px; height:fit-content;";
+          document.getElementById(target).style =
+            "display:flex; justify-content:space-between; height:fit-content; width:fit-content; ";
+        } else {
+          document.getElementById(target).style.display = "block";
+          document.getElementById("Main").style =
+            "background:#F9F9F9; height:fit-content; padding-bottom:20px;";
+        }
+      }
     </script>
-</head>
+  </head>
 
-<body style="background-color: rgb(240,239,239);">
+  <body style="background-color: rgb(240, 239, 239)">
     <div class="container-fluid">
-        <div class="container-fluid" style="height:70px; background-color: #084568;">
-            <nav class="navbar navbar-expand-lg container">
-                <div class="container-fluid">
-                    <a style="  line-height: 41px;" href="../../index.html">
-                        <img src="../../pictures/logomain.png" alt="">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                            <li class="nav-item" style=" display: inline-block; margin: 0 5px;">
-                                <a class="active nav-link"
-                                    style="color: white; text-decoration: auto;  font-size: 17px;  padding: 10px 13px;  border-radius: 3px;  text-transform: uppercase;"
-                                    href="../../index.html">
-                                    Home
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    About
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    Gallery
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    News
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    Contact
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    REgistration
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <div class="container bg-white rounded my-4 d-flex
-                align-items-center" style="min-height:270px;
-                max-height:fit-content">
-            <div class="row w-100 my-0 mx-auto overflow-hidden h-fit-content
-                    h-270">
-
-                <div class="col-xl-8 col-lg-8 col-md-7 col-sm-10 my-2
-                        mx-auto
-
-                        d-flex align-items-center justify-content-between 
-                        flex-column">
-                    <selection class=" align-self-start" style="text-transform:
-                            uppercase;">
-                        <h5 style="
-                                color:#8F8F8F;">
-                            Biology
-                        </h5>
-                        <h3 class="fs-1" style="color: #71AF06;">
-                                Examination of the structure of the Kidney (Sheep Kidney / Model)
-                        </h3>
-                    </selection>
-                </div>
-                <div class=" col-xl-4 col-lg-4 col-md-5 col-sm-8 my-2 mx-auto d-flex align-items-center">
-                    <img src="../../pictures/bio/3.png" class="rounded" style="width:auto;
-                            height:224px; margin:0px auto;" alt="">
-                </div>
+      <div
+        class="container-fluid"
+        style="height: 70px; background-color: #084568"
+      >
+        <nav class="navbar navbar-expand-lg container">
+          <div class="container-fluid">
+            <a style="line-height: 41px" href="../../index.html">
+              <img src="../../pictures/logomain.png" alt="" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="active nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="../../index.html"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    About
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    Gallery
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    News
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    Contact
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    REgistration
+                  </a>
+                </li>
+              </ul>
             </div>
+          </div>
+        </nav>
+      </div>
 
+      <div
+        class="container bg-white rounded my-4 d-flex align-items-center"
+        style="min-height: 270px; max-height: fit-content"
+      >
+        <div class="row w-100 my-0 mx-auto overflow-hidden h-fit-content h-270">
+          <div
+            class="col-xl-8 col-lg-8 col-md-7 col-sm-10 my-2 mx-auto d-flex align-items-center justify-content-between flex-column"
+          >
+            <selection
+              class="align-self-start"
+              style="text-transform: uppercase"
+            >
+              <h5 style="color: #8f8f8f">Biology</h5>
+              <h3 class="fs-1" style="color: #71af06">
+                Examination of the structure of the Kidney (Sheep Kidney /
+                Model)
+              </h3>
+            </selection>
+          </div>
+          <div
+            class="col-xl-4 col-lg-4 col-md-5 col-sm-8 my-2 mx-auto d-flex align-items-center"
+          >
+            <img
+              src="../../pictures/bio/3.png"
+              class="rounded"
+              style="width: auto; height: 224px; margin: 0px auto"
+              alt=""
+            />
+          </div>
         </div>
+      </div>
 
-        <div class="container my-2 position-relative" id="Main" style="background:#F9F9F9;
-                height:fit-content; padding-bottom:20px;">
-
-            <!-- <div class="container-fluid d-flex justify-content-start
+      <div
+        class="container my-2 position-relative"
+        id="Main"
+        style="background: #f9f9f9; height: fit-content; padding-bottom: 20px"
+      >
+        <!-- <div class="container-fluid d-flex justify-content-start
                     flex-wrap gap-3 p-0 rounded" style="background:#DADADA;
                     height:fit-content;" id="menuItems">
                 <button style="width:fit-content; height:56px; font-weight:
@@ -272,733 +360,1048 @@
                         500;" class="btn py-1">Feedback</button>
             </div> -->
 
-            <div class="w-100 pb-5">
-                <nav class="navbar navbar-expand-lg bg-white rounded mx-3 mt-2" id="menuItems"
-                    style="position:absolute; left:0px; right:0px; z-index:222; ">
-                    <div class="container-fluid ">
-                        <button class="navbar-toggler border-0" style="font-size:15px" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse " id="navbarSupportedContent1">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500; align-self: flex-start;" class="btn bg-blueLight
-                                                                py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('theory')">Theory</button>
-                                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <!-- <a class="nav-link" href="#">Link</a> -->
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('procedure')">Procedure</button>
-                                </li>
-                                <!-- <li class="nav-item mx-1">
+        <div class="w-100 pb-5">
+          <nav
+            class="navbar navbar-expand-lg bg-white rounded mx-3 mt-2"
+            id="menuItems"
+            style="position: absolute; left: 0px; right: 0px; z-index: 222"
+          >
+            <div class="container-fluid">
+              <button
+                class="navbar-toggler border-0"
+                style="font-size: 15px"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent1"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse"
+                id="navbarSupportedContent1"
+              >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item mx-1">
+                    <button
+                      style="
+                        width: 100%;
+                        height: 56px;
+                        font-weight: 500;
+                        align-self: flex-start;
+                      "
+                      class="btn bg-blueLight py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('theory')"
+                    >
+                      Theory
+                    </button>
+                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+                  </li>
+                  <li class="nav-item mx-1">
+                    <!-- <a class="nav-link" href="#">Link</a> -->
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('procedure')"
+                    >
+                      Procedure
+                    </button>
+                  </li>
+                  <!-- <li class="nav-item mx-1">
                                                                         <button style="width:100%; height:56px; font-weight:
                                                                 500;" class="btn py-1">  Animation</button>
                                                                     </li> -->
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1" onclick="change('video')">Video</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('simulator')">Simulator</button>
-                                </li>
-                                
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1" onclick="change('vivaQuestion')">Viva
-                                        Voice</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('resource')">Resources</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('Feedback')">Feedback</button>
-                                </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('video')"
+                    >
+                      Video
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('simulator')"
+                    >
+                      Simulator
+                    </button>
+                  </li>
 
-
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('vivaQuestion')"
+                    >
+                      Viva Voice
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('resource')"
+                    >
+                      Resources
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('Feedback')"
+                    >
+                      Feedback
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </nav>
+        </div>
 
-
-            <div class="w-100 itemOfMenu my-5 pt-4" id="theory">
-                <div class="row ">
-                    <div class="col-lg-8 col-md-9 col-sm-12">
-<!--                         <h4>
+        <div class="w-100 itemOfMenu my-5 pt-4" id="theory">
+          <div class="row">
+            <div class="col-lg-8 col-md-9 col-sm-12">
+              <!--                         <h4>
                             ACTIVITY TO COMPARE THE BREATHING RATE AT REST AND AFTER EXERCISE
                         </h4> -->
-                        <p class=" ">
-                            The objective of this practical is to examine and understand the structure of the kidney using a model. By observing the various components of the kidney model, students will gain a better understanding of its anatomical features and functions.
-                        </p>
-                        <h4>
-                            Materials
-                        </h4>
-                        <p class=" ">
-
-                        </p>
-                        <ol>
-                            <li>
-                              Kidney model (available in biology labs or educational supply stores)
-                            </li>
-                            <li>
-                              Dissection tools (scalpel or scissors)
-                            </li>
-                            <li>
-                                Disposable gloves
-                            </li>
-                            <li>
-                               Hand lens or magnifying glass
-                            </li>
-                        </ol>
-                        <h4>
-                            Precautions
-                        </h4>
-                        <p class=" ">
-                                    <ol>
-                                        <li>
-                                            Wear disposable gloves to prevent the spread of bacteria or contaminants.
-                                        </li>
-                                        <li>
-                                            Follow safety guidelines including rules regarding the use of dissection tools, proper disposal of materials, and handling of chemicals.
-                                        </li>
-                                        <li>
-                                            Clean and disinfect After completing the practical.
-                                        </li>
-                                        <li>
-                                            Ensure that students are supervised throughout the practical.
-                                        </li>
-                                    </ol>
-                        </p>
-                    </div>
-
-                </div>
+              <p class=" ">
+                The objective of this practical is to examine and understand the
+                structure of the kidney using a model. By observing the various
+                components of the kidney model, students will gain a better
+                understanding of its anatomical features and functions.
+              </p>
+              <h4>Materials</h4>
+              <p class=" "></p>
+              <ol>
+                <li>
+                  Kidney model (available in biology labs or educational supply
+                  stores)
+                </li>
+                <li>Dissection tools (scalpel or scissors)</li>
+                <li>Disposable gloves</li>
+                <li>Hand lens or magnifying glass</li>
+              </ol>
+              <h4>Precautions</h4>
+              <ol>
+                <li>
+                  Wear disposable gloves to prevent the spread of bacteria or
+                  contaminants.
+                </li>
+                <li>
+                  Follow safety guidelines including rules regarding the use of
+                  dissection tools, proper disposal of materials, and handling
+                  of chemicals.
+                </li>
+                <li>Clean and disinfect After completing the practical.</li>
+                <li>
+                  Ensure that students are supervised throughout the practical.
+                </li>
+              </ol>
             </div>
+          </div>
+        </div>
 
-            <!-- for procedure -->
-            <div class="w-100 itemOfMenu my-5 pt-4" id="procedure" style="display:none;">
-                <div class="row">
-                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
-                        <h4>
-                            Procedure
-                        </h4>
-                        <ol>
-                            <li>
-                                <u>Introduction</u> Begin the practical by explaining the importance of the kidney in the human body, highlighting its role in filtering waste products and maintaining fluid balance. b. Show the kidney model to the students, pointing out the different structures such as the renal cortex, renal medulla, renal pelvis, and renal blood vessels.
-                            </li>
-                            <br>
-                            <li>
-                                <u>External Anatomy</u>
-                                Examine the external features of the kidney model. b. Observe the overall shape of the kidney, noting its bean-like appearance. c. Identify the hilum, a concave region on the medial side of the kidney model. Explain that it is the point of entry and exit for blood vessels, nerves, and the ureter. d. Discuss the protective layer surrounding the kidney called the renal capsule.
-                            </li>
-                            <br>
-                            <li>
-                                <u>Internal Anatomy</u>
-                                Use dissection tools to carefully cut the kidney model along the longitudinal axis. b. Identify and observe the renal cortex, which is the outer layer of the kidney. Note its granular appearance. c. Beneath the cortex, locate the renal medulla, which consists of triangular structures called renal pyramids. Explain that the medulla contains tubules and blood vessels. d. Locate the renal pelvis, a funnel-shaped structure at the center of the kidney model. Explain that it collects urine produced by the kidney and directs it to the ureter. e. Observe the renal blood vessels, such as the renal artery and renal vein, within the kidney model.
-                            </li>
-                            <li>
-                                <u>Nephron Structure</u>
-                                Using a hand lens or magnifying glass, examine the cut surface of the kidney model to observe the microscopic structures called nephrons. b. Point out the glomerulus, a network of tiny blood vessels, and the renal tubules connected to it. c. Explain that the nephron is the functional unit of the kidney responsible for filtering blood and producing urine.
-                            </li>
-                        </ol>
-                    </div>
-                </div>
+        <!-- for procedure -->
+        <div
+          class="w-100 itemOfMenu my-5 pt-4"
+          id="procedure"
+          style="display: none"
+        >
+          <div class="row">
+            <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
+              <h4>Procedure</h4>
+              <ol>
+                <li>
+                  <u>Introduction</u> Begin the practical by explaining the
+                  importance of the kidney in the human body, highlighting its
+                  role in filtering waste products and maintaining fluid
+                  balance. b. Show the kidney model to the students, pointing
+                  out the different structures such as the renal cortex, renal
+                  medulla, renal pelvis, and renal blood vessels.
+                </li>
+                <br />
+                <li>
+                  <u>External Anatomy</u>
+                  Examine the external features of the kidney model. b. Observe
+                  the overall shape of the kidney, noting its bean-like
+                  appearance. c. Identify the hilum, a concave region on the
+                  medial side of the kidney model. Explain that it is the point
+                  of entry and exit for blood vessels, nerves, and the ureter.
+                  d. Discuss the protective layer surrounding the kidney called
+                  the renal capsule.
+                </li>
+                <br />
+                <li>
+                  <u>Internal Anatomy</u>
+                  Use dissection tools to carefully cut the kidney model along
+                  the longitudinal axis. b. Identify and observe the renal
+                  cortex, which is the outer layer of the kidney. Note its
+                  granular appearance. c. Beneath the cortex, locate the renal
+                  medulla, which consists of triangular structures called renal
+                  pyramids. Explain that the medulla contains tubules and blood
+                  vessels. d. Locate the renal pelvis, a funnel-shaped structure
+                  at the center of the kidney model. Explain that it collects
+                  urine produced by the kidney and directs it to the ureter. e.
+                  Observe the renal blood vessels, such as the renal artery and
+                  renal vein, within the kidney model.
+                </li>
+                <li>
+                  <u>Nephron Structure</u>
+                  Using a hand lens or magnifying glass, examine the cut surface
+                  of the kidney model to observe the microscopic structures
+                  called nephrons. b. Point out the glomerulus, a network of
+                  tiny blood vessels, and the renal tubules connected to it. c.
+                  Explain that the nephron is the functional unit of the kidney
+                  responsible for filtering blood and producing urine.
+                </li>
+              </ol>
             </div>
+          </div>
+        </div>
 
-            <!-- Simulator -->
-            <div class="w-100 itemOfMenu  pt-4 my-5
-                    position-relative " id="simulator" style="display:none;">
-                <img src="../../pictures/circle.png" style="width:60px;
-                        height:60px; position:absolute; top:20px; right:0px;" alt="">
+        <!-- Simulator -->
+        <div
+          class="w-100 itemOfMenu pt-4 my-5 position-relative"
+          id="simulator"
+          style="display: none"
+        >
+          <img
+            src="../../pictures/circle.png"
+            style="
+              width: 60px;
+              height: 60px;
+              position: absolute;
+              top: 20px;
+              right: 0px;
+            "
+            alt=""
+          />
 
-
-                <div class="h-100  w-100 overflow-hidden" style="
-                        z-index:111;">
-                    <h1 style="background-color: #084568; margin: 0;
-                        padding: 19px;">
-                        <!-- <img src="../../src/images/Group2.png" alt="" style="float: left; width: 30px;
+          <div class="h-100 w-100 overflow-hidden" style="z-index: 111">
+            <h1 style="background-color: #084568; margin: 0; padding: 19px">
+              <!-- <img src="../../src/images/Group2.png" alt="" style="float: left; width: 30px;
                             padding-top:16px;"> -->
-                        <span style="font-style: normal;
-                            font-weight:600;
-                            font-size: 25px; line-height: 39px;
-                            color:#FFFFFF; padding-left: 0px; text-transform: capitalize;">
-                            Examination of the structure of the Kidney (Sheep Kidney / Model) </span>
-                    </h1>
-                    <div class="row gap-5">
-                        <div class="col-lg-7 col-md-8 col-sm-12" style="background-color:white; width:800px;
-                                overflow-x: scroll; position: relative;">
+              <span
+                style="
+                  font-style: normal;
+                  font-weight: 600;
+                  font-size: 25px;
+                  line-height: 39px;
+                  color: #ffffff;
+                  padding-left: 0px;
+                  text-transform: capitalize;
+                "
+              >
+                Examination of the structure of the Kidney (Sheep Kidney /
+                Model)
+              </span>
+            </h1>
+            <div class="row gap-5">
+              <div
+                class="col-lg-7 col-md-8 col-sm-12"
+                style="
+                  background-color: white;
+                  width: 800px;
+                  overflow-x: scroll;
+                  position: relative;
+                "
+              >
+                <iframe
+                  src="./10biology/Kidney"
+                  frameborder="0"
+                  width="772px"
+                  height="531"
+                  allowfullscreen="allowfullscreen"
+                ></iframe>
 
-                            <iframe src="./10biology/Kidney" frameborder="0" width="772px" height="531"
-                                allowfullscreen="allowfullscreen"></iframe>
-
-                            <!-- for animation -->
-                            <!-- <div class="animationDiv">
+                <!-- for animation -->
+                <!-- <div class="animationDiv">
                                 <div class="scroll">
                                 </div>
                             </div> -->
+              </div>
+              <div
+                class="col-md-3 col-sm-12"
+                style="background-color: #f5f5f5"
+                class=""
+              >
+                <div class="mx-auto">
+                  <h2
+                    style="
+                      margin: 0;
+                      background-color: #71af06;
+                      font-style: normal;
+                      font-weight: 600;
+                      font-size: 24px;
+                      line-height: 29px;
+                      padding: 10px;
+                      color: #ffffff;
+                    "
+                  >
+                    Steps
+                  </h2>
+                  <ol style="padding: 10px 3px 0px 26px; font-size: 14px">
+                    <li>
+                      Choose three slides and mark them X, Y and Z respectively.
+                    </li>
 
-
-                        </div>
-                        <div class="col-md-3 col-sm-12" style="
-                                background-color: #F5F5F5;" class="">
-                            <div class="mx-auto">
-                                <h2 style=" margin:0;background-color: #71AF06;
-                            font-style: normal;font-weight:
-                            600;font-size: 24px;line-height:
-                            29px;padding: 10px;color: #FFFFFF;">
-                                    Steps
-                                </h2>
-                                <ol style="padding: 10px 3px 0px 26px;;
-                            font-size:
-                            14px;">
-                                    <li>Choose three slides and mark them X, Y and Z respectively.
-
-                                    <li>Put a drop of blood on each slide by piercing the tip of the finger by a
-                                        sterilized needle.</li>
-                                    <li>Add 2-3 drops of sugar solution of 0.1; 0.9 and 5% on slide X, Y and Z
-                                        respectively.</li>
-                                    <li> Cover each slide with a cover slip and observe under microscope
-                                    </li>
-
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
+                    <li>
+                      Put a drop of blood on each slide by piercing the tip of
+                      the finger by a sterilized needle.
+                    </li>
+                    <li>
+                      Add 2-3 drops of sugar solution of 0.1; 0.9 and 5% on
+                      slide X, Y and Z respectively.
+                    </li>
+                    <li>
+                      Cover each slide with a cover slip and observe under
+                      microscope
+                    </li>
+                  </ol>
                 </div>
-                <!-- <img src="../../pictures/vector3.png" style="position:absolute; left:0px; bottom:0px; width:400px;" alt=""> -->
+              </div>
             </div>
-
-
-            <!-- Video -->
-            <div class="itemOfMenu my-5  pt-4 position-relative" style="height:650px; display: none;" id="video">
-                <div class="d-flex justify-content-center align-items-center
-                        pb-5">
-                    <iframe width="740px" height="480px" src="https://www.youtube.com/embed/ZceDhBPBE30"
-                        title="YouTube video player" frameborder="0" style="z-index: 111;"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <img src="../../pictures/vectorRightOrange.png" style="position:absolute; bottom:0px; right:-12px;
-                        width:50%;" alt="">
-            </div>
-
-
-            <!-- viva question -->
-            <div class="itemOfMenu my-5  pt-4" id="vivaQuestion" style="display:none;">
-
-                <form>
-                    <div class="mb-3">
-                        <h3>
-                            1.  What is the purpose of examining the structure of the kidney? 
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m1">
-                                 a) To understand the anatomy and function of the kidney 
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m2">
-                                b) To identify abnormalities or diseases in the kidney 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m3">
-                                c) To study the filtration and excretion processes in the kidney  
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m4">
-                              d) All of the above
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            2.  What is the main function of the kidney?
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m1">
-                                  a) Regulation of body temperature  
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m2">
-                                b) Production of red blood cells 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m3">
-                               c) Filtration of waste products from the blood  
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m4">
-                                d) Secretion of digestive enzymes
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            3.  Which part of the kidney is responsible for the filtration of blood? 
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m1">
-                                 a) Renal cortex 
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m2">
-                                 b) Renal medulla 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m3">
-                                 c) Renal pelvis 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m4">
-                                  d) Renal artery
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            4.  What is the functional unit of the kidney? 
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m1">
-                                a) Nephron 
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m2">
-                                 b) Glomerulus 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m3">
-                                 c) Ureter  
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m4">
-                                d) Collecting duct
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                           5.   Which structure of the kidney is responsible for collecting urine from the nephrons? 
-
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                 a) Glomerulus   
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                b) Ureter 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                                c) Renal pelvis
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                 d) Renal tubule
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            6.  What is the role of the glomerulus in the kidney?
-
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                 a) Filtration of blood 
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                b) Reabsorption of water and nutrients   
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                              c) Secretion of waste products 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                 d) Storage of urine
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            7.  Where does the reabsorption of water and nutrients occur in the kidney?  
-
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                a) Renal cortex 
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                 b) Renal medulla 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                                c) Loop of Henle
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                 d) Renal pelvis
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            8.  Which part of the nephron is responsible for the reabsorption of water and electrolytes?
-
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                a) Glomerulus
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                 b) Bowman's capsule  
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                               c) Distal convoluted tubule  
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                d) Proximal convoluted tubule
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                           9.   What is the function of the renal pelvis?  
-
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                               a) Filtration of blood
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                 b) Storage of urine before elimination    
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                               c) Reabsorption of water and nutrients 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                d) Secretion of waste products
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            10. What are some common kidney disorders? 
-
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                a) Kidney stones 
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                  b) Urinary tract infections  
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                                c) Chronic kidney disease 
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                d) All of the above
-                            </label>
-                        </div>
-
-                    </div>
-                    <button type="submit" class="btn
-                                            btn-primary">Submit</button>
-                    <button type="reset" class="btn fw-bold" style="background:
-                                            linear-gradient(135deg, #0072FF 0%,
-                                            #00C6FF 100%);
-                                            -webkit-background-clip: text;
-                                            -webkit-text-fill-color:
-                                            transparent;
-                                            background-clip: text;
-                                            text-fill-color: transparent;">Cancel</button>
-                </form>
-            </div>
-
-
-            <!-- Resources -->
-            <div class="itemOfMenu my-5 pt-4" id="resource" style="display:none;">
-                <div class="resourceItem">
-                    <h3>
-                        Books
-                    </h3>
-                    <ol>
-                        <li>
-                            Khyber Pakhtunkhwa Biology 9 Practical Note Book Peshawar
-                        </li>
-                        <li>
-                            Khyber Pakhtunkhwa Biology 9 Text Book Peshawar
-                        </li>
-                        <li>
-                            Biology Book Curriculum & Text Book Board Lahore
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display:none;">
-                <form method="post" action="# ">
-                    <label>1. Your overall experience with us ?</label><br>
-
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                    </div>
-                    <br>
-                    <br>
-                    <label class="pt-4" for="m_3189847521540640526commentText">2. Any Other
-                        suggestions:</label><br /><br />
-                    <textarea cols="75" name="commentText" rows="5"></textarea><br>
-                    <br>
-                    <div class="clear"></div>
-                    <input style="background:#71AF06;color:#fff;padding:12px;border:0" type="submit"
-                        value="Submit your review">&nbsp;
-                </form>
-
-
-            </div>
-
+          </div>
+          <!-- <img src="../../pictures/vector3.png" style="position:absolute; left:0px; bottom:0px; width:400px;" alt=""> -->
         </div>
 
+        <!-- Video -->
+        <div
+          class="itemOfMenu my-5 pt-4 position-relative"
+          style="height: 650px; display: none"
+          id="video"
+        >
+          <div class="d-flex justify-content-center align-items-center pb-5">
+            <iframe
+              width="740px"
+              height="480px"
+              src="https://www.youtube.com/embed/ZceDhBPBE30"
+              title="YouTube video player"
+              frameborder="0"
+              style="z-index: 111"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
 
+          <img
+            src="../../pictures/vectorRightOrange.png"
+            style="position: absolute; bottom: 0px; right: -12px; width: 50%"
+            alt=""
+          />
+        </div>
+
+        <!-- viva question -->
+        <div
+          class="itemOfMenu my-5 pt-4"
+          id="vivaQuestion"
+          style="display: none"
+        >
+          <form>
+            <div class="mb-3">
+              <h3>
+                1. What is the purpose of examining the structure of the kidney?
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m1">
+                  a) To understand the anatomy and function of the kidney
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m2">
+                  b) To identify abnormalities or diseases in the kidney
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m3">
+                  c) To study the filtration and excretion processes in the
+                  kidney
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m4">
+                  d) All of the above
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>2. What is the main function of the kidney?</h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m1">
+                  a) Regulation of body temperature
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m2">
+                  b) Production of red blood cells
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m3">
+                  c) Filtration of waste products from the blood
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m4">
+                  d) Secretion of digestive enzymes
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                3. Which part of the kidney is responsible for the filtration of
+                blood?
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m1">
+                  a) Renal cortex
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m2">
+                  b) Renal medulla
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m3">
+                  c) Renal pelvis
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m4">
+                  d) Renal artery
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>4. What is the functional unit of the kidney?</h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m1">
+                  a) Nephron
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m2">
+                  b) Glomerulus
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m3">
+                  c) Ureter
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m4">
+                  d) Collecting duct
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                5. Which structure of the kidney is responsible for collecting
+                urine from the nephrons?
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Glomerulus
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Ureter
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Renal pelvis
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) Renal tubule
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>6. What is the role of the glomerulus in the kidney?</h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Filtration of blood
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Reabsorption of water and nutrients
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Secretion of waste products
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) Storage of urine
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                7. Where does the reabsorption of water and nutrients occur in
+                the kidney?
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Renal cortex
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Renal medulla
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Loop of Henle
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) Renal pelvis
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                8. Which part of the nephron is responsible for the reabsorption
+                of water and electrolytes?
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Glomerulus
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Bowman's capsule
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Distal convoluted tubule
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) Proximal convoluted tubule
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>9. What is the function of the renal pelvis?</h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Filtration of blood
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Storage of urine before elimination
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Reabsorption of water and nutrients
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) Secretion of waste products
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>10. What are some common kidney disorders?</h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  a) Kidney stones
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  b) Urinary tract infections
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  c) Chronic kidney disease
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  d) All of the above
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button
+              type="reset"
+              class="btn fw-bold"
+              style="
+                background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+              "
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+
+        <!-- Resources -->
+        <div class="itemOfMenu my-5 pt-4" id="resource" style="display: none">
+          <div class="resourceItem">
+            <h3>Books</h3>
+            <ol>
+              <li>Khyber Pakhtunkhwa Biology 9 Practical Note Book Peshawar</li>
+              <li>Khyber Pakhtunkhwa Biology 9 Text Book Peshawar</li>
+              <li>Biology Book Curriculum & Text Book Board Lahore</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display: none">
+          <form method="post" action="# ">
+            <label>1. Your overall experience with us ?</label><br />
+
+            <div class="rate">
+              <input type="radio" id="star5" name="rate" value="5" />
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="rate" value="4" />
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="rate" value="3" />
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="rate" value="2" />
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="rate" value="1" />
+              <label for="star1" title="text">1 star</label>
+            </div>
+            <br />
+            <br />
+            <label class="pt-4" for="m_3189847521540640526commentText"
+              >2. Any Other suggestions:</label
+            ><br /><br />
+            <textarea cols="75" name="commentText" rows="5"></textarea><br />
+            <br />
+            <div class="clear"></div>
+            <input
+              style="background: #71af06; color: #fff; padding: 12px; border: 0"
+              type="submit"
+              value="Submit your review"
+            />&nbsp;
+          </form>
+        </div>
+      </div>
     </div>
     <!-- FOOTER -->
-    <div class="container-fluid position-relative
-                            overflow-hidden" style="height: 200px;">
-        <div class="container d-flex justify-content-end
-                                align-items-center h-100">
-            <p>
-                <span style="background:
-                                        linear-gradient(90deg, #F99B27 0%,
-                                        #fda73d 100%);
-                                        -webkit-background-clip: text;
-                                        -webkit-text-fill-color: transparent;
-                                        background-clip: text; font-weight:
-                                        bold;
-                                        text-fill-color: transparent;"> Poha
-                    E-Labs</span> <span class="sm-brown"> |
-                    All rights reserved - 2022</span>
-            </p>
-        </div>
-        <img src="../../pictures/footerCircle.png" style="height:200px; width:auto;
-                                position:absolute; right:-8px; bottom:-2px;" alt="">
+    <div
+      class="container-fluid position-relative overflow-hidden"
+      style="height: 200px"
+    >
+      <div
+        class="container d-flex justify-content-end align-items-center h-100"
+      >
+        <p>
+          <span
+            style="
+              background: linear-gradient(90deg, #f99b27 0%, #fda73d 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              font-weight: bold;
+              text-fill-color: transparent;
+            "
+          >
+            Poha E-Labs</span
+          >
+          <span class="sm-brown"> | All rights reserved - 2022</span>
+        </p>
+      </div>
+      <img
+        src="../../pictures/footerCircle.png"
+        style="
+          height: 200px;
+          width: auto;
+          position: absolute;
+          right: -8px;
+          bottom: -2px;
+        "
+        alt=""
+      />
     </div>
     <script>
-        // Add active class to the current button (highlight it)
-        var header = document.getElementById("menuItems");
-        var btns = header.getElementsByClassName("btn");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                var current = document.getElementsByClassName("bg-blueLight");
-                current[0].className = current[0].className.replace(" bg-blueLight", "");
-                this.className += " bg-blueLight";
-            });
-        }
+      // Add active class to the current button (highlight it)
+      var header = document.getElementById("menuItems");
+      var btns = header.getElementsByClassName("btn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          var current = document.getElementsByClassName("bg-blueLight");
+          current[0].className = current[0].className.replace(
+            " bg-blueLight",
+            ""
+          );
+          this.className += " bg-blueLight";
+        });
+      }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>

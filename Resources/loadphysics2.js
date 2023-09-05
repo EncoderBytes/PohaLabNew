@@ -7,23 +7,23 @@ function load() {
   let data = [
     {
       title: "Study resistors in a series circuit",
-      link: "../simulations/physics/VernierCalliper.html",
+      link: "../simulations/physics/studyresistersinseriescircut.html",
     },
     {
       title: "Study Resistors in a parallax circuit",
-      link: "../simulations/physics/SimplePendulam2.html",
+      link: "../simulations/physics/studyresistersinparallelcircut.html",
     },
     {
       title: "Verify Ohm’s law (using wire as a conductor)",
-      link: "../simulations/physics/SimplePendulam.html",
+      link: "../simulations/physics/ohmusingconductor.html",
     },
     {
       title: "Find the focal length of a convex lens by parallax method",
-      link: "../simulations/physics/RefractionofLight.html",
+      link: "../simulations/physics/focallength.html",
     },
     {
-      title: "Verify the laws of refraction by using a glass slab",
-      link: "../simulations/physics/RefractionofLight.html",
+      title: "Trace the Magnetic field using a bar magnet ",
+      link: "../simulations/physics/magnetbar.html",
     },
     // {
     //     title: `AC Sonometer`,

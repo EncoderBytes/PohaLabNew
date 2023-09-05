@@ -1,257 +1,343 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Poha Lab</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="../../style.css">
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+      crossorigin="anonymous"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.3/font/bootstrap-icons.css"
+    />
+    <link rel="stylesheet" href="../../style.css" />
     <style>
-        .bg-blueLight {
-            background: linear-gradient(90deg, #71AF06 0%, #8DCE1C 100%);
-            color: white;
-        }
+      .bg-blueLight {
+        background: linear-gradient(90deg, #71af06 0%, #8dce1c 100%);
+        color: white;
+      }
 
-        #menuItems button {
-            margin: 3px;
-        }
+      #menuItems button {
+        margin: 3px;
+      }
 
-        .navbar-toggler:focus,
-        .navbar-toggler:active,
-        .navbar-toggler-icon:focus {
-            outline: none;
-            box-shadow: none;
-        }
+      .navbar-toggler:focus,
+      .navbar-toggler:active,
+      .navbar-toggler-icon:focus {
+        outline: none;
+        box-shadow: none;
+      }
 
-        #menuItems button:hover {
-            border-bottom: 2px solid 71AF06;
-        }
+      #menuItems button:hover {
+        border-bottom: 2px solid 71AF06;
+      }
 
-        h3 {
-            font-size: 20px;
-        }
+      h3 {
+        font-size: 20px;
+      }
 
-        .form-check,
-        #resource ul li {
-            color: #8F8F8F;
-        }
+      .form-check,
+      #resource ul li {
+        color: #8f8f8f;
+      }
 
-        h3 {
-            font-size: 18px;
-            font-style: normal;
-            font-weight: 600;
-        }
+      h3 {
+        font-size: 18px;
+        font-style: normal;
+        font-weight: 600;
+      }
 
-        .ohms {
-            display: flex;
-            justify-content: space-between;
-            flex-direction: row;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
+      .ohms {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
 
+      #Main {
+        height: 800px;
+      }
+
+      @media only screen and (max-width: 800px) {
         #Main {
-            height: 800px;
+          height: 1000px;
         }
+      }
 
-        @media only screen and (max-width: 800px) {
-            #Main {
-                height: 1000px;
-            }
-        }
+      .feedback {
+        width: 100%;
+        max-width: 780px;
+        background: #fff;
+        margin: 0 auto;
+        padding: 15px;
+        box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
+      }
 
+      .survey-hr {
+        margin: 10px 0;
+        border: 0.5px solid #ddd;
+      }
 
-        .feedback {
-            width: 100%;
-            max-width: 780px;
-            background: #fff;
-            margin: 0 auto;
-            padding: 15px;
-            box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.3);
-        }
+      .rate {
+        float: left;
+        height: 46px;
+        padding: 0 10px;
+      }
 
-        .survey-hr {
-            margin: 10px 0;
-            border: .5px solid #ddd;
-        }
+      .rate:not(:checked) > input {
+        position: absolute;
+        top: -9999px;
+      }
 
-        .rate {
-            float: left;
-            height: 46px;
-            padding: 0 10px;
-        }
+      .rate:not(:checked) > label {
+        float: right;
+        width: 1em;
+        overflow: hidden;
+        white-space: nowrap;
+        cursor: pointer;
+        font-size: 50px;
+        color: #ccc;
+      }
 
-        .rate:not(:checked)>input {
-            position: absolute;
-            top: -9999px;
-        }
+      .rate:not(:checked) > label:before {
+        content: "★ ";
+      }
 
-        .rate:not(:checked)>label {
-            float: right;
-            width: 1em;
-            overflow: hidden;
-            white-space: nowrap;
-            cursor: pointer;
-            font-size: 50px;
-            color: #ccc;
-        }
+      .rate > input:checked ~ label {
+        color: #71af06;
+      }
 
-        .rate:not(:checked)>label:before {
-            content: '★ ';
-        }
+      .rate:not(:checked) > label:hover,
+      .rate:not(:checked) > label:hover ~ label {
+        color: #71af06;
+      }
 
-        .rate>input:checked~label {
-            color: #71AF06;
-        }
+      .rate > input:checked + label:hover,
+      .rate > input:checked + label:hover ~ label,
+      .rate > input:checked ~ label:hover,
+      .rate > input:checked ~ label:hover ~ label,
+      .rate > label:hover ~ input:checked ~ label {
+        color: #71af06;
+      }
 
-        .rate:not(:checked)>label:hover,
-        .rate:not(:checked)>label:hover~label {
-            color: #71AF06;
-        }
+      #navbarSupportedContent {
+        margin: 0 0 0 35rem;
+      }
 
-        .rate>input:checked+label:hover,
-        .rate>input:checked+label:hover~label,
-        .rate>input:checked~label:hover,
-        .rate>input:checked~label:hover~label,
-        .rate>label:hover~input:checked~label {
-            color: #71AF06;
-        }
-
+      @media screen and (max-width: 600px) {
         #navbarSupportedContent {
-            margin: 0 0 0 35rem;
+          margin: 0;
+          background-color: #084568;
         }
-
-        @media screen and (max-width: 600px) {
-            #navbarSupportedContent {
-
-                margin: 0;
-                background-color: #084568;
-            }
-
-
-        }
+      }
     </style>
     <script>
-        function change(target) {
-            List = document.getElementsByClassName("itemOfMenu");
-            for (i in List) {
-                List[i].style = "display:none";
-            }
-            if (target == "simulator") {
-                document.getElementById("Main").style = "background:#F9F9F9; padding-bottom:20px; height:fit-content;";
-                document.getElementById(target).style = "display:flex; justify-content:space-between; height:fit-content; width:fit-content; ";
-            } else {
-                document.getElementById(target).style.display = "block";
-                document.getElementById("Main").style = "background:#F9F9F9; height:fit-content; padding-bottom:20px;";
-            }
+      function change(target) {
+        List = document.getElementsByClassName("itemOfMenu");
+        for (i in List) {
+          List[i].style = "display:none";
         }
+        if (target == "simulator") {
+          document.getElementById("Main").style =
+            "background:#F9F9F9; padding-bottom:20px; height:fit-content;";
+          document.getElementById(target).style =
+            "display:flex; justify-content:space-between; height:fit-content; width:fit-content; ";
+        } else {
+          document.getElementById(target).style.display = "block";
+          document.getElementById("Main").style =
+            "background:#F9F9F9; height:fit-content; padding-bottom:20px;";
+        }
+      }
     </script>
-</head>
+  </head>
 
-<body style="background-color: rgb(240,239,239);">
+  <body style="background-color: rgb(240, 239, 239)">
     <div class="container-fluid">
-        <div class="container-fluid" style="height:70px; background-color: #084568;">
-            <nav class="navbar navbar-expand-lg container">
-                <div class="container-fluid">
-                    <a style="  line-height: 41px;" href="../../index.html">
-                        <img src="../../pictures/logomain.png" alt="">
-                    </a>
-                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                        data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-                            <li class="nav-item" style=" display: inline-block; margin: 0 5px;">
-                                <a class="active nav-link"
-                                    style="color: white; text-decoration: auto;  font-size: 17px;  padding: 10px 13px;  border-radius: 3px;  text-transform: uppercase;"
-                                    href="../../index.html">
-                                    Home
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    About
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    Gallery
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    News
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    Contact
-                                </a>
-                            </li>
-                            <li class="nav-item" style=" display: inline-block;    margin: 0 5px;">
-                                <a class="nav-link"
-                                    style="color: white; text-decoration: auto; font-size: 17px; padding: 10px 13px; border-radius: 3px; text-transform: uppercase;"
-                                    href="#">
-                                    REgistration
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </nav>
-        </div>
-
-        <div class="container bg-white rounded my-4 d-flex
-                align-items-center" style="min-height:270px;
-                max-height:fit-content">
-            <div class="row w-100 my-0 mx-auto overflow-hidden h-fit-content
-                    h-270">
-
-                <div class="col-xl-8 col-lg-8 col-md-7 col-sm-10 my-2
-                        mx-auto
-
-                        d-flex align-items-center justify-content-between 
-                        flex-column">
-                    <selection class=" align-self-start" style="text-transform:
-                            uppercase;">
-                        <h5 style="
-                                color:#8F8F8F;">
-                            Physics
-                        </h5>
-                        <h3 class="fs-1 " style="color: #71AF06;">
-                            Prove that time period of a simple pendulum is independent of mass of the Pendulum
-                        </h3>
-                    </selection>
-                </div>
-                <div class="col-xl-4 col-lg-4 col-md-5 col-sm-8 my-2
-                        mx-auto
-
-                        d-flex align-items-center">
-                    <img src="../../pictures/physics/2.png" class="rounded" style="width:auto;
-                            height:224px; margin:0px auto;" alt="">
-                </div>
+      <div
+        class="container-fluid"
+        style="height: 70px; background-color: #084568"
+      >
+        <nav class="navbar navbar-expand-lg container">
+          <div class="container-fluid">
+            <a style="line-height: 41px" href="../../index.html">
+              <img src="../../pictures/logomain.png" alt="" />
+            </a>
+            <button
+              class="navbar-toggler"
+              type="button"
+              data-bs-toggle="collapse"
+              data-bs-target="#navbarSupportedContent"
+              aria-controls="navbarSupportedContent"
+              aria-expanded="false"
+              aria-label="Toggle navigation"
+            >
+              <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+              <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="active nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="../../index.html"
+                  >
+                    Home
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    About
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    Gallery
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    News
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    Contact
+                  </a>
+                </li>
+                <li
+                  class="nav-item"
+                  style="display: inline-block; margin: 0 5px"
+                >
+                  <a
+                    class="nav-link"
+                    style="
+                      color: white;
+                      text-decoration: auto;
+                      font-size: 17px;
+                      padding: 10px 13px;
+                      border-radius: 3px;
+                      text-transform: uppercase;
+                    "
+                    href="#"
+                  >
+                    REgistration
+                  </a>
+                </li>
+              </ul>
             </div>
+          </div>
+        </nav>
+      </div>
 
+      <div
+        class="container bg-white rounded my-4 d-flex align-items-center"
+        style="min-height: 270px; max-height: fit-content"
+      >
+        <div class="row w-100 my-0 mx-auto overflow-hidden h-fit-content h-270">
+          <div
+            class="col-xl-8 col-lg-8 col-md-7 col-sm-10 my-2 mx-auto d-flex align-items-center justify-content-between flex-column"
+          >
+            <selection
+              class="align-self-start"
+              style="text-transform: uppercase"
+            >
+              <h5 style="color: #8f8f8f">Physics</h5>
+              <h3 class="fs-1" style="color: #71af06">
+                Prove that time period of a simple pendulum is independent of
+                mass of the Pendulum
+              </h3>
+            </selection>
+          </div>
+          <div
+            class="col-xl-4 col-lg-4 col-md-5 col-sm-8 my-2 mx-auto d-flex align-items-center"
+          >
+            <img
+              src="../../pictures/physics/2.png"
+              class="rounded"
+              style="width: auto; height: 224px; margin: 0px auto"
+              alt=""
+            />
+          </div>
         </div>
+      </div>
 
-        <div class="container my-2 position-relative" id="Main" style="background:#F9F9F9;
-                height:fit-content; padding-bottom:20px;">
-
-            <!-- <div class="container-fluid d-flex justify-content-start
+      <div
+        class="container my-2 position-relative"
+        id="Main"
+        style="background: #f9f9f9; height: fit-content; padding-bottom: 20px"
+      >
+        <!-- <div class="container-fluid d-flex justify-content-start
                     flex-wrap gap-3 p-0 rounded" style="background:#DADADA;
                     height:fit-content;" id="menuItems">
                 <button style="width:fit-content; height:56px; font-weight:
@@ -274,725 +360,1012 @@
                         500;" class="btn py-1">Feedback</button>
             </div> -->
 
-            <div class="w-100 pb-5">
-                <nav class="navbar navbar-expand-lg bg-white rounded mx-3 mt-2" id="menuItems"
-                    style="position:absolute; left:0px; right:0px; z-index:222; ">
-                    <div class="container-fluid ">
-                        <button class="navbar-toggler border-0" style="font-size:15px" type="button"
-                            data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent1"
-                            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                            <span class="navbar-toggler-icon"></span>
-                        </button>
-                        <div class="collapse navbar-collapse " id="navbarSupportedContent1">
-                            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500; align-self: flex-start;" class="btn bg-blueLight
-                                                                    py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('theory')">Theory</button>
-                                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <!-- <a class="nav-link" href="#">Link</a> -->
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('procedure')">Procedure</button>
-                                </li>
-                                <!-- <li class="nav-item mx-1">
+        <div class="w-100 pb-5">
+          <nav
+            class="navbar navbar-expand-lg bg-white rounded mx-3 mt-2"
+            id="menuItems"
+            style="position: absolute; left: 0px; right: 0px; z-index: 222"
+          >
+            <div class="container-fluid">
+              <button
+                class="navbar-toggler border-0"
+                style="font-size: 15px"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent1"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div
+                class="collapse navbar-collapse"
+                id="navbarSupportedContent1"
+              >
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                  <li class="nav-item mx-1">
+                    <button
+                      style="
+                        width: 100%;
+                        height: 56px;
+                        font-weight: 500;
+                        align-self: flex-start;
+                      "
+                      class="btn bg-blueLight py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('theory')"
+                    >
+                      Theory
+                    </button>
+                    <!-- <a class="nav-link active" aria-current="page" href="#">Home</a> -->
+                  </li>
+                  <li class="nav-item mx-1">
+                    <!-- <a class="nav-link" href="#">Link</a> -->
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('procedure')"
+                    >
+                      Procedure
+                    </button>
+                  </li>
+                  <!-- <li class="nav-item mx-1">
                                                                             <button style="width:100%; height:56px; font-weight:
                                                                     500;" class="btn py-1">  Animation</button>
                                                                         </li> -->
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1" onclick="change('video')">Video</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('simulator')">Simulator</button>
-                                </li>
-                                
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1" onclick="change('vivaQuestion')">Viva
-                                        Voice</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('resource')">Resources</button>
-                                </li>
-                                <li class="nav-item mx-1">
-                                    <button style="width:100%; height:56px; font-weight:
-                                                                    500;" class="btn py-1" data-bs-toggle="collapse"
-                                        data-bs-target="#navbarSupportedContent1"
-                                        aria-controls="navbarSupportedContent1"
-                                        onclick="change('Feedback')">Feedback</button>
-                                </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('video')"
+                    >
+                      Video
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('simulator')"
+                    >
+                      Simulator
+                    </button>
+                  </li>
 
-
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('vivaQuestion')"
+                    >
+                      Viva Voice
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('resource')"
+                    >
+                      Resources
+                    </button>
+                  </li>
+                  <li class="nav-item mx-1">
+                    <button
+                      style="width: 100%; height: 56px; font-weight: 500"
+                      class="btn py-1"
+                      data-bs-toggle="collapse"
+                      data-bs-target="#navbarSupportedContent1"
+                      aria-controls="navbarSupportedContent1"
+                      onclick="change('Feedback')"
+                    >
+                      Feedback
+                    </button>
+                  </li>
+                </ul>
+              </div>
             </div>
+          </nav>
+        </div>
 
-
-            <div class=" w-100 itemOfMenu my-5 pt-4" id="theory">
-                <div class="row ">
-                    <div class="col-lg-8 col-md-9 col-sm-12">
-                        <h3>
-                            SIMPLE PENDULUM: 
-                        </h3>
-                        <p class="  ">
-                            A simple pendulum is a point mass suspended by a weightless and inextensible string fixed rigidly to support.
-                        </p>
-                    </div>
-                    <div class="col-lg-8 col-md-9 col-sm-12">
-
-                        <h3>
-                            EXPLANATION
-                        </h3>
-                        <p class="  ">
-                            A simple pendulum is a mechanical arrangement that demonstrates periodic motion. It comprises a small bob of mass ‘m’ suspended by a thin string secured to a platform at its upper end of length L. This system sways or moves in an oscillatory motion. This motion occurs in a vertical plane and is mainly driven by gravitational force. Interestingly, the bob that is suspended at the end of a thread is very light; somewhat, we can say it is even massless. The period of a simple pendulum can be made extended by increasing the length string while taking the measurements from the point of suspension to the middle of the bob. However, it should be noted that if the mass of the bob is changed, the period will remain unchanged. The period is influenced mainly by the position of the pendulum in relation to Earth, as the strength of the gravitational field is not uniform everywhere.
-                            <br><br>
-                            In addition, pendulums are a common system whose usage is seen in various instances. Some are used in clocks to keep track of the time, while some are just used for fun in case of a child’s swing. In some cases, it is used in an unconventional manner, such as a sinker on a fishing line. In any case, we will explore and learn more about the simple pendulum, and as well as We will derive an interesting expression for its period.
-                        </p>
-
-                        <h3>
-                            IMPORTANT TERMS:
-                        </h3>
-
-                        <p class="  ">
-                            <ul>
-                                <li>
-                                    <b>The oscillatory motion of a simple pendulum: </b>
-                                    Oscillatory motion is defined as the to and fro motion of the pendulum in a periodic fashion, and the center point of oscillation is known as the equilibrium position.
-                                </li>
-                                <li>
-                                    <b>
-                                        The time period of a simple pendulum: 
-                                    </b>
-                                    It is defined as the time taken by the pendulum to finish one full oscillation and is denoted by “T”.
-                                </li>
-                                <li>
-                                    <b>
-                                        The amplitude of a simple pendulum: 
-                                    </b>
-                                    It is defined as the distance traveled by the pendulum from the equilibrium position to one side.
-                                </li>
-                                <li>
-                                    <b>
-                                        Length of a simple pendulum: 
-                                    </b>
-                                    It is defined as the distance between the point of suspension to the center of the bob and is denoted by “l”.
-                                </li>
-                            </ul>
-                        </p>
-                        <h3>
-                            EXPRESSION FOR TIME PERIOD OF SIMPLE PENDULUM:
-                        </h3>
-                        <p class="  ">
-                               The mathematical expression for time period of simple pendulum is:
-                               <br>
-                               T=2π√l/g
-                               <br>
-                                  This equation shows that time period pendulum depends on the length of a simple pendulum and the acceleration due to gravity with no direct dependence on the mass of the bob. However, experimental verification is necessary to confirm this relationship.
-                        </p>
-                        <img src="../../pictures/physics/simplependulum.png">
-                        <h3>
-                            APPARATUS
-                        </h3>
-
-                        <p class="  ">
-                            <ol>
-                                <li>
-                                    Two identical bobs of different masses with hooks
-                                </li>
-                                <li>
-                                    Thread/ an inextensible string.
-                                </li>
-                                <li>
-                                    Iron stand with clamp and heavy base.
-                                </li>
-                                <li>
-                                    Vernier caliper
-                                </li>
-                                <li>
-                                    Stopwatch
-                                </li>
-                                <li>
-                                    Metre rule
-                                </li>
-                                <li>
-                                    Laboratory balance. 
-                                </li>
-                                <li>
-                                    Calculator
-                                </li>
-                                <li>
-                                    Piece of chalk
-                                </li>
-                            </ol>
-                        </p>
-                    </div>
-                </div>
+        <div class="w-100 itemOfMenu my-5 pt-4" id="theory">
+          <div class="row">
+            <div class="col-lg-8 col-md-9 col-sm-12">
+              <h3>SIMPLE PENDULUM:</h3>
+              <p class="  ">
+                A simple pendulum is a point mass suspended by a weightless and
+                inextensible string fixed rigidly to support.
+              </p>
             </div>
+            <div class="col-lg-8 col-md-9 col-sm-12">
+              <h3>EXPLANATION</h3>
+              <p class="  ">
+                A simple pendulum is a mechanical arrangement that demonstrates
+                periodic motion. It comprises a small bob of mass ‘m’ suspended
+                by a thin string secured to a platform at its upper end of
+                length L. This system sways or moves in an oscillatory motion.
+                This motion occurs in a vertical plane and is mainly driven by
+                gravitational force. Interestingly, the bob that is suspended at
+                the end of a thread is very light; somewhat, we can say it is
+                even massless. The period of a simple pendulum can be made
+                extended by increasing the length string while taking the
+                measurements from the point of suspension to the middle of the
+                bob. However, it should be noted that if the mass of the bob is
+                changed, the period will remain unchanged. The period is
+                influenced mainly by the position of the pendulum in relation to
+                Earth, as the strength of the gravitational field is not uniform
+                everywhere.
+                <br /><br />
+                In addition, pendulums are a common system whose usage is seen
+                in various instances. Some are used in clocks to keep track of
+                the time, while some are just used for fun in case of a child’s
+                swing. In some cases, it is used in an unconventional manner,
+                such as a sinker on a fishing line. In any case, we will explore
+                and learn more about the simple pendulum, and as well as We will
+                derive an interesting expression for its period.
+              </p>
 
-            <!-- for procedure -->
-            <div class="w-100 itemOfMenu my-5 pt-4" id="procedure" style="display:none;">
-                <div class="row">
-                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
-                        <h3>
-                            Procedure
-                        </h3>
-                        <ol class="  ">
-                            <li>
-                               Find the mass of each bob with the help of laboratory balance. 
-                            </li>
-                            <li>
-                                Measure the diameter of the hook of the bob with the help of a Vernier caliper and calculate the radius of the bob (i.e. D/2)
-                            </li>
-                            <li>
-                                Take an inextensible string and tie its one end with the hook of the bob. 
-                            </li>
-                            <li>
-                                Place the other end of the string between the split corks.
-                            </li>
-                            <li>
-                                Clamp the cork on an iron stand. The bob of a pendulum must be a few cm above the ground.
-                            </li>
-                            <li>
-                                Measure the length of the string including the hook. The total length of the pendulum will be l=l+r.
-                            </li>
-                            <li>
-                                Draw two mutually perpendicular lines with the help of the chalk on the floor mean position o, point A and point B shows extreme position A and B.
-                            </li>
-                            <li>
-                                Then release the bob gently. The oscillation of the bob should be along a straight line.
-                            </li>
-                            <li>
-                                Start the stopwatch when the bob just passes point o and at the same time start counting the oscillations from zero. Note the time for 2D complete oscillation.
-                            </li>
-                            <li>
-                                Repeat step 8 to obtain another value of time t2 and find the mean t, t=(t1+t2)/2.
-                            </li>
-                            <li>
-                               Calculate the mean time period for one oscillation as, T=t/10. 
-                            </li>
-                            <li>
-                                Calculate the time period for each bob and record them. Results will show that the time period for each bob remains the same.
-                            </li>
-                        </ol>
-                    </div>
-                    <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
-                        <h3>
-                            PRECAUTIONS
-                        </h3>
-                        <ol class="  ">
-                            <li>
-                                The thread should be very light and strong.
-                            </li>
-                            <li>
-                                The point of suspension should be reasonably rigid.
-                            </li>
-                            <li>
-                                The pendulum should oscillate in the vertical plane without any spin motion.
-                            </li>
-                            <li>
-                                The floor of the laboratory should not have vibration, which may cause a deviation from the regular oscillation of the pendulum.
-                            </li>
-                            <li>
-                                The length of the pendulum should be as large as possible in the given situation.’
-                            </li>
-                            <li>
-                                Determination of time for 20 or more oscillations should be carefully taken and repeated at least three times.
-                            </li>
-                            <li>
-                                There must not be a strong wind blowing during the experiment.
-                            </li>
-                        </ol>
+              <h3>IMPORTANT TERMS:</h3>
 
-                    </div>
-                </div>
+              <ul>
+                <li>
+                  <b>The oscillatory motion of a simple pendulum: </b>
+                  Oscillatory motion is defined as the to and fro motion of the
+                  pendulum in a periodic fashion, and the center point of
+                  oscillation is known as the equilibrium position.
+                </li>
+                <li>
+                  <b> The time period of a simple pendulum: </b>
+                  It is defined as the time taken by the pendulum to finish one
+                  full oscillation and is denoted by “T”.
+                </li>
+                <li>
+                  <b> The amplitude of a simple pendulum: </b>
+                  It is defined as the distance traveled by the pendulum from
+                  the equilibrium position to one side.
+                </li>
+                <li>
+                  <b> Length of a simple pendulum: </b>
+                  It is defined as the distance between the point of suspension
+                  to the center of the bob and is denoted by “l”.
+                </li>
+              </ul>
+              <h3>EXPRESSION FOR TIME PERIOD OF SIMPLE PENDULUM:</h3>
+              <p class="  ">
+                The mathematical expression for time period of simple pendulum
+                is:
+                <br />
+                T=2π√l/g
+                <br />
+                This equation shows that time period pendulum depends on the
+                length of a simple pendulum and the acceleration due to gravity
+                with no direct dependence on the mass of the bob. However,
+                experimental verification is necessary to confirm this
+                relationship.
+              </p>
+              <img src="../../pictures/physics/simplependulum.png" />
+              <h3>APPARATUS</h3>
+
+              <ol>
+                <li>Two identical bobs of different masses with hooks</li>
+                <li>Thread/ an inextensible string.</li>
+                <li>Iron stand with clamp and heavy base.</li>
+                <li>Vernier caliper</li>
+                <li>Stopwatch</li>
+                <li>Metre rule</li>
+                <li>Laboratory balance.</li>
+                <li>Calculator</li>
+                <li>Piece of chalk</li>
+              </ol>
             </div>
+          </div>
+        </div>
 
-            <!-- Simulator -->
-            <div class="w-100 itemOfMenu  pt-4 my-5
-                    position-relative " id="simulator" style="display:none;">
-                <img src="../../pictures/circle.png" style="width:60px;
-                        height:60px; position:absolute; top:20px; right:0px;" alt="">
+        <!-- for procedure -->
+        <div
+          class="w-100 itemOfMenu my-5 pt-4"
+          id="procedure"
+          style="display: none"
+        >
+          <div class="row">
+            <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
+              <h3>Procedure</h3>
+              <ol class="  ">
+                <li>
+                  Find the mass of each bob with the help of laboratory balance.
+                </li>
+                <li>
+                  Measure the diameter of the hook of the bob with the help of a
+                  Vernier caliper and calculate the radius of the bob (i.e. D/2)
+                </li>
+                <li>
+                  Take an inextensible string and tie its one end with the hook
+                  of the bob.
+                </li>
+                <li>
+                  Place the other end of the string between the split corks.
+                </li>
+                <li>
+                  Clamp the cork on an iron stand. The bob of a pendulum must be
+                  a few cm above the ground.
+                </li>
+                <li>
+                  Measure the length of the string including the hook. The total
+                  length of the pendulum will be l=l+r.
+                </li>
+                <li>
+                  Draw two mutually perpendicular lines with the help of the
+                  chalk on the floor mean position o, point A and point B shows
+                  extreme position A and B.
+                </li>
+                <li>
+                  Then release the bob gently. The oscillation of the bob should
+                  be along a straight line.
+                </li>
+                <li>
+                  Start the stopwatch when the bob just passes point o and at
+                  the same time start counting the oscillations from zero. Note
+                  the time for 2D complete oscillation.
+                </li>
+                <li>
+                  Repeat step 8 to obtain another value of time t2 and find the
+                  mean t, t=(t1+t2)/2.
+                </li>
+                <li>
+                  Calculate the mean time period for one oscillation as, T=t/10.
+                </li>
+                <li>
+                  Calculate the time period for each bob and record them.
+                  Results will show that the time period for each bob remains
+                  the same.
+                </li>
+              </ol>
+            </div>
+            <div class="col-lg-9 col-xl-9 my-2 col-md-9 col-sm-12">
+              <h3>PRECAUTIONS</h3>
+              <ol class="  ">
+                <li>The thread should be very light and strong.</li>
+                <li>The point of suspension should be reasonably rigid.</li>
+                <li>
+                  The pendulum should oscillate in the vertical plane without
+                  any spin motion.
+                </li>
+                <li>
+                  The floor of the laboratory should not have vibration, which
+                  may cause a deviation from the regular oscillation of the
+                  pendulum.
+                </li>
+                <li>
+                  The length of the pendulum should be as large as possible in
+                  the given situation.’
+                </li>
+                <li>
+                  Determination of time for 20 or more oscillations should be
+                  carefully taken and repeated at least three times.
+                </li>
+                <li>
+                  There must not be a strong wind blowing during the experiment.
+                </li>
+              </ol>
+            </div>
+          </div>
+        </div>
 
+        <!-- Simulator -->
+        <div
+          class="w-100 itemOfMenu pt-4 my-5 position-relative"
+          id="simulator"
+          style="display: none"
+        >
+          <img
+            src="../../pictures/circle.png"
+            style="
+              width: 60px;
+              height: 60px;
+              position: absolute;
+              top: 20px;
+              right: 0px;
+            "
+            alt=""
+          />
 
-                <div class="h-100  w-100 overflow-hidden" style="
-                        z-index:111;">
-                    <h1 style="background-color: #084568; margin: 0;
-                        padding: 19px;">
-                        <!-- <img src="../../src/images/Group2.png" alt="" style="float: left; width: 30px;
+          <div class="h-100 w-100 overflow-hidden" style="z-index: 111">
+            <h1 style="background-color: #084568; margin: 0; padding: 19px">
+              <!-- <img src="../../src/images/Group2.png" alt="" style="float: left; width: 30px;
                             padding-top:16px;"> -->
-                        <span style="font-style: normal;
-                            font-weight:600;
-                            font-size: 25px; line-height: 39px;
-                            color:#FFFFFF; padding-left: 19px;">
-                            PROVE THAT TIME PERIOD OF A SIMPLE PENDULUM IS INDEPENDENT OF MASS OF THE PENDULUM</span>
-                    </h1>
-                    <div class="row gap-5">
-                        <div class="col-lg-7 col-md-8 col-sm-12" style="background-color:white; width:800px;
-                                overflow-x: scroll; position: relative;">
+              <span
+                style="
+                  font-style: normal;
+                  font-weight: 600;
+                  font-size: 25px;
+                  line-height: 39px;
+                  color: #ffffff;
+                  padding-left: 19px;
+                "
+              >
+                PROVE THAT TIME PERIOD OF A SIMPLE PENDULUM IS INDEPENDENT OF
+                MASS OF THE PENDULUM</span
+              >
+            </h1>
+            <div class="row gap-5">
+              <div
+                class="col-lg-7 col-md-8 col-sm-12"
+                style="
+                  background-color: white;
+                  width: 800px;
+                  overflow-x: scroll;
+                  position: relative;
+                "
+              >
+                <iframe
+                  src="9physics/Prove that time period of a simple pendulum is independent of mass of the Pendulum"
+                  frameborder="0"
+                  width="772px"
+                  height="531"
+                  allowfullscreen="allowfullscreen"
+                ></iframe>
 
-                            <iframe src="9physics/Prove that time period of a simple pendulum is independent of mass of the Pendulum" frameborder="0" width="772px" height="531"
-                                allowfullscreen="allowfullscreen"></iframe>
-
-                            <!-- for animation -->
-                            <!-- Examination of Animal _ Plant Cell under Microscope -->
-                            <!-- <div class="animationDiv">
+                <!-- for animation -->
+                <!-- Examination of Animal _ Plant Cell under Microscope -->
+                <!-- <div class="animationDiv">
                                 <div class="scroll">
                                 </div>
                             </div> -->
-
-
-                        </div>
-                        <div class="col-md-3 col-sm-12" style="
-                                background-color: #F5F5F5;" class="">
-                            <div class="mx-auto">
-                                <h2 style=" margin:0;background-color: #71AF06;
-                            font-style: normal;font-weight:
-                            600;font-size: 24px;line-height:
-                            29px;padding: 10px;color: #FFFFFF;">
-                                    Steps
-                                </h2>
-                                <ol style="padding: 10px 3px 0px 26px;;
-                            font-size:
-                            14px;">
-                                    <li>
-                                        Click on the thread of desired length and drag it towards the stand.
-                                    </li>
-                                    <li>
-                                        Repeat step#1 for the second piece of thread.
-                                    </li>
-                                    <li>
-                                        Click on one of the bobs and drag it toward the end of the thread (already tied to the stand).
-                                    </li>
-                                    <li>
-                                        Repeat step#3 for the second bob.
-                                    </li>
-                                    <li>
-                                        Pull one of the bobs, it will start oscillations. The timer will also start ticking to record the time in seconds.
-                                    </li>
-                                    <li>
-                                        Repeat step#5 for the second bob. (step missing in simulation).
-                                    </li>
-                                    <li>
-                                        Now, repeat step#5 for both the bobs.
-                                    </li>
-                                    <li> 
-                                        After the necessary calculations, you will get the desired result.
-                                    </li>
-
-                                </ol>
-                            </div>
-                        </div>
-                    </div>
+              </div>
+              <div
+                class="col-md-3 col-sm-12"
+                style="background-color: #f5f5f5"
+                class=""
+              >
+                <div class="mx-auto">
+                  <h2
+                    style="
+                      margin: 0;
+                      background-color: #71af06;
+                      font-style: normal;
+                      font-weight: 600;
+                      font-size: 24px;
+                      line-height: 29px;
+                      padding: 10px;
+                      color: #ffffff;
+                    "
+                  >
+                    Steps
+                  </h2>
+                  <ol style="padding: 10px 3px 0px 26px; font-size: 14px">
+                    <li>
+                      Click on the thread of desired length and drag it towards
+                      the stand.
+                    </li>
+                    <li>Repeat step#1 for the second piece of thread.</li>
+                    <li>
+                      Click on one of the bobs and drag it toward the end of the
+                      thread (already tied to the stand).
+                    </li>
+                    <li>Repeat step#3 for the second bob.</li>
+                    <li>
+                      Pull one of the bobs, it will start oscillations. The
+                      timer will also start ticking to record the time in
+                      seconds.
+                    </li>
+                    <li>
+                      Repeat step#5 for the second bob. (step missing in
+                      simulation).
+                    </li>
+                    <li>Now, repeat step#5 for both the bobs.</li>
+                    <li>
+                      After the necessary calculations, you will get the desired
+                      result.
+                    </li>
+                  </ol>
                 </div>
-                <!-- <img src="../../pictures/vector3.png" style="position:absolute; left:0px; bottom:0px; width:400px;" alt=""> -->
+              </div>
             </div>
-
-
-            <!-- Video -->
-            <div class="itemOfMenu my-5  pt-4 position-relative" style="height:650px; display: none;" id="video">
-                <div class="d-flex justify-content-center align-items-center
-                        pb-5">
-                    <iframe width="740px" height="480px" src="https://www.youtube.com/embed/tw23mdEIckQ"
-                        title="YouTube video player" frameborder="0" style="z-index: 111;"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                        allowfullscreen>
-                    </iframe>
-                </div>
-
-                <img src="../../pictures/vectorRightOrange.png" style="position:absolute; bottom:0px; right:-12px;
-                        width:50%;" alt="">
-            </div>
-
-
-            <!-- viva question -->
-            <div class="itemOfMenu my-5  pt-4" id="vivaQuestion" style="display:none;">
-
-                <form>
-                    <div class="mb-3">
-                        <h3>
-                            1. Simple Pendulum does not vibrate at.
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m1"
-                                style="border: solid 2px black;" style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m1">
-                                North Pole. 
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m2">
-                                South Pole.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m3">
-                                Surface of the earth.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q1m1" id="q1m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q1m4">
-                                Center of the earth.
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            2. When a pendulum is taken on the top of the mountain, the time period will:
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m1">
-                                Increase
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m2">
-                                Decrease
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m3">
-                                Remain constant.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q2" id="q2m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q2m4">
-                                Become zero.
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            3. The velocity of a particle moving with simple harmonic motion is __________ at mean position.
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m1"> Zero
-                            </label>
-
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m2">
-                                Minimum
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m3">
-                               Maximum
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q3" id="q3m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q3m4">
-                                None of the above.
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            4. When a rigid body is suspended vertically and it oscillates with a small amplitude under the action of the force of gravity, the body is known as:
-                        </h3>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m1">
-                                Simple pendulum.
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m2">
-                                Second’s pendulum.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m3">
-                                Torsional Pendulum.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q4" id="q4m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q4m4">
-                                Compound Pendulum.
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            5. Which one of the following laws is not applicable to a simple pendulum?
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m1">
-                                The time period depends on its amplitude.
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m2">
-                                The time period is proportional to the length ‘l’ of the pendulum.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m3">
-                                The time period is proportional to the acceleration due to gravity ‘g’.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q5" id="q5m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q5m4">
-                                None of the above.
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="mb-3">
-                        <h3>
-                            6. A girl sitting on a swing. Another sits by her side. What will be the effect on the time period of the swing.
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q6m1"> Increase
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q6m2">
-                                Decrease
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q6m3">
-                                No effect.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q6" id="q6m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q6m4">
-                                None of these.
-                            </label>
-                        </div>
-
-                    </div>
-
-
-                    <div class="mb-3">
-                        <h3>
-                            7. A Second’s Pendulum executes:
-                        </h3>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m1"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q7m1"> 0.5 beats per second.
-                        </div>
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m2"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q7m2">
-                                1.5 beats per second.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m3"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q7m3">
-                                2.0 beats per second.
-                            </label>
-                        </div>
-
-                        <div class="form-check">
-                            <input class="form-check-input" type="radio" name="q7" id="q7m4"
-                                style="border: solid 2px black;">
-                            <label class="form-check-label text-black" for="q7m4">
-                                2.5 beats per second.
-                            </label>
-                        </div>
-
-                    </div>
-                    <button type="submit" class="btn
-                                            btn-primary">Submit</button>
-                    <button type="reset" class="btn fw-bold" style="background:
-                                            linear-gradient(135deg, #0072FF 0%,
-                                            #00C6FF 100%);
-                                            -webkit-background-clip: text;
-                                            -webkit-text-fill-color:
-                                            transparent;
-                                            background-clip: text;
-                                            text-fill-color: transparent;">Cancel</button>
-                </form>
-            </div>
-
-
-            <!-- Resources -->
-            <div class="itemOfMenu my-5 pt-4" id="resource" style="display:none;">
-                <div class="resourceItem">
-                    <h3>
-                        Books
-                    </h3>
-                    <ol>
-                        <li>
-                            Khyber Pakhtunkhwa Physics 9 Practical Note Book Peshawar
-                        </li>
-                        <li>
-                            Khyber Pakhtunkhwa Physics 9 Text Book Peshawar
-                        </li>
-                        <li>
-                            Physics Book Curriculum & Text Book Board Lahore
-                        </li>
-                    </ol>
-                </div>
-            </div>
-
-            <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display:none;">
-                <form method="post" action="# ">
-                    <label>1. Your overall experience with us ?</label><br>
-
-                    <div class="rate">
-                        <input type="radio" id="star5" name="rate" value="5" />
-                        <label for="star5" title="text">5 stars</label>
-                        <input type="radio" id="star4" name="rate" value="4" />
-                        <label for="star4" title="text">4 stars</label>
-                        <input type="radio" id="star3" name="rate" value="3" />
-                        <label for="star3" title="text">3 stars</label>
-                        <input type="radio" id="star2" name="rate" value="2" />
-                        <label for="star2" title="text">2 stars</label>
-                        <input type="radio" id="star1" name="rate" value="1" />
-                        <label for="star1" title="text">1 star</label>
-                    </div>
-                    <br>
-                    <br>
-                    <label class="pt-4" for="m_3189847521540640526commentText">2. Any Other
-                        suggestions:</label><br /><br />
-                    <textarea cols="75" name="commentText" rows="5"></textarea><br>
-                    <br>
-                    <div class="clear"></div>
-                    <input style="background:#71AF06;color:#fff;padding:12px;border:0" type="submit"
-                        value="Submit your review">&nbsp;
-                </form>
-
-
-            </div>
-
+          </div>
+          <!-- <img src="../../pictures/vector3.png" style="position:absolute; left:0px; bottom:0px; width:400px;" alt=""> -->
         </div>
 
+        <!-- Video -->
+        <div
+          class="itemOfMenu my-5 pt-4 position-relative"
+          style="height: 650px; display: none"
+          id="video"
+        >
+          <div class="d-flex justify-content-center align-items-center pb-5">
+            <iframe
+              width="740px"
+              height="480px"
+              src="https://www.youtube.com/embed/tw23mdEIckQ"
+              title="YouTube video player"
+              frameborder="0"
+              style="z-index: 111"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              allowfullscreen
+            >
+            </iframe>
+          </div>
 
+          <img
+            src="../../pictures/vectorRightOrange.png"
+            style="position: absolute; bottom: 0px; right: -12px; width: 50%"
+            alt=""
+          />
+        </div>
+
+        <!-- viva question -->
+        <div
+          class="itemOfMenu my-5 pt-4"
+          id="vivaQuestion"
+          style="display: none"
+        >
+          <h3>
+            <u>Viva Questions</u>
+          </h3>
+
+          <h6>
+            Q1. What is an expression for the time period of a simple pendulum?
+          </h6>
+          <h6>
+            Q2. On what factors does the energy of the particle executing S.H.M.
+            depend?
+          </h6>
+          <h6>Q3. What is a second’s pendulum?</h6>
+          <h6>
+            Q4. When will the motion of a simple pendulum be simple harmonic
+            motion?
+          </h6>
+          <h6>
+            Q5. Will the time period increase or decrease when a pendulum is
+            taken on top of the mountain?
+          </h6>
+          <h6>
+            Q6. Why does a simple pendulum not vibrate at the center of the
+            earth?
+          </h6>
+          <h6>
+            Q7. A vibrating simple pendulum of time period T is placed in a lift
+            which is accelerating upwards. What will be the effect on the time
+            period?
+          </h6>
+          <h3 style="margin-top: 20px">
+            <u>MCQ's</u>
+          </h3>
+          <form>
+            <div class="mb-3">
+              <h3>1. Simple Pendulum does not vibrate at.</h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m1"
+                  style="border: solid 2px black"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m1">
+                  North Pole.
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m2">
+                  South Pole.
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m3">
+                  Surface of the earth.
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q1m1"
+                  id="q1m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q1m4">
+                  Center of the earth.
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                2. When a pendulum is taken on the top of the mountain, the time
+                period will:
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m1">
+                  Increase
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m2">
+                  Decrease
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m3">
+                  Remain constant.
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q2"
+                  id="q2m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q2m4">
+                  Become zero.
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                3. The velocity of a particle moving with simple harmonic motion
+                is __________ at mean position.
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m1">
+                  Zero
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m2">
+                  Minimum
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m3">
+                  Maximum
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q3"
+                  id="q3m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q3m4">
+                  None of the above.
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                4. When a rigid body is suspended vertically and it oscillates
+                with a small amplitude under the action of the force of gravity,
+                the body is known as:
+              </h3>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m1">
+                  Simple pendulum.
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m2">
+                  Second’s pendulum.
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m3">
+                  Torsional Pendulum.
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q4"
+                  id="q4m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q4m4">
+                  Compound Pendulum.
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                5. Which one of the following laws is not applicable to a simple
+                pendulum?
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m1">
+                  The time period depends on its amplitude.
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m2">
+                  The time period is proportional to the length ‘l’ of the
+                  pendulum.
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m3">
+                  The time period is proportional to the acceleration due to
+                  gravity ‘g’.
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q5"
+                  id="q5m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q5m4">
+                  None of the above.
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>
+                6. A girl sitting on a swing. Another sits by her side. What
+                will be the effect on the time period of the swing.
+              </h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q6"
+                  id="q6m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q6m1">
+                  Increase</label
+                >
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q6"
+                  id="q6m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q6m2">
+                  Decrease
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q6"
+                  id="q6m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q6m3">
+                  No effect.
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q6"
+                  id="q6m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q6m4">
+                  None of these.
+                </label>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <h3>7. A Second’s Pendulum executes:</h3>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q7"
+                  id="q7m1"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q7m1">
+                  0.5 beats per second.
+                </label>
+              </div>
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q7"
+                  id="q7m2"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q7m2">
+                  1.5 beats per second.
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q7"
+                  id="q7m3"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q7m3">
+                  2.0 beats per second.
+                </label>
+              </div>
+
+              <div class="form-check">
+                <input
+                  class="form-check-input"
+                  type="radio"
+                  name="q7"
+                  id="q7m4"
+                  style="border: solid 2px black"
+                />
+                <label class="form-check-label text-black" for="q7m4">
+                  2.5 beats per second.
+                </label>
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+            <button
+              type="reset"
+              class="btn fw-bold"
+              style="
+                background: linear-gradient(135deg, #0072ff 0%, #00c6ff 100%);
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                background-clip: text;
+                text-fill-color: transparent;
+              "
+            >
+              Cancel
+            </button>
+          </form>
+        </div>
+
+        <!-- Resources -->
+        <div class="itemOfMenu my-5 pt-4" id="resource" style="display: none">
+          <div class="resourceItem">
+            <h3>Books</h3>
+            <ol>
+              <li>Khyber Pakhtunkhwa Physics 9 Practical Note Book Peshawar</li>
+              <li>Khyber Pakhtunkhwa Physics 9 Text Book Peshawar</li>
+              <li>Physics Book Curriculum & Text Book Board Lahore</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="itemOfMenu my-5 pt-4" id="Feedback" style="display: none">
+          <form method="post" action="# ">
+            <label>1. Your overall experience with us ?</label><br />
+
+            <div class="rate">
+              <input type="radio" id="star5" name="rate" value="5" />
+              <label for="star5" title="text">5 stars</label>
+              <input type="radio" id="star4" name="rate" value="4" />
+              <label for="star4" title="text">4 stars</label>
+              <input type="radio" id="star3" name="rate" value="3" />
+              <label for="star3" title="text">3 stars</label>
+              <input type="radio" id="star2" name="rate" value="2" />
+              <label for="star2" title="text">2 stars</label>
+              <input type="radio" id="star1" name="rate" value="1" />
+              <label for="star1" title="text">1 star</label>
+            </div>
+            <br />
+            <br />
+            <label class="pt-4" for="m_3189847521540640526commentText"
+              >2. Any Other suggestions:</label
+            ><br /><br />
+            <textarea cols="75" name="commentText" rows="5"></textarea><br />
+            <br />
+            <div class="clear"></div>
+            <input
+              style="background: #71af06; color: #fff; padding: 12px; border: 0"
+              type="submit"
+              value="Submit your review"
+            />&nbsp;
+          </form>
+        </div>
+      </div>
     </div>
     <!-- FOOTER -->
-    <div class="container-fluid position-relative
-                            overflow-hidden" style="height: 200px;">
-        <div class="container d-flex justify-content-end
-                                align-items-center h-100">
-            <p>
-                <span style="background:
-                                        linear-gradient(90deg, #F99B27 0%,
-                                        #fda73d 100%);
-                                        -webkit-background-clip: text;
-                                        -webkit-text-fill-color: transparent;
-                                        background-clip: text; font-weight:
-                                        bold;
-                                        text-fill-color: transparent;"> Poha
-                    E-Labs</span> <span class="sm-brown"> |
-                    All rights reserved - 2022</span>
-            </p>
-        </div>
-        <img src="../../pictures/footerCircle.png" style="height:200px; width:auto;
-                                position:absolute; right:-8px; bottom:-2px;" alt="">
+    <div
+      class="container-fluid position-relative overflow-hidden"
+      style="height: 200px"
+    >
+      <div
+        class="container d-flex justify-content-end align-items-center h-100"
+      >
+        <p>
+          <span
+            style="
+              background: linear-gradient(90deg, #f99b27 0%, #fda73d 100%);
+              -webkit-background-clip: text;
+              -webkit-text-fill-color: transparent;
+              background-clip: text;
+              font-weight: bold;
+              text-fill-color: transparent;
+            "
+          >
+            Poha E-Labs</span
+          >
+          <span class="sm-brown"> | All rights reserved - 2022</span>
+        </p>
+      </div>
+      <img
+        src="../../pictures/footerCircle.png"
+        style="
+          height: 200px;
+          width: auto;
+          position: absolute;
+          right: -8px;
+          bottom: -2px;
+        "
+        alt=""
+      />
     </div>
     <script>
-        // Add active class to the current button (highlight it)
-        var header = document.getElementById("menuItems");
-        var btns = header.getElementsByClassName("btn");
-        for (var i = 0; i < btns.length; i++) {
-            btns[i].addEventListener("click", function () {
-                var current = document.getElementsByClassName("bg-blueLight");
-                current[0].className = current[0].className.replace(" bg-blueLight", "");
-                this.className += " bg-blueLight";
-            });
-        }
+      // Add active class to the current button (highlight it)
+      var header = document.getElementById("menuItems");
+      var btns = header.getElementsByClassName("btn");
+      for (var i = 0; i < btns.length; i++) {
+        btns[i].addEventListener("click", function () {
+          var current = document.getElementsByClassName("bg-blueLight");
+          current[0].className = current[0].className.replace(
+            " bg-blueLight",
+            ""
+          );
+          this.className += " bg-blueLight";
+        });
+      }
     </script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
-        crossorigin="anonymous"></script>
-</body>
-
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N"
+      crossorigin="anonymous"
+    ></script>
+  </body>
 </html>
