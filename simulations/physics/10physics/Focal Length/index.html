@@ -17,7 +17,7 @@
       </div>
       <div id="unity-warning"> </div>
       <div id="unity-footer">
-        <!-- <div id="unity-webgl-logo"></div> -->
+        <div id="unity-webgl-logo"></div>
         <div id="unity-fullscreen-button"></div>
         <div id="unity-build-title">Law Of Reflection</div>
       </div>
@@ -55,11 +55,11 @@
       }
 
       var buildUrl = "Build";
-      var loaderUrl = buildUrl + "/FL.loader.js";
+      var loaderUrl = buildUrl + "/Focal Length.loader.js";
       var config = {
-        dataUrl: buildUrl + "/FL.data.gz",
-        frameworkUrl: buildUrl + "/FL.framework.js.gz",
-        codeUrl: buildUrl + "/FL.wasm.gz",
+        dataUrl: buildUrl + "/Focal Length.data.unityweb",
+        frameworkUrl: buildUrl + "/Focal Length.framework.js.unityweb",
+        codeUrl: buildUrl + "/Focal Length.wasm.unityweb",
         streamingAssetsUrl: "StreamingAssets",
         companyName: "DefaultCompany",
         productName: "Law Of Reflection",
@@ -92,8 +92,8 @@
       } else {
         // Desktop style: Render the game canvas in a window that can be maximized to fullscreen:
 
-        canvas.style.width = "772px";
-        canvas.style.height = "432px";
+        canvas.style.width = "960px";
+        canvas.style.height = "600px";
       }
 
       loadingBar.style.display = "block";
