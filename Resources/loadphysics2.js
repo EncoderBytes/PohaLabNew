@@ -25,6 +25,10 @@ function load() {
       title: "Trace the Magnetic field using a bar magnet ",
       link: "../simulations/physics/magnetbar.html",
     },
+    {
+      title: "To verify the laws of refraction by using a glass slab",
+      link: "../simulations/physics/RefractionofLight.html"
+    },
     // {
     //     title: `AC Sonometer`,
     //     link: "ohm.html"
