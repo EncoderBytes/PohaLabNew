@@ -80,43 +80,32 @@ function load() {
   let HtmlText = "";
   data.map((d, i) => {
     HtmlText += `
-        <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4  mx-auto"
-                        style="">
-                        <div class="card" style="border:1px solid #71AF06; z-index:111;">
+    <div class="col-xl-3 col-lg-3 col-md-4 col-sm-6 mb-4  mx-auto"
+    style="">
+    <a href="${d.link}" style="text-decoration:none; color:white">
+    <div class="card" style="border:1px solid #71AF06; z-index:111;">
 
-                            <img src="../pictures/physics/${i + 1}.png"
-                                class="card-img-top"
-                                style="width:100%; height: auto; object-fit:cover;" alt=" the experminent Picture of" +${
-                                  d.title
-                                }>
+        <img class="imagestyle" src="../pictures/physics/${i + 1}.png"
+            class="card-img-top"
+            style="width:100%; height: auto; object-fit:cover;" alt=" the experminent Picture of" +${d.title}>
 
-                            <div class="card-body position-relative overflow-hidden" style="padding-bottom:65px;">
-                                <h1 class="card-title" style="font-size:
-                                    16px; line-height:16px; font-weight: 700;">
-                                    <!--${d.title.slice(0, 50)} --!>
-                                    ${d.title}
+        <div class="card-body position-relative overflow-hidden" style="padding-bottom:65px;">
+            <h1 class="card-title" style="font-size:
+                16px; line-height:16px; font-weight: 700; padding-bottom: 20px;">
+                <!--${d.title.slice(0, 50)} --!>
+                ${d.title}
 
-                                </h1>
-                                
-                                <p class="card-text d-flex justify-content-end "
-                                    style="width:100%;">
-                                    <span style="width:fit-content;
-                                        padding:1px 8px;
-                                        background: linear-gradient(135deg,
-                                        #71AF06 0%, #F99B20 100%);
-                                        color:white; border-radius: 8px;
-                                        font-weight: bold; position: absolute;
-                                        bottom:0px; right:0px;">
-                                       <a href="${
-                                         d.link
-                                       }" style="text-decoration:none; color:white"> <i class="bi bi-arrow-right"></i> </a>
-                                    </span>
-                                </p>
-                            </div>
-
-                        </div>
-                    </div>
-        `;
+            </h1>
+            
+            <p class="card-text d-flex justify-content-end "
+                style="width:100%;">
+                
+            </p>
+        </div>
+    </div>
+    </a>
+</div>
+`
   });
 
   // div.innerHTML = HtmlText;
