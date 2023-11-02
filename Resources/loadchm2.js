@@ -89,7 +89,7 @@ function load() {
         <a href="${d.link}" style="text-decoration:none; color:white">
         <div class="card" style="border:1px solid #71AF06; z-index:111;">
 
-            <img class="imagestyle" src="../pictures/physics/${i + 1}.png"
+            <img class="imagestyle" src="../pictures/chem/${i + 1}.png"
                 class="card-img-top"
                 style="width:100%; height: auto; object-fit:cover;" alt=" the experminent Picture of" +${d.title}>
 
